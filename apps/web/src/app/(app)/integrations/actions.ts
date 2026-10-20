@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { requireUser } from "@/lib/session";
 import { db, schema } from "@/db";
-import { eq } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 import { disconnectIntegration } from "@/lib/services/integrations";
 import { connectStripe } from "@/lib/services/stripe";
 import { authorizeUrl, collectPayment } from "@/lib/services/gocardless";
@@ -59,6 +59,10 @@ export async function createPortalLinkAction(customerId: string) {
 export async function collectDirectDebitAction(customerId: string, f: FormData) {
   const user = await requireUser("enter_payments");
   const amount = Math.round(Number(f.get("amount") ?? 0) * 100);
+  const customer = await db.query.customers.findFirst({ where: and(eq(schema.customers.id, customerId), eq(schema.customers.accountId, user.accountId)) });
+  if (!customer) throw new Error("Customer not found");
+  // Never collect more than the customer owes.
+  if (amount <= 0 || amount > -customer.balance) throw new Error("You can only collect up to the amount the customer owes");
   await collectPayment(user.accountId, customerId, amount, String(f.get("description") || "Window cleaning"));
   revalidatePath(`/customers/${customerId}`);
 }
