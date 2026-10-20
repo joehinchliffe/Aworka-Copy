@@ -9,3 +9,4 @@ apps/web/e2e/shots/
 apps/web/.next/
 apps/web/next-env.d.ts
 *.tsbuildinfo
+.claude/worktrees/
