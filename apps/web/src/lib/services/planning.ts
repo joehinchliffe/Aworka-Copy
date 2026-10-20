@@ -221,7 +221,12 @@ export async function completeJob(accountId: string, userId: string | null, jobI
   await db.transaction(async (tx) => {
     const price = input.price ?? job.price;
     // A future-dated job marked done happened today.
-    const date = input.status === "done" && job.date > today ? today : job.date;
+    let date = job.date;
+    if (input.status === "done" && job.date > today) {
+      // Done early: it happened today, unless this job already has a visit today.
+      const clash = await tx.query.jobs.findFirst({ where: and(eq(schema.jobs.jobSpecId, job.jobSpecId), eq(schema.jobs.date, today)) });
+      if (!clash) date = today;
+    }
     await tx.update(schema.jobs).set({
       status: input.status, price, previousPrice: price !== job.price ? job.price : job.previousPrice,
       date, confirmed: input.confirmed === undefined ? job.confirmed : input.confirmed,

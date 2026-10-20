@@ -11,6 +11,7 @@ const MAIN = [
   { href: "/messages", label: "Messages" },
   { href: "/reports", label: "Reports" },
   { href: "/settings", label: "Settings" },
+  { href: "/m", label: "Mobile app" },
 ];
 
 export function MainNav() {
