@@ -51,6 +51,11 @@ export interface AccountSettings {
   website?: string;
   address?: string;
   phone?: string;
+  /** Customer data retention rules (see services/retention.ts). All off unless enabled. */
+  retention?: Partial<Record<
+    "suspendRegular" | "suspendOnRequest" | "deleteSuspended" | "deleteEstimates" | "anonymiseDeleted" | "anonymiseInvoices",
+    { enabled: boolean; num: number; unit: "week" | "month" | "year" }
+  >>;
 }
 
 export const roles = pgTable("roles", {

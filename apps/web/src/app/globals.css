@@ -96,3 +96,22 @@ legend { font-weight: 600; padding: 0 4px; }
 .chip.not-allowed { outline: 2px solid var(--danger); }
 .jobsheet-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--line); }
 details > summary { cursor: pointer; }
+
+/* ===== Settings, users and roles, rounds, tasks, price revisions, sales sources ===== */
+.narrow { max-width: 720px; }
+label.check { color: var(--ink); font-size: 14px; margin: 6px 0; gap: 6px; }
+.settings-index { margin-bottom: 12px; }
+.settings-sections { display: grid; gap: 12px; max-width: 860px; }
+.settings-sections section { scroll-margin-top: 12px; }
+.settings-sections h2 { margin-top: 0; }
+.retention-rule { padding: 8px 0; border-bottom: 1px solid var(--line); }
+.retention-rule:last-of-type { border-bottom: none; }
+.perm-groups { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.order-list { list-style: none; margin: 0; padding: 0; border: 1px solid var(--line); border-radius: var(--radius); }
+.order-list li { display: flex; align-items: center; gap: 10px; padding: 6px 10px; border-bottom: 1px solid var(--line); background: var(--panel); cursor: grab; }
+.order-list li:last-child { border-bottom: none; }
+.order-list li.dragging { opacity: .5; background: var(--brand-soft); }
+.order-list .order-num { width: 2.5em; color: var(--muted); font-variant-numeric: tabular-nums; text-align: right; }
+.order-list .order-name { flex: 1; min-width: 0; }
+.inline-form .row { margin-top: 0 !important; }
+.inline-form .notice { margin: 4px 0; padding: 4px 8px; font-size: 13px; }
