@@ -533,9 +533,10 @@ with photos, web lead capture.
   captured because the test account was blank. Next capture after adding sample
   data will cover them.
 - **Open decisions**: launch tiers and prices; whether franchise per-seat billing
-  is needed at launch; SMS and address providers to contract; whether the
-  existing round-manager codebase should be the base instead of a greenfield
-  build; PayPal model (link paste versus partner API).
+  is needed at launch; SMS and address providers to contract; PayPal model
+  (link paste versus partner API).
+- **Decided (20 Oct 2026)**: greenfield build in this repository, not an
+  extension of the existing round-manager codebase. Stack as recommended in 7.1.
 
 ---
 

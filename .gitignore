@@ -3,3 +3,5 @@
 node_modules/
 __pycache__/
 research/aworka/assets/
+dist/
+coverage/
