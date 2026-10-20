@@ -13,6 +13,7 @@ describe("money", () => {
     expect(toPence("-3")).toBe(-300);
     expect(toPence("")).toBe(0);
     expect(formatPence(-1505)).toBe("-£15.05");
+    expect(formatPence(2261300)).toBe("£22,613.00");
     expect(() => toPence("abc")).toThrow();
   });
 

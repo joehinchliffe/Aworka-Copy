@@ -194,3 +194,4 @@ label.check { color: var(--ink); font-size: 14px; margin: 6px 0; gap: 6px; }
 .landing-features { margin-bottom: 40px; }
 .landing-features h2 { margin-top: 0; }
 #pricing { padding-bottom: 32px; }
+.planner-day { max-height: 420px; overflow-y: auto; }

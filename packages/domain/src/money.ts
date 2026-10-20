@@ -14,7 +14,8 @@ export function toPence(pounds: string | number): Pence {
 export function formatPence(p: Pence, symbol = "£"): string {
   const sign = p < 0 ? "-" : "";
   const abs = Math.abs(p);
-  return `${sign}${symbol}${Math.floor(abs / 100)}.${String(abs % 100).padStart(2, "0")}`;
+  const pounds = String(Math.floor(abs / 100)).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  return `${sign}${symbol}${pounds}.${String(abs % 100).padStart(2, "0")}`;
 }
 
 /** Round half away from zero, as accountants expect. */

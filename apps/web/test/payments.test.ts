@@ -154,7 +154,8 @@ describe("gocardless connect", () => {
   it("signs and verifies OAuth state", () => {
     const s = signState(accountId, 1000);
     expect(verifyState(s, 2000)).toBe(accountId);
-    expect(verifyState(s.replace(/.$/, s.endsWith("A") ? "B" : "A"), 2000)).toBeNull();
+    const mid = Math.floor(s.length * 0.75);
+    expect(verifyState(s.slice(0, mid) + (s[mid] === "A" ? "B" : "A") + s.slice(mid + 1), 2000)).toBeNull();
     expect(verifyState(s, 1000 + 3_600_001)).toBeNull();
     const url = new URL(authorizeUrl(accountId, { email: "pat@example.com" }));
     expect(url.origin).toBe("https://connect-sandbox.gocardless.com");
