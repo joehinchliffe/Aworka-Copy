@@ -119,7 +119,8 @@ export async function dueJobs(accountId: string, date: IsoDate, order: "next_due
   const plannedFuture = await db
     .select({ specId: schema.jobs.jobSpecId })
     .from(schema.jobs)
-    .where(and(eq(schema.jobs.accountId, accountId), gte(schema.jobs.date, addDays(date, -60)), eq(schema.jobs.status, "to_do")));
+    .where(and(eq(schema.jobs.accountId, accountId), gte(schema.jobs.date, addDays(date, -60)),
+      sql`(${schema.jobs.status} = 'to_do' or ${schema.jobs.date} = ${date})`));
   const already = new Set(plannedFuture.map((p) => p.specId));
   const list = rows
     .filter(({ spec }) => !already.has(spec.id))

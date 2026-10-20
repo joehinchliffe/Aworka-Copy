@@ -5,3 +5,7 @@ __pycache__/
 research/aworka/assets/
 dist/
 coverage/
+apps/web/e2e/shots/
+apps/web/.next/
+apps/web/next-env.d.ts
+*.tsbuildinfo
