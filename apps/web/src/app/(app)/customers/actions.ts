@@ -14,11 +14,18 @@ export type FormState = { errors?: string[] } | undefined;
 
 const s = (f: FormData, k: string) => (f.get(k) as string | null) ?? undefined;
 
+/** Coordinates from the address finder's hidden fields, only when both are present. */
+function coords(lat?: string, lng?: string) {
+  const a = lat ? Number(lat) : NaN, b = lng ? Number(lng) : NaN;
+  return Number.isFinite(a) && Number.isFinite(b) && Math.abs(a) <= 90 && Math.abs(b) <= 180 ? { lat: a, lng: b } : {};
+}
+
 function contactFrom(f: FormData, prefix: string) {
   return {
     title: s(f, `${prefix}title`), firstNames: s(f, `${prefix}firstNames`), lastName: s(f, `${prefix}lastName`),
     company: s(f, `${prefix}company`), address: s(f, `${prefix}address`), postcode: s(f, `${prefix}postcode`),
     phone1: s(f, `${prefix}phone1`), phone2: s(f, `${prefix}phone2`), email: s(f, `${prefix}email`), emailCc: s(f, `${prefix}emailCc`),
+    ...coords(s(f, `${prefix}lat`), s(f, `${prefix}lng`)),
   };
 }
 

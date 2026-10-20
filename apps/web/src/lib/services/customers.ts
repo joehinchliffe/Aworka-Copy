@@ -12,8 +12,11 @@ export const contactInput = z.object({
   phone1: optStr, phone2: optStr, phone3: optStr,
   email: z.string().trim().email().optional().or(z.literal("")).transform((s) => (s ? s : null)),
   emailCc: optStr,
-  lat: z.coerce.number().optional().nullable(), lng: z.coerce.number().optional().nullable(),
-});
+  lat: z.coerce.number().min(-90).max(90).optional().nullable(), lng: z.coerce.number().min(-180).max(180).optional().nullable(),
+}).transform((c) => (c.lat != null && c.lng != null
+  // Coordinates supplied with the address (address finder) are rooftop-accurate.
+  ? { ...c, latLngSource: "geocoded" as string | undefined }
+  : { ...c, lat: undefined, lng: undefined, latLngSource: undefined }));
 
 export const customerInput = z.object({
   contact: contactInput,

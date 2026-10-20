@@ -42,6 +42,7 @@ export default async function SettingsPage() {
                   <div><label>Phone</label><input name="phone" type="tel" defaultValue={st.phone ?? ""} /></div>
                   <div><label>Website</label><input name="website" defaultValue={st.website ?? ""} placeholder="https://" /></div>
                 </div>
+                <label>Business email (customers&apos; replies go here)</label><input name="email" type="email" defaultValue={st.email ?? ""} placeholder={user.email} />
                 <label>Tax year ends</label>
                 <div className="field-row">
                   <select name="yearEndDay" defaultValue={a.yearEndDay}>{Array.from({ length: 31 }, (_, i) => <option key={i} value={i + 1}>{i + 1}</option>)}</select>

@@ -37,8 +37,8 @@ production build passing, Playwright smoke tests for desktop and mobile flows.
 - [x] GoCardless partner connect, mandates, collection, webhooks (sandbox); Stripe card payments; customer portal
 - [x] Email via SMTP; SMS via Webex Interact, Esendex, httpSMS
 - [x] Offline mobile PWA with sync, idempotent changes and service worker
-- [ ] Gmail and Outlook OAuth sending (needs Google/Microsoft app verification)
-- [ ] Address autocomplete with Ideal Postcodes or Loqate (needs a paid key)
+- [x] Per-account email sending: own SMTP (test, throttle), Gmail API and Microsoft Graph via OAuth (live use needs Google/Microsoft app verification)
+- [x] Address finder on customer forms: Ideal Postcodes (IDEAL_POSTCODES_KEY, paid) with postcodes.io area-only fallback
 
 ## Phase 3: Team parity
 - [x] Users, roles with 28 permissions, round assignments

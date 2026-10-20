@@ -44,13 +44,14 @@ export const businessInput = z.object({
   address: optStr,
   phone: optStr,
   website: optStr,
+  email: z.string().trim().email("Enter a valid business email").optional().or(z.literal("")).transform((s) => s || undefined),
   yearEndDay: z.coerce.number().int().min(1).max(31),
   yearEndMonth: z.coerce.number().int().min(1).max(12),
 });
 export async function updateBusiness(actor: Actor, raw: z.input<typeof businessInput>) {
   assertCan(actor, "edit_settings");
   const b = businessInput.parse(raw);
-  await mergeSettings(actor.accountId, { address: b.address, phone: b.phone, website: b.website },
+  await mergeSettings(actor.accountId, { address: b.address, phone: b.phone, website: b.website, email: b.email },
     { businessName: b.businessName, yearEndDay: b.yearEndDay, yearEndMonth: b.yearEndMonth });
 }
 

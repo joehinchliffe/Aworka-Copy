@@ -51,6 +51,10 @@ export interface AccountSettings {
   website?: string;
   address?: string;
   phone?: string;
+  /** Business email address: used as Reply-To on outgoing email. */
+  email?: string;
+  /** How email is sent: platform (default), own SMTP server, Gmail or Outlook (see services/email.ts). */
+  emailSender?: "platform" | "smtp" | "gmail" | "outlook";
   /** Where the working day starts and ends, for route optimisation. */
   homeLat?: number;
   homeLng?: number;
