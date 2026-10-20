@@ -183,3 +183,14 @@ label.check { color: var(--ink); font-size: 14px; margin: 6px 0; gap: 6px; }
   .exp-period { flex-wrap: wrap; }
   .exp-filters > select { max-width: none; }
 }
+
+/* ---- Marketing page ---- */
+.landing { max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+.landing-top { display: flex; justify-content: space-between; align-items: center; padding: 16px 0; gap: 12px; flex-wrap: wrap; }
+.landing-top nav a { margin-left: 12px; }
+.hero { text-align: center; padding: 48px 0 32px; }
+.hero h1 { font-size: clamp(28px, 5vw, 44px); margin-bottom: 12px; }
+.hero p { font-size: 18px; color: var(--muted); max-width: 640px; margin: 0 auto 16px; }
+.landing-features { margin-bottom: 40px; }
+.landing-features h2 { margin-top: 0; }
+#pricing { padding-bottom: 32px; }

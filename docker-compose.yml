@@ -1,0 +1,27 @@
+# Local production-like stack: app, Postgres and a scheduler for nightly jobs and message delivery.
+services:
+  db:
+    image: postgres:16
+    environment: { POSTGRES_USER: rounds, POSTGRES_PASSWORD: rounds, POSTGRES_DB: rounds }
+    volumes: [dbdata:/var/lib/postgresql/data]
+  app:
+    build: .
+    env_file: .env
+    environment: { DATABASE_URL: postgres://rounds:rounds@db:5432/rounds }
+    ports: ["3000:3000"]
+    depends_on: [db]
+  scheduler:
+    image: curlimages/curl:8.10.1
+    env_file: .env
+    depends_on: [app]
+    entrypoint: ["/bin/sh", "-c"]
+    # Deliver queued messages every 5 minutes; run nightly jobs at 02:00 UTC.
+    command:
+      - >
+        while true; do
+          curl -fsS -X POST -H "x-cron-secret: $$CRON_SECRET" http://app:3000/api/cron/deliver || true;
+          if [ "$$(date -u +%H%M)" -ge 0200 ] && [ "$$(date -u +%H%M)" -lt 0205 ]; then
+            curl -fsS -X POST -H "x-cron-secret: $$CRON_SECRET" http://app:3000/api/cron/nightly || true; fi;
+          sleep 300; done
+volumes:
+  dbdata:
