@@ -478,3 +478,16 @@ export const webhookEvents = pgTable("webhook_events", {
   error: text("error"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 });
+
+/** Personal access tokens for the public API. Only a hash of the token is stored. */
+export const apiTokens = pgTable("api_tokens", {
+  id: id(),
+  accountId: accountId(),
+  userId: uuid("user_id").notNull().references(() => users.id, { onDelete: "cascade" }),
+  label: text("label").notNull(),
+  tokenHash: text("token_hash").notNull(),
+  prefix: text("prefix").notNull(),
+  lastUsedAt: timestamp("last_used_at", { withTimezone: true }),
+  revokedAt: timestamp("revoked_at", { withTimezone: true }),
+  ...stamps,
+}, (t) => [uniqueIndex("api_tokens_hash_unique").on(t.tokenHash)]);

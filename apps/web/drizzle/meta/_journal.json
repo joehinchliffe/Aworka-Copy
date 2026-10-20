@@ -15,6 +15,13 @@
       "when": 1792512076072,
       "tag": "0001_payments",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1792512335329,
+      "tag": "0002_api_tokens",
+      "breakpoints": true
     }
   ]
 }
