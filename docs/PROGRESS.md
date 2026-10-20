@@ -8,7 +8,7 @@ Implementation choice: the server and web UI are one Next.js app (`apps/web`)
 using server actions and route handlers, sharing `packages/domain`. The offline
 mobile PWA is served from the same app at `/m`.
 
-Status: 120 automated tests (domain rules plus services against real Postgres),
+Status: 148 automated tests (domain rules plus services against real Postgres),
 production build passing, Playwright smoke tests for desktop and mobile flows.
 
 ## Phase 0: foundations
@@ -50,6 +50,7 @@ production build passing, Playwright smoke tests for desktop and mobile flows.
 
 ## Phase 4: Tax and launch
 - [x] MTD Income Tax quarterly cumulative updates (sandbox; production pending HMRC window)
-- [ ] Marketing site with public pricing
-- [ ] Deployment configuration, load, security and restore testing
+- [x] Marketing page with public pricing
+- [x] Deployment configuration (Docker, compose, env template, guide); load check at 1,500 customers; security review with fixes
+- [ ] Restore drill on the production database (needs hosting)
 - [ ] Production credentials: HMRC, GoCardless, Stripe platform, SMS provider (owner action)
