@@ -113,22 +113,24 @@ export function CustomerFields({ d = {} }: { d?: CustomerDefaults }) {
   );
 }
 
-export function JobFields({ rounds, tasks, today }: { rounds: { id: string; name: string }[]; tasks: { id: string; name: string; price: number | null }[]; today: string }) {
+export interface JobDefaults { reference?: string | null; roundId?: string | null; taskId?: string | null; description?: string | null; notes?: string | null; price?: number; vatStatus?: string; timeRequired?: number; regularity?: string; timesPerPeriod?: number; numPeriods?: number; periodUnit?: string; allowedDays?: number; appointments?: string; nextDueOn?: string | null }
+
+export function JobFields({ rounds, tasks, today, d, edit }: { rounds: { id: string; name: string }[]; tasks: { id: string; name: string; price: number | null }[]; today: string; d?: JobDefaults; edit?: boolean }) {
   const [location, setLocation] = useState("customer");
-  const [roundId, setRoundId] = useState(rounds[0]?.id ?? "new");
-  const [regularity, setRegularity] = useState("regularly");
+  const [roundId, setRoundId] = useState(d?.roundId ?? rounds[0]?.id ?? "new");
+  const [regularity, setRegularity] = useState(d?.regularity ?? "regularly");
   return (
     <fieldset>
       <legend>Job</legend>
-      <label className="row"><input type="checkbox" name="estimate" /> This is an estimate (quote) for now</label>
+      {!edit && <label className="row"><input type="checkbox" name="estimate" /> This is an estimate (quote) for now</label>}
       <div className="field-row">
-        <div><label>Location</label>
+        {!edit && <div><label>Location</label>
           <select name="location" value={location} onChange={(e) => setLocation(e.target.value)}>
             <option value="customer">Customer address</option><option value="other">Other address</option><option value="none">Not applicable</option>
-          </select></div>
-        <div><label>Job reference</label><input name="jobReference" placeholder="Defaults to first address line" /></div>
+          </select></div>}
+        <div><label>Job reference</label><input name="jobReference" defaultValue={d?.reference ?? ""} placeholder="Defaults to first address line" /></div>
       </div>
-      {location === "other" && <fieldset><legend>Job address</legend><ContactFields prefix="j_" /></fieldset>}
+      {!edit && location === "other" && <fieldset><legend>Job address</legend><ContactFields prefix="j_" /></fieldset>}
       <div className="field-row">
         <div><label>Round</label>
           <select name="roundId" value={roundId} onChange={(e) => setRoundId(e.target.value)}>
@@ -137,24 +139,24 @@ export function JobFields({ rounds, tasks, today }: { rounds: { id: string; name
           </select></div>
         {roundId === "new" && <div><label>New round name</label><input name="newRoundName" required /></div>}
         <div><label>Task</label>
-          <select name="taskId" defaultValue="">
+          <select name="taskId" defaultValue={d?.taskId ?? ""}>
             <option value="">None</option>
             {tasks.map((t) => <option key={t.id} value={t.id}>{t.name}</option>)}
           </select></div>
       </div>
-      <label>Description (shown on invoices)</label><textarea name="description" rows={2} />
+      <label>Description (shown on invoices)</label><textarea name="description" rows={2} defaultValue={d?.description ?? ""} />
       <div className="field-row">
-        <div><label>Price £</label><input name="price" type="number" step="0.01" min={0} defaultValue="0" /></div>
+        <div><label>Price £</label><input name="price" type="number" step="0.01" min={0} defaultValue={((d?.price ?? 0) / 100).toFixed(2)} /></div>
         <div><label>VAT</label>
-          <select name="vatStatus" defaultValue="inc_vat">
+          <select name="vatStatus" defaultValue={d?.vatStatus ?? "inc_vat"}>
             <option value="inc_vat">Inc VAT</option><option value="ex_vat">Ex VAT</option><option value="zero_rated">Zero rated</option>
             <option value="exempt">Exempt</option><option value="out_of_scope">Out of scope</option>
           </select></div>
         <div><label>Time (h : m)</label><div className="row">
-          <input name="timeHours" type="number" min={0} max={24} defaultValue={0} style={{ width: 64 }} />
-          <input name="timeMinutes" type="number" min={0} max={59} defaultValue={30} style={{ width: 64 }} /></div></div>
+          <input name="timeHours" type="number" min={0} max={24} defaultValue={Math.floor((d?.timeRequired ?? 30) / 60)} style={{ width: 64 }} />
+          <input name="timeMinutes" type="number" min={0} max={59} defaultValue={(d?.timeRequired ?? 30) % 60} style={{ width: 64 }} /></div></div>
       </div>
-      <label>Job notes (not shown on invoices)</label><textarea name="jobNotes" rows={2} />
+      <label>Job notes (not shown on invoices)</label><textarea name="jobNotes" rows={2} defaultValue={d?.notes ?? ""} />
       <div className="field-row">
         <div><label>Frequency</label>
           <select name="regularity" value={regularity} onChange={(e) => setRegularity(e.target.value)}>
@@ -162,26 +164,26 @@ export function JobFields({ rounds, tasks, today }: { rounds: { id: string; name
           </select></div>
         {regularity === "regularly" && (
           <div><label>How often</label><div className="row">
-            <select name="timesPerPeriod" defaultValue="1" style={{ width: 110 }}>
+            <select name="timesPerPeriod" defaultValue={String(d?.timesPerPeriod ?? 1)} style={{ width: 110 }}>
               {[1, 2, 3, 4, 5, 6, 7].map((n) => <option key={n} value={n}>{n === 1 ? "Once" : n === 2 ? "Twice" : `${n} times`}</option>)}
             </select>
             <span>every</span>
-            <input name="numPeriods" type="number" min={1} max={52} defaultValue={4} style={{ width: 64 }} />
-            <select name="periodUnit" defaultValue="week" style={{ width: 100 }}>
+            <input name="numPeriods" type="number" min={1} max={52} defaultValue={d?.numPeriods ?? 4} style={{ width: 64 }} />
+            <select name="periodUnit" defaultValue={d?.periodUnit ?? "week"} style={{ width: 100 }}>
               <option value="day">days</option><option value="week">weeks</option><option value="month">months</option><option value="year">years</option>
             </select></div></div>
         )}
       </div>
       <label>Allowed days</label>
       <div className="row">{DAY_NAMES.map((n, i) => (
-        <label key={n} className="row" style={{ margin: 0 }}><input type="checkbox" name="allowedDays" value={i} defaultChecked /> {n}</label>
+        <label key={n} className="row" style={{ margin: 0 }}><input type="checkbox" name="allowedDays" value={i} defaultChecked={((d?.allowedDays ?? 127) & (1 << i)) !== 0} /> {n}</label>
       ))}</div>
       <div className="field-row">
         <div><label>Appointments</label>
-          <select name="appointments" defaultValue="none">
+          <select name="appointments" defaultValue={d?.appointments ?? "none"}>
             <option value="none">No need to confirm</option><option value="confirm_day_before">Confirm the day before</option><option value="confirm_few_days_before">Confirm a few days before</option>
           </select></div>
-        <div><label>First due</label><input name="firstDueOn" type="date" defaultValue={today} /></div>
+        <div><label>{edit ? "Next due" : "First due"}</label><input name="firstDueOn" type="date" defaultValue={edit ? d?.nextDueOn ?? "" : today} /></div>
       </div>
     </fieldset>
   );
@@ -223,6 +225,17 @@ export function NewJobForm({ action, rounds, tasks, today }: { action: Action; r
     <form action={formAction} style={{ maxWidth: 760 }}>
       <Errors state={state} />
       <JobFields rounds={rounds} tasks={tasks} today={today} />
+      <button className="btn primary" disabled={pending}>Save job</button>
+    </form>
+  );
+}
+
+export function EditJobForm({ action, rounds, tasks, today, d }: { action: Action; rounds: { id: string; name: string }[]; tasks: { id: string; name: string; price: number | null }[]; today: string; d: JobDefaults }) {
+  const [state, formAction, pending] = useActionState(action, undefined);
+  return (
+    <form action={formAction} style={{ maxWidth: 760 }}>
+      <Errors state={state} />
+      <JobFields rounds={rounds} tasks={tasks} today={today} d={d} edit />
       <button className="btn primary" disabled={pending}>Save job</button>
     </form>
   );

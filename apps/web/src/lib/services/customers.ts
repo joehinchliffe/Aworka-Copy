@@ -239,3 +239,47 @@ export async function anonymiseCustomer(accountId: string, customerId: string) {
     await tx.update(schema.customers).set({ anonymisedAt: new Date(), notes: null }).where(eq(schema.customers.id, customerId));
   });
 }
+
+export async function getJobSpec(accountId: string, id: string) {
+  return db.query.jobSpecs.findFirst({ where: and(eq(schema.jobSpecs.id, id), eq(schema.jobSpecs.accountId, accountId)) });
+}
+
+/** Edit a job definition. Future to-do jobs pick up the new price and time. */
+export async function updateJobSpec(accountId: string, userId: string, id: string, raw: JobSpecInput, today: string) {
+  const j = jobSpecInput.parse(raw);
+  const spec = await getJobSpec(accountId, id);
+  if (!spec) throw new Error("Job not found");
+  await db.transaction(async (tx) => {
+    let roundId = j.roundId ?? spec.roundId;
+    if (!j.roundId && j.newRoundName) {
+      const [round] = await tx.insert(schema.rounds).values({ accountId, name: j.newRoundName, userId }).returning();
+      roundId = round!.id;
+    }
+    await tx.update(schema.jobSpecs).set({
+      roundId, taskId: j.taskId ?? null, reference: j.reference, description: j.description, notes: j.notes,
+      price: j.price, vatStatus: j.vatStatus, timeRequired: j.timeRequired, regularity: j.regularity,
+      timesPerPeriod: j.timesPerPeriod, numPeriods: j.numPeriods, periodUnit: j.periodUnit,
+      allowedDays: j.allowedDays, appointments: j.appointments, nextDueOn: j.firstDueOn ?? spec.nextDueOn,
+      priceChangedOn: j.price !== spec.price ? today : spec.priceChangedOn, updatedAt: new Date(),
+    }).where(eq(schema.jobSpecs.id, id));
+    await tx.update(schema.jobs).set({ price: j.price, timeRequired: j.timeRequired, vatStatus: j.vatStatus })
+      .where(and(eq(schema.jobs.jobSpecId, id), eq(schema.jobs.status, "to_do"), sql`${schema.jobs.date} >= ${today}`));
+    if (j.price !== spec.price) {
+      await logActivity(tx, { accountId, userId, customerId: spec.customerId, date: today, category: "job_value_changes", summary: "Price changed", amount: j.price - spec.price });
+    }
+  });
+}
+
+/** Suspend, reactivate or delete a job. Deleting removes its future to-do visits. */
+export async function setJobSpecStatus(accountId: string, id: string, status: "active" | "suspended" | "deleted", today: string) {
+  const spec = await getJobSpec(accountId, id);
+  if (!spec) throw new Error("Job not found");
+  await db.transaction(async (tx) => {
+    await tx.update(schema.jobSpecs).set({ status, nextDueOn: status === "active" && !spec.nextDueOn ? today : spec.nextDueOn, updatedAt: new Date() })
+      .where(eq(schema.jobSpecs.id, id));
+    if (status !== "active") {
+      await tx.delete(schema.jobs).where(and(eq(schema.jobs.jobSpecId, id), eq(schema.jobs.status, "to_do"), sql`${schema.jobs.date} >= ${today}`));
+    }
+  });
+  return spec.customerId;
+}
