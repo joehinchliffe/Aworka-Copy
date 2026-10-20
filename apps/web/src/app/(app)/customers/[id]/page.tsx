@@ -6,6 +6,7 @@ import { requireUser } from "@/lib/session";
 import { balanceLabel, DAY_NAMES, frequencyLabel, INVOICE_FREQ_LABELS, money, PAY_METHODS, PAYMENT_METHOD_LABELS } from "@/lib/format";
 import { formatDate } from "@/lib/time";
 import { PortalLink } from "@/components/PortalLink";
+import { MessageCustomerLink } from "@/components/MessageCustomerLink";
 import { adjustmentAction, anonymiseAction } from "../actions";
 import { createInvoiceAction, recordPaymentAction } from "../../debts/actions";
 
@@ -35,6 +36,7 @@ export default async function CustomerPage({ params }: { params: Promise<{ id: s
             <Link className="btn" href={`/customers/${id}/edit`}>Edit</Link>
             <Link className="btn" href={`/customers/${id}/jobs/new`}>Add job</Link>
             <Link className="btn" href={`/statements/${id}`}>Statement</Link>
+            <MessageCustomerLink customerId={id} />
           </div>
         </div>
       </div>

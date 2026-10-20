@@ -72,8 +72,9 @@ async function createInvoiceTx(accountId: string, customerId: string, today: Iso
 /** Run a customer's automatic invoicing rule. `trigger` says why we were called. */
 export async function maybeAutoInvoice(accountId: string, customerId: string, today: IsoDate, trigger: "after_job" | "nightly") {
   const customer = await db.query.customers.findFirst({ where: eq(schema.customers.id, customerId) });
-  if (!customer || !["email_invoice", "paper_invoice"].includes(customer.paymentMethod)) return null;
-  const f = customer.invoiceFrequency;
+  if (!customer || !["email_invoice", "paper_invoice", "direct_debit"].includes(customer.paymentMethod)) return null;
+  // Direct debit customers are collected manually or periodically only.
+  const f = customer.paymentMethod === "direct_debit" && customer.invoiceFrequency !== "periodically" ? "manually" : customer.invoiceFrequency;
   const pending = await db
     .select({ n: sql<number>`count(*)::int`, value: sql<number>`coalesce(sum(${schema.jobs.price}),0)::int` })
     .from(schema.jobs)
@@ -123,7 +124,7 @@ export async function emailInvoice(accountId: string, invoiceId: string) {
 /** Nightly: overnight, periodic and threshold invoicing for every invoiced customer. */
 export async function runNightlyInvoicing(accountId: string, today: IsoDate) {
   const customers = await db.select({ id: schema.customers.id }).from(schema.customers)
-    .where(and(eq(schema.customers.accountId, accountId), inArray(schema.customers.paymentMethod, ["email_invoice", "paper_invoice"])));
+    .where(and(eq(schema.customers.accountId, accountId), inArray(schema.customers.paymentMethod, ["email_invoice", "paper_invoice", "direct_debit"])));
   let created = 0;
   for (const c of customers) if (await maybeAutoInvoice(accountId, c.id, today, "nightly")) created++;
   return created;

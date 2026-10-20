@@ -56,6 +56,10 @@ export interface AccountSettings {
   homeLng?: number;
   routeStart?: "home" | "furthest";
   routeFinish?: "home" | "furthest" | "anywhere";
+  /** VAT registration used for returns (see services/vat.ts). */
+  vatRegistration?: { regNo: string; scheme: "standard" | "cash_accounting" | "flat_rate" | "flat_rate_cash" | "annual"; flatRate?: number; capitalAssetThreshold?: number };
+  /** MTD for Income Tax identifiers. */
+  incomeTax?: { nino?: string; businessId?: string; basis?: "cash" | "accrual"; consolidated?: boolean };
   /** Customer data retention rules (see services/retention.ts). All off unless enabled. */
   retention?: Partial<Record<
     "suspendRegular" | "suspendOnRequest" | "deleteSuspended" | "deleteEstimates" | "anonymiseDeleted" | "anonymiseInvoices",

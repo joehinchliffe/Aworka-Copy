@@ -3,15 +3,20 @@ import { autoMarkStaleJobs } from "./planning";
 import { runNightlyInvoicing } from "./invoicing";
 import { geocodePending } from "./geocoding";
 import { syncQuickBooks } from "./quickbooks";
+import { runRetention } from "./retention";
+import { generateDueRecurringExpenses } from "./expenses";
+import { deliverAllQueued } from "./transports";
 
 export type NightlyStep = (accountId: string, today: string) => Promise<unknown>;
 
 /** Steps run once a night for every account, in order. Other modules register theirs here. */
 export const nightlySteps: Record<string, NightlyStep> = {
+  generateDueRecurringExpenses: (accountId, today) => generateDueRecurringExpenses(accountId, today),
   autoMarkStaleJobs,
   runNightlyInvoicing,
   geocodePending: (accountId) => geocodePending(accountId),
   syncQuickBooks: (accountId) => syncQuickBooks(accountId),
+  runRetention,
 };
 
 export async function runNightly(today: string) {
@@ -24,5 +29,6 @@ export async function runNightly(today: string) {
       catch (e) { report[a.id]![name] = `error: ${e instanceof Error ? e.message : String(e)}`; }
     }
   }
+  report.messages = { delivered: await deliverAllQueued().catch((e) => `error: ${e}`) };
   return report;
 }
