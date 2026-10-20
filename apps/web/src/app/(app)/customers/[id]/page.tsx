@@ -5,6 +5,7 @@ import { contactName } from "@/lib/services/ledger";
 import { requireUser } from "@/lib/session";
 import { balanceLabel, DAY_NAMES, frequencyLabel, INVOICE_FREQ_LABELS, money, PAY_METHODS, PAYMENT_METHOD_LABELS } from "@/lib/format";
 import { formatDate } from "@/lib/time";
+import { PortalLink } from "@/components/PortalLink";
 import { adjustmentAction, anonymiseAction } from "../actions";
 import { createInvoiceAction, recordPaymentAction } from "../../debts/actions";
 
@@ -96,6 +97,7 @@ export default async function CustomerPage({ params }: { params: Promise<{ id: s
           </tbody>
         </table>
       </div>
+      <PortalLink customerId={id} />
       {!c.customer.anonymisedAt && (
         <form action={anonymiseAction.bind(null, id)} style={{ marginTop: 16 }} className="no-print">
           <button className="btn danger small">Anonymise customer</button>
