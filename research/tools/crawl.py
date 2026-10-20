@@ -97,7 +97,9 @@ def main():
         if url in seen: continue
         seen.add(url)
         p = urlparse(url)
-        if p.netloc != origin or DENY.search(p.path) or DENY.search(p.query):
+        if p.netloc != origin:
+            continue
+        if not p.path.startswith("/help") and (DENY.search(p.path) or DENY.search(p.query)):
             continue
         try:
             r = S.get(url, timeout=30)
