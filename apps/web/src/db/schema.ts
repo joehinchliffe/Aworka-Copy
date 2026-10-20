@@ -126,8 +126,14 @@ export const customers = pgTable("customers", {
   debtSince: date("debt_since"),
   anonymisedAt: timestamp("anonymised_at", { withTimezone: true }),
   deletedAt: timestamp("deleted_at", { withTimezone: true }),
+  /** Secret for the customer's self-service portal link. */
+  portalToken: text("portal_token"),
+  gocardlessCustomerId: text("gocardless_customer_id"),
+  gocardlessMandateId: text("gocardless_mandate_id"),
+  mandateStatus: text("mandate_status"), // pending | active | cancelled | failed
+  stripeCustomerId: text("stripe_customer_id"),
   ...stamps,
-}, (t) => [index("customers_account_idx").on(t.accountId)]);
+}, (t) => [index("customers_account_idx").on(t.accountId), uniqueIndex("customers_portal_token_unique").on(t.portalToken)]);
 
 export const rounds = pgTable("rounds", {
   id: id(),
@@ -259,8 +265,11 @@ export const payments = pgTable("payments", {
   status: text("status").notNull().default("cleared"), // pending | cleared | failed
   banked: boolean("banked").notNull().default(false),
   receiptNumber: text("receipt_number"),
+  provider: text("provider"), // gocardless | stripe | paypal
+  providerRef: text("provider_ref"),
+  fee: integer("fee"),
   ...stamps,
-}, (t) => [index("payments_customer_idx").on(t.customerId)]);
+}, (t) => [index("payments_customer_idx").on(t.customerId), uniqueIndex("payments_provider_ref_unique").on(t.provider, t.providerRef)]);
 
 /** Non-payment balance changes: starting balance, credit, surcharge, discount, bad debt... */
 export const adjustments = pgTable("adjustments", {
@@ -441,3 +450,26 @@ export const activities = pgTable("activities", {
   amount: integer("amount"),
   createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
 }, (t) => [index("activities_account_date_idx").on(t.accountId, t.date)]);
+
+/** Connected third-party services per account. Secrets are encrypted at rest (see lib/crypto). */
+export const integrations = pgTable("integrations", {
+  id: id(),
+  accountId: accountId(),
+  provider: text("provider").notNull(), // gocardless | stripe | smtp | sms | gmail | outlook | hmrc | quickbooks
+  status: text("status").notNull().default("connected"),
+  externalId: text("external_id"), // e.g. GoCardless organisation id
+  secret: text("secret"), // encrypted JSON
+  config: jsonb("config").$type<Record<string, unknown>>().notNull().default({}),
+  ...stamps,
+}, (t) => [uniqueIndex("integrations_account_provider_unique").on(t.accountId, t.provider)]);
+
+/** Raw inbound webhook events, stored for idempotency and audit. */
+export const webhookEvents = pgTable("webhook_events", {
+  id: text("id").primaryKey(), // provider:event id
+  provider: text("provider").notNull(),
+  accountId: uuid("account_id"),
+  payload: jsonb("payload").notNull(),
+  processedAt: timestamp("processed_at", { withTimezone: true }),
+  error: text("error"),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
