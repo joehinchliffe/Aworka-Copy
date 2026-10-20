@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>aworka</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='IE=8' http-equiv='X-UA-Compatible'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-f110508657df00bb46ba2e03b378516c2abafaa7525eb55fbac556c51f22dea0.ico" />
+<link rel="stylesheet" media="all" href="/assets/application-e022ef084b6db6d1dbaf25c3a99fe32073c37deb9622f458ad11be0f8a271463.css" data-turbolinks-track="reload" />
+<script>
+//<![CDATA[
+var decimal_sep = '.';
+var currency_symbol_first = true;
+var currency_symbol = '£';
+var current_user = 8065;
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/route_endpoints.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.min.js?1.9.1'></script>
+<script type='text/javascript' src='/javascripts/jquery-ui.min.js?1.10.1'></script>
+<script type='text/javascript' src='/javascripts/jquery_ujs.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.loadmask.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.ui.touch-punch-improved.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.placeholder.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.autosize.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.magnific-popup.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.cookie.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jstz.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/underscore-min.js?1.8.3'></script>
+<script type='text/javascript' src='/javascripts/jquery.application.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/address_autocomplete.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/announcement_reads.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/mapping.js?261019191430'></script>
+<script src='https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js' type='text/javascript'></script>
+<script src='https://unpkg.com/supercluster@8.0.0/dist/supercluster.min.js' type='text/javascript'></script>
+<script>
+//<![CDATA[
+google_maps_boostrap('[GOOGLE_API_KEY]');
+//]]>
+</script>
+<script>
+//<![CDATA[
+var lat_lng_source_caption = {
+f: 'Fail', a: 'APPROX', c: 'Geo', g: 'GPS', m: 'Man', 3: '///'
+};
+
+//]]>
+</script>
+
+<script>
+//<![CDATA[
+var job_specs_in_round = [];
+var job_locations = {};
+
+//]]>
+</script><script>
+//<![CDATA[
+var sales_sources = {};
+var selected_sales_source = null;
+var selected_sales_source_type = null;
+
+//]]>
+</script>
+<script>
+//<![CDATA[
+var tasks = {};
+
+//]]>
+</script>
+<script type='text/javascript' src='/javascripts/jquery.edit_job_spec.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.edit_customer.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.edit_contact.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/messages.js?261019191430'></script>
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="n3vWYp_Mj_7IpJgMaUdgGu5b7fUUFlsgNHdbkeposIE08-TEgqCLjXSiUG4xLtMG4g7H61XXQ8RvnltjDsig1g" />
+
+
+</head>
+<body>
+<div id='help' style='display:none'>
+<div id='help_page'>
+<div id='help_body'>
+</div>
+<a class="button close" id="close_help" href="#">Close</a>
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</div>
+</div>
+
+<div id='header'>
+<div id='logo'>
+<img alt="Aworka Logo" height="45" src="/assets/aworka_white-ba7c6d4d5e2b39983554ad0d8eec6a8a96efd150fdd1a2a2fd5e2fa24c352703.svg" />
+</div>
+<h1>Reach To Clean</h1>
+<div class='nav' id='nav'>
+<ul>
+<li><a href="/dashboard">Home</a></li>
+<li><a href="/day_plans">Planner</a></li>
+<li class="current"><a href="/job_specs">Jobs</a></li>
+<li><a href="/debts">Debts</a></li>
+<li><a href="/expenses">Expenses</a></li>
+<li><a href="/messages">Messages</a></li>
+<li><a href="/users">Users</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class='nav' id='subnav'>
+<ul>
+<li class="current"><a href="https://aworka.app/job_specs">Jobs</a></li>
+<li><a href="https://aworka.app/maps/job_locations">Map</a></li>
+<li><a href="https://aworka.app/rounds">Rounds</a></li>
+<li><a href="https://aworka.app/tasks">Tasks</a></li>
+<li><a href="https://aworka.app/price_revisions">Prices</a></li>
+<li><a href="https://aworka.app/sales_sources">Sales Sources</a></li>
+
+</ul>
+<div id='controls'>
+<span id='announcement_updates'>
+
+</span>
+<a class="button edit" href="/users/8065/edit">Settings</a>
+<a class="button cancel" rel="nofollow" data-method="delete" href="/user_session">Logout</a>
+<a data-controller="customers" data-action="new" class="button help" id="help_button" href="#">Help</a>
+</div>
+</div>
+<div id='messages'>
+
+<div class="notice error flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice success flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice info flash_notice" style="display:none"><div><h2></h2></div></div>
+
+
+
+</div>
+<div id='content'>
+<form class="formtastic job_spec" id="new_job_spec" spellcheck="false" novalidate="novalidate" action="/job_specs" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="_kMUqOpAm7qAo_leI7ocR67hdvZ920oktlqKbQusH1yOFf9RVHGU4GeOYSXp6F9dANy2FlTrIYjm5mZmsmbavw" autocomplete="off" /><div class='main' id='edit_customer' style=''>
+<h3>New Customer</h3>
+<fieldset class="inline"><ol><li class="string input optional stringish" id="job_spec_customer_attributes_contact_attributes_title_input">
+<label for="job_spec_customer_attributes_contact_attributes_title" class="label">Name</label><input placeholder="Title" size="7" id="job_spec_customer_attributes_contact_attributes_title" type="text" name="job_spec[customer_attributes][contact_attributes][title]" />
+</li>
+<li class="string input optional stringish" id="job_spec_customer_attributes_contact_attributes_first_names_input">
+<input placeholder="First Name(s)" size="10" id="job_spec_customer_attributes_contact_attributes_first_names" type="text" name="job_spec[customer_attributes][contact_attributes][first_names]" />
+</li>
+<li class="string input optional stringish" id="job_spec_customer_attributes_contact_attributes_last_name_input">
+<input placeholder="Last Name" size="15" id="job_spec_customer_attributes_contact_attributes_last_name" type="text" name="job_spec[customer_attributes][contact_attributes][last_name]" />
+</li>
+</ol></fieldset><div class='lat_lng_fields'>
+<li class="address_autocomplete input optional stringish address_autocomplete_input" id="job_spec_customer_attributes_contact_attributes_address_search_input">
+<div class="address_autocomplete_control"><div class="address_autocomplete_pill"><label for="job_spec_customer_attributes_contact_attributes_address_search" class="label">Find Address</label><input type="text" id="job_spec_customer_attributes_contact_attributes_address_search" placeholder="Start typing an address or postcode" size="30" class="address_autocomplete" autocomplete="off" aria-describedby="job_spec_customer_attributes_contact_attributes_address_search_status" data-search-url="/contacts/address_search" data-retrieve-url="/contacts/address_retrieve" /></div></div><p class="ui-helper-hidden-accessible address_autocomplete_status" id="job_spec_customer_attributes_contact_attributes_address_search_status" role="status" aria-live="polite"></p>
+</li>
+
+<li class="string input optional stringish" id="job_spec_customer_attributes_contact_attributes_company_input">
+<label for="job_spec_customer_attributes_contact_attributes_company" class="label">Company</label><input size="30" id="job_spec_customer_attributes_contact_attributes_company" type="text" name="job_spec[customer_attributes][contact_attributes][company]" />
+</li>
+<li class="text input optional" id="job_spec_customer_attributes_contact_attributes_multiline_address_input">
+<label for="job_spec_customer_attributes_contact_attributes_multiline_address" class="label">Address</label><textarea cols="40" rows="2" id="job_spec_customer_attributes_contact_attributes_multiline_address" class="address_textarea" name="job_spec[customer_attributes][contact_attributes][multiline_address]">
+</textarea>
+</li>
+<li class="hidden input optional" id="job_spec_customer_attributes_contact_attributes_selected_geocoding_id_input">
+<input id="job_spec_customer_attributes_contact_attributes_selected_geocoding_id" autocomplete="off" type="hidden" name="job_spec[customer_attributes][contact_attributes][selected_geocoding_id]" />
+</li>
+<fieldset class="inline geocode_fields" style="display:none"><ol><li><label for="job_spec_customer_attributes_contact_attributes_Geocode">Geocode</label><div class='readonly_panel geocoded_address'></div>
+</li><a class="copy_address_button button small" href="#">Copy to Address</a>
+</ol></fieldset><li class="hidden input optional" id="job_spec_customer_attributes_contact_attributes_lat_lng_source_input">
+<input id="job_spec_customer_attributes_contact_attributes_lat_lng_source" autocomplete="off" type="hidden" name="job_spec[customer_attributes][contact_attributes][lat_lng_source]" />
+</li>
+<fieldset class="inline"><ol><li class="string input optional stringish" id="job_spec_customer_attributes_contact_attributes_lat_input">
+<label for="job_spec_customer_attributes_contact_attributes_lat" class="label">Lat/Long</label><input size="10" id="job_spec_customer_attributes_contact_attributes_lat" class="lat_lng lat" type="text" name="job_spec[customer_attributes][contact_attributes][lat]" />
+</li>
+<li class="string input optional stringish" id="job_spec_customer_attributes_contact_attributes_lng_input">
+<input size="10" id="job_spec_customer_attributes_contact_attributes_lng" class="lat_lng lng" type="text" name="job_spec[customer_attributes][contact_attributes][lng]" />
+</li>
+<span class='badge small lat_lng_source' style='display:none'></span>
+<a class="button small geocode_button" href="#">Geocode Address</a>
+<a class="button edit edit_on_map_button" href="#">Edit on Map</a>
+</ol></fieldset><div class='map_popup main mfp-hide'>
+<h2>Edit Location</h2>
+<p>Drag the map marker to adjust the address location</p>
+<div class='map_canvas'></div>
+<div class='map_form'>
+<a class="button cancel" href="#">Done</a>
+</div>
+</div>
+</div>
+
+<fieldset class="inline"><ol><li class="phone input optional stringish" id="job_spec_customer_attributes_contact_attributes_phone1_input">
+<label for="job_spec_customer_attributes_contact_attributes_phone1" class="label">Phone</label><input size="12" id="job_spec_customer_attributes_contact_attributes_phone1" type="tel" name="job_spec[customer_attributes][contact_attributes][phone1]" />
+</li>
+or
+<li class="phone input optional stringish" id="job_spec_customer_attributes_contact_attributes_phone2_input">
+<input size="12" id="job_spec_customer_attributes_contact_attributes_phone2" type="tel" name="job_spec[customer_attributes][contact_attributes][phone2]" />
+</li>
+or
+<li class="phone input optional stringish" id="job_spec_customer_attributes_contact_attributes_phone3_input">
+<input size="12" id="job_spec_customer_attributes_contact_attributes_phone3" type="tel" name="job_spec[customer_attributes][contact_attributes][phone3]" />
+</li>
+</ol></fieldset><fieldset class="inline"><ol><li class="string input optional stringish" id="job_spec_customer_attributes_contact_attributes_email_input">
+<label for="job_spec_customer_attributes_contact_attributes_email" class="label">Email</label><input size="30" id="job_spec_customer_attributes_contact_attributes_email" type="text" name="job_spec[customer_attributes][contact_attributes][email]" />
+</li>
+<a class="button small" id="show_cc_button" onclick="$(this).hide();$(&#39;#cc_fields&#39;).slideDown({duration: 100});$(&#39;[id$=_email_cc]&#39;).select(); return false" href="#">Cc...</a>
+</ol></fieldset><div id='cc_fields' style='display:none'>
+<li class="string input optional stringish" id="job_spec_customer_attributes_contact_attributes_email_cc_input">
+<label for="job_spec_customer_attributes_contact_attributes_email_cc" class="label">Email Cc</label><input size="30" id="job_spec_customer_attributes_contact_attributes_email_cc" type="text" name="job_spec[customer_attributes][contact_attributes][email_cc]" />
+</li>
+</div>
+
+<fieldset class="inline"><ol><li class="string input optional stringish" id="job_spec_customer_attributes_reference_input">
+<label for="job_spec_customer_attributes_reference" class="label">Reference</label><input maxlength="15" size="30" id="job_spec_customer_attributes_reference" type="text" name="job_spec[customer_attributes][reference]" />
+</li>
+<li class="boolean input optional" id="job_spec_customer_attributes_auto_reference_input">
+<input type="hidden" name="job_spec[customer_attributes][auto_reference]" value="0" autocomplete="off" /><label for="job_spec_customer_attributes_auto_reference" class="">Auto?</label><input type="checkbox" name="job_spec[customer_attributes][auto_reference]" id="job_spec_customer_attributes_auto_reference" value="1" />
+</li>
+</ol></fieldset><li class="string input optional stringish" id="job_spec_customer_attributes_invoice_number_input">
+<label for="job_spec_customer_attributes_invoice_number" class="label">Next Invoice Ref</label><input size="30" id="job_spec_customer_attributes_invoice_number" type="text" name="job_spec[customer_attributes][invoice_number]" />
+<p class="inline-hints">Leave blank for global invoice numbering</p></li>
+<fieldset class="inline"><ol><li class="select input optional" id="job_spec_customer_attributes_contact_method_input">
+<label for="job_spec_customer_attributes_contact_method" class="label">Contact Method</label><select name="job_spec[customer_attributes][contact_method]" id="job_spec_customer_attributes_contact_method"><option value="">None</option>
+<option selected="selected" value="e">Email</option>
+<option value="s">SMS</option>
+<option value="b">Email &amp; SMS</option></select>
+</li>
+<li class="boolean input optional" id="job_spec_customer_attributes_accepts_marketing_input">
+<input type="hidden" name="job_spec[customer_attributes][accepts_marketing]" value="0" autocomplete="off" /><label for="job_spec_customer_attributes_accepts_marketing" class="">Accepts Marketing?</label><input type="checkbox" name="job_spec[customer_attributes][accepts_marketing]" id="job_spec_customer_attributes_accepts_marketing" value="1" checked="checked" />
+</li>
+</ol></fieldset><fieldset class="inline"><ol>
+<span>
+<li class="select input optional" id="job_spec_customer_attributes_payment_method_input">
+<label for="job_spec_customer_attributes_payment_method" class="label">Payment</label><select name="job_spec[customer_attributes][payment_method]" id="job_spec_customer_attributes_payment_method"><option selected="selected" value="c">On Day</option>
+<option value="x">Card</option>
+<option value="l">Collection</option>
+<option value="q">By Post</option>
+<option value="o">Online</option>
+<option value="t">Direct to Bank</option>
+<option value="e">Email Invoice</option>
+<option value="p">Paper Invoice</option>
+<option value="d">Direct Debit</option></select>
+</li>
+<li class="select input optional" id="job_spec_customer_attributes_payment_frequency_input">
+<select name="job_spec[customer_attributes][payment_frequency]" id="job_spec_customer_attributes_payment_frequency" data-before-each-job="false"><option value="x">Manually</option>
+<option selected="selected" value="a">After Each Job</option>
+<option value="o">Overnight</option>
+<option value="r">Periodically</option>
+<option value="v">When Invoice Value</option>
+<option value="j">When Jobs Done</option>
+<option value="b">Before Each Job</option></select>
+</li>
+<span id='period' style='display:none'>
+every
+<li class="select input optional" id="job_spec_customer_attributes_num_periods_input">
+<select name="job_spec[customer_attributes][num_periods]" id="job_spec_customer_attributes_num_periods"><option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option></select>
+</li>
+<li class="select input optional" id="job_spec_customer_attributes_period_unit_input">
+<select name="job_spec[customer_attributes][period_unit]" id="job_spec_customer_attributes_period_unit"><option value="d">Days</option>
+<option value="w">Weeks</option>
+<option selected="selected" value="m">Months</option></select>
+</li>
+<span id='direct_debit' style='display:none'>
+of
+<li class="string input optional stringish" id="job_spec_customer_attributes_direct_debit_input">
+<input size="30" id="job_spec_customer_attributes_direct_debit" class="money" type="text" name="job_spec[customer_attributes][direct_debit]" />
+</li>
+</span>
+</span>
+<span id='next_invoice_or_dd_date' style='display:none'>
+<span id='month_day'>
+on the
+<li class="select input optional" id="job_spec_customer_attributes_next_invoice_or_dd_date_month_day_input">
+<select name="job_spec[customer_attributes][next_invoice_or_dd_date_month_day]" id="job_spec_customer_attributes_next_invoice_or_dd_date_month_day"><option value="1">1st</option>
+<option value="2">2nd</option>
+<option value="3">3rd</option>
+<option value="4">4th</option>
+<option value="5">5th</option>
+<option value="6">6th</option>
+<option value="7">7th</option>
+<option value="8">8th</option>
+<option value="9">9th</option>
+<option value="10">10th</option>
+<option value="11">11th</option>
+<option value="12">12th</option>
+<option value="13">13th</option>
+<option value="14">14th</option>
+<option value="15">15th</option>
+<option value="16">16th</option>
+<option value="17">17th</option>
+<option value="18">18th</option>
+<option value="19">19th</option>
+<option selected="selected" value="20">20th</option>
+<option value="21">21st</option>
+<option value="22">22nd</option>
+<option value="23">23rd</option>
+<option value="24">24th</option>
+<option value="25">25th</option>
+<option value="26">26th</option>
+<option value="27">27th</option>
+<option value="28">28th</option>
+<option value="29">29th</option>
+<option value="30">30th</option>
+<option value="31">Last Day</option></select>
+</li>
+</span>
+next due
+<!-- = form.input :next_invoice_or_dd_date, :as => :date_select, :label => false, :future_date => true, :input_html => {:value => customer.next_invoice_or_dd_date || Date.today} -->
+<li class="date_select input optional future_date" id="job_spec_customer_attributes_next_invoice_or_dd_date_input">
+<select id="job_spec_customer_attributes_next_invoice_or_dd_date_3i" name="job_spec[customer_attributes][next_invoice_or_dd_date(3i)]" value="2026-10-20">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20" selected="selected">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+</select>
+<select id="job_spec_customer_attributes_next_invoice_or_dd_date_2i" name="job_spec[customer_attributes][next_invoice_or_dd_date(2i)]" value="2026-10-20">
+<option value="1">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option value="7">July</option>
+<option value="8">August</option>
+<option value="9">September</option>
+<option value="10" selected="selected">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+</select>
+<select id="job_spec_customer_attributes_next_invoice_or_dd_date_1i" name="job_spec[customer_attributes][next_invoice_or_dd_date(1i)]" value="2026-10-20">
+<option value="2021">2021</option>
+<option value="2022">2022</option>
+<option value="2023">2023</option>
+<option value="2024">2024</option>
+<option value="2025">2025</option>
+<option value="2026" selected="selected">2026</option>
+<option value="2027">2027</option>
+<option value="2028">2028</option>
+<option value="2029">2029</option>
+<option value="2030">2030</option>
+<option value="2031">2031</option>
+</select>
+
+</li><script type='text/javascript'>setup_future_date_input('#job_spec_customer_attributes_next_invoice_or_dd_date_input')</script>
+</span>
+<span id='jobs_threshold' style='display:none'>
+reaches
+<li class="string input optional stringish" id="job_spec_customer_attributes_invoice_jobs_threshold_input">
+<input size="3" id="job_spec_customer_attributes_invoice_jobs_threshold" class="right" value="2" type="text" name="job_spec[customer_attributes][invoice_jobs_threshold]" />
+</li>
+</span>
+<span id='value_threshold' style='display:none'>
+reaches £
+<li class="string input optional stringish" id="job_spec_customer_attributes_invoice_value_threshold_input">
+<input size="30" id="job_spec_customer_attributes_invoice_value_threshold" class="money" type="text" name="job_spec[customer_attributes][invoice_value_threshold]" />
+</li>
+</span>
+<span id='jobs_or_value_threshold' style='display:none'>
+or every
+<li class="select input optional" id="job_spec_customer_attributes_invoice_max_num_periods_input">
+<select name="job_spec[customer_attributes][invoice_max_num_periods]" id="job_spec_customer_attributes_invoice_max_num_periods"><option value="1">1</option>
+<option selected="selected" value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option></select>
+</li>
+<li class="select input optional" id="job_spec_customer_attributes_invoice_max_period_unit_input">
+<select name="job_spec[customer_attributes][invoice_max_period_unit]" id="job_spec_customer_attributes_invoice_max_period_unit"><option value="d">Days</option>
+<option value="w">Weeks</option>
+<option selected="selected" value="m">Months</option></select>
+</li>
+</span>
+</span>
+</ol></fieldset>
+<fieldset class="inline"><ol><li class="select input optional" id="job_spec_customer_attributes_show_balance_on_invoices_input">
+<label for="job_spec_customer_attributes_show_balance_on_invoices" class="label">Invoice Amount to Pay</label><select name="job_spec[customer_attributes][show_balance_on_invoices]" id="job_spec_customer_attributes_show_balance_on_invoices"><option value="">From Settings</option>
+<option value="t">Invoice Total</option>
+<option value="i">Invoiced Balance</option>
+<option value="p">Credit Balance</option></select>
+</li>
+<span id='show_balance_from_settings' style='display:none'>(Invoice Total)</span>
+</ol></fieldset><fieldset class="inline" id="terms"><ol>
+<span>
+<li class="select input optional" id="job_spec_customer_attributes_invoice_payment_terms_type_input">
+<label for="job_spec_customer_attributes_invoice_payment_terms_type" class="label">Invoice Terms</label><select name="job_spec[customer_attributes][invoice_payment_terms_type]" id="job_spec_customer_attributes_invoice_payment_terms_type"><option value="">From Settings</option>
+<option value="x">Not Required</option>
+<option value="r">By Return</option>
+<option value="c">COD</option>
+<option value="n">From Invoice Date</option>
+<option value="e">From Month End</option></select>
+</li>
+<span id='payment_terms_from_settings' style='display:none'>(Payment by Return)</span>
+<span id='payment_terms_fields' style='display:none'>
+<li class="string input optional stringish" id="job_spec_customer_attributes_invoice_payment_terms_input">
+<input size="3" id="job_spec_customer_attributes_invoice_payment_terms" class="right" type="text" value="0" name="job_spec[customer_attributes][invoice_payment_terms]" />
+</li>
+days.
+</span>
+</span>
+</ol></fieldset>
+<li class="text input optional" id="job_spec_customer_attributes_notes_input">
+<label for="job_spec_customer_attributes_notes" class="label">Notes</label><textarea cols="40" rows="2" id="job_spec_customer_attributes_notes" spellcheck="true" name="job_spec[customer_attributes][notes]">
+</textarea>
+</li>
+<fieldset class="inline"><ol><li class="string input optional stringish" id="job_spec_customer_attributes_starting_balance_input">
+<label for="job_spec_customer_attributes_customer_id" class="label">Starting Balance</label><input size="30" id="job_spec_customer_attributes_customer_id" class="money" value="0.00" type="text" name="job_spec[customer_attributes][starting_balance]" />
+</li>
+<span id='starting_balance_field'>
+since
+<li class="date_picker input optional stringish" id="job_spec_customer_attributes_starting_balance_date_input">
+<input data-typed-in-year-range="1980:2028" data-year-range="2016:2028" data-first-day="0" maxlength="10" size="10" id="job_spec_customer_attributes_starting_balance_date" type="datepicker" step="1" name="job_spec[customer_attributes][starting_balance_date]" />
+</li>
+</span>
+</ol></fieldset>
+
+</div>
+<div class='main'>
+<h3>New Job</h3>
+<li class="boolean input optional" id="job_spec_estimate_input">
+<input type="hidden" name="job_spec[estimate]" value="0" autocomplete="off" /><label for="job_spec_estimate" class="">Estimate?</label><input type="checkbox" name="job_spec[estimate]" id="job_spec_estimate" value="1" />
+</li>
+<fieldset class="inline"><ol><li class="select input optional" id="job_spec_location_input">
+<label for="job_spec_location" class="label">Location</label><select name="job_spec[location]" id="job_spec_location"><option selected="selected" value="c">Customer Address</option>
+<option value="o">Other Address</option>
+<option value="n">Not Applicable</option></select>
+</li>
+<a id="edit_address_button" class="button edit" href="#">Edit</a>
+<li class="hidden input optional" id="job_spec_location_edited_input">
+<input id="job_spec_location_edited" value="false" autocomplete="off" type="hidden" name="job_spec[location_edited]" />
+</li>
+</ol></fieldset><div id='job_contact' style='display:none'>
+<fieldset class="inline"><ol><li class="string input optional stringish" id="job_spec_job_contact_attributes_title_input">
+<label for="job_spec_job_contact_attributes_title" class="label">Name</label><input placeholder="Title" size="7" id="job_spec_job_contact_attributes_title" type="text" name="job_spec[job_contact_attributes][title]" />
+</li>
+<li class="string input optional stringish" id="job_spec_job_contact_attributes_first_names_input">
+<input placeholder="First Name(s)" size="10" id="job_spec_job_contact_attributes_first_names" type="text" name="job_spec[job_contact_attributes][first_names]" />
+</li>
+<li class="string input optional stringish" id="job_spec_job_contact_attributes_last_name_input">
+<input placeholder="Last Name" size="15" id="job_spec_job_contact_attributes_last_name" type="text" name="job_spec[job_contact_attributes][last_name]" />
+</li>
+</ol></fieldset><div class='lat_lng_fields'>
+<li class="address_autocomplete input optional stringish address_autocomplete_input" id="job_spec_job_contact_attributes_address_search_input">
+<div class="address_autocomplete_control"><div class="address_autocomplete_pill"><label for="job_spec_job_contact_attributes_address_search" class="label">Find Address</label><input type="text" id="job_spec_job_contact_attributes_address_search" placeholder="Start typing an address or postcode" size="30" class="address_autocomplete" autocomplete="off" aria-describedby="job_spec_job_contact_attributes_address_search_status" data-search-url="/contacts/address_search" data-retrieve-url="/contacts/address_retrieve" /></div></div><p class="ui-helper-hidden-accessible address_autocomplete_status" id="job_spec_job_contact_attributes_address_search_status" role="status" aria-live="polite"></p>
+</li>
+
+<li class="string input optional stringish" id="job_spec_job_contact_attributes_company_input">
+<label for="job_spec_job_contact_attributes_company" class="label">Company</label><input size="30" id="job_spec_job_contact_attributes_company" type="text" name="job_spec[job_contact_attributes][company]" />
+</li>
+<li class="text input optional" id="job_spec_job_contact_attributes_multiline_address_input">
+<label for="job_spec_job_contact_attributes_multiline_address" class="label">Address</label><textarea cols="40" rows="2" id="job_spec_job_contact_attributes_multiline_address" class="address_textarea" name="job_spec[job_contact_attributes][multiline_address]">
+</textarea>
+</li>
+<li class="hidden input optional" id="job_spec_job_contact_attributes_selected_geocoding_id_input">
+<input id="job_spec_job_contact_attributes_selected_geocoding_id" autocomplete="off" type="hidden" name="job_spec[job_contact_attributes][selected_geocoding_id]" />
+</li>
+<fieldset class="inline geocode_fields" style="display:none"><ol><li><label for="job_spec_job_contact_attributes_Geocode">Geocode</label><div class='readonly_panel geocoded_address'></div>
+</li><a class="copy_address_button button small" href="#">Copy to Address</a>
+</ol></fieldset><li class="hidden input optional" id="job_spec_job_contact_attributes_lat_lng_source_input">
+<input id="job_spec_job_contact_attributes_lat_lng_source" autocomplete="off" type="hidden" name="job_spec[job_contact_attributes][lat_lng_source]" />
+</li>
+<fieldset class="inline"><ol><li class="string input optional stringish" id="job_spec_job_contact_attributes_lat_input">
+<label for="job_spec_job_contact_attributes_lat" class="label">Lat/Long</label><input size="10" id="job_spec_job_contact_attributes_lat" class="lat_lng lat" type="text" name="job_spec[job_contact_attributes][lat]" />
+</li>
+<li class="string input optional stringish" id="job_spec_job_contact_attributes_lng_input">
+<input size="10" id="job_spec_job_contact_attributes_lng" class="lat_lng lng" type="text" name="job_spec[job_contact_attributes][lng]" />
+</li>
+<span class='badge small lat_lng_source' style='display:none'></span>
+<a class="button small geocode_button" href="#">Geocode Address</a>
+<a class="button edit edit_on_map_button" href="#">Edit on Map</a>
+</ol></fieldset><div class='map_popup main mfp-hide'>
+<h2>Edit Location</h2>
+<p>Drag the map marker to adjust the address location</p>
+<div class='map_canvas'></div>
+<div class='map_form'>
+<a class="button cancel" href="#">Done</a>
+</div>
+</div>
+</div>
+
+<fieldset class="inline"><ol><li class="phone input optional stringish" id="job_spec_job_contact_attributes_phone1_input">
+<label for="job_spec_job_contact_attributes_phone1" class="label">Phone</label><input size="12" id="job_spec_job_contact_attributes_phone1" type="tel" name="job_spec[job_contact_attributes][phone1]" />
+</li>
+or
+<li class="phone input optional stringish" id="job_spec_job_contact_attributes_phone2_input">
+<input size="12" id="job_spec_job_contact_attributes_phone2" type="tel" name="job_spec[job_contact_attributes][phone2]" />
+</li>
+or
+<li class="phone input optional stringish" id="job_spec_job_contact_attributes_phone3_input">
+<input size="12" id="job_spec_job_contact_attributes_phone3" type="tel" name="job_spec[job_contact_attributes][phone3]" />
+</li>
+</ol></fieldset><fieldset class="inline"><ol><li class="string input optional stringish" id="job_spec_job_contact_attributes_email_input">
+<label for="job_spec_job_contact_attributes_email" class="label">Email</label><input size="30" id="job_spec_job_contact_attributes_email" type="text" name="job_spec[job_contact_attributes][email]" />
+</li>
+<a class="button small" id="show_cc_button" onclick="$(this).hide();$(&#39;#cc_fields&#39;).slideDown({duration: 100});$(&#39;[id$=_email_cc]&#39;).select(); return false" href="#">Cc...</a>
+</ol></fieldset><div id='cc_fields' style='display:none'>
+<li class="string input optional stringish" id="job_spec_job_contact_attributes_email_cc_input">
+<label for="job_spec_job_contact_attributes_email_cc" class="label">Email Cc</label><input size="30" id="job_spec_job_contact_attributes_email_cc" type="text" name="job_spec[job_contact_attributes][email_cc]" />
+</li>
+</div>
+
+</div>
+<li class="string input optional stringish" id="job_spec_reference_input">
+<label for="job_spec_reference" class="label">Reference</label><input size="30" id="job_spec_reference" type="text" name="job_spec[reference]" />
+</li>
+<fieldset class="inline"><ol><li class="select input required" id="job_spec_round_id_input">
+<label for="job_spec_round_id" class="label">Round</label><select name="job_spec[round_id]" id="job_spec_round_id"><option value=""></option>
+<option selected="selected" value="-1">New Round...</option></select>
+</li>
+<li class="string input optional stringish" id="job_spec_new_round_input">
+<input size="30" id="job_spec_new_round" type="text" name="job_spec[new_round]" />
+</li>
+</ol></fieldset><li class="hidden input optional" id="job_spec_new_round_user_input">
+<input id="job_spec_new_round_user" value="8065" autocomplete="off" type="hidden" name="job_spec[new_round_user]" />
+</li>
+<li class="hidden input optional" id="job_spec_allowed_rounds_input">
+<input id="job_spec_allowed_rounds" value="" autocomplete="off" type="hidden" name="job_spec[allowed_rounds]" />
+</li>
+<li class="select input optional" id="job_spec_round_index_input">
+<label for="job_spec_round_index" class="label">Do after</label><select name="job_spec[round_index]" id="job_spec_round_index"><option value="Loading...">Loading...</option></select>
+</li>
+
+<div id='description'>
+<li class="text input optional" id="job_spec_description_input">
+<label for="job_spec_description" class="label">Description</label><textarea cols="40" rows="2" id="job_spec_description" spellcheck="true" name="job_spec[description]">
+</textarea>
+</li>
+</div>
+<div id='time_required'>
+<fieldset class="inline"><ol><span>
+<li class="string input required stringish" id="job_spec_time_required_hours_input">
+<label for="job_spec_time_required_hours" class="label">Time Required</label><input size="2" id="job_spec_time_required_hours" class="right" type="text" value="0" name="job_spec[time_required][hours]" />
+</li>
+hours
+<li class="string input required stringish" id="job_spec_time_required_minutes_input">
+<input size="2" id="job_spec_time_required_minutes" class="right" type="text" value="30" name="job_spec[time_required][minutes]" />
+</li>
+mins.
+</span>
+</ol></fieldset>
+</div>
+<div id='price'>
+<fieldset class="inline"><ol><li class="string input required stringish" id="job_spec_price_price_input">
+<label for="job_spec_price_price" class="label">Price</label><input size="30" id="job_spec_price_price" class="money" type="text" value="0.00" name="job_spec[price][price]" />
+</li>
+</ol></fieldset></div>
+<li class="text input optional" id="job_spec_notes_input">
+<label for="job_spec_notes" class="label">Notes</label><textarea cols="40" rows="2" id="job_spec_notes" spellcheck="true" name="job_spec[notes]">
+</textarea>
+<p class="inline-hints">not shown on invoices</p></li>
+<fieldset id="job_spec_frequency" class="inline"><ol><li class="select input optional" id="job_spec_regularity_input">
+<label for="job_spec_regularity" class="label">Job frequency</label><select name="job_spec[regularity]" id="job_spec_regularity" data-done-once="false"><option value="o">One Off</option>
+<option value="c">On Request</option>
+<option selected="selected" value="r">Regularly</option></select>
+</li>
+<span id='frequency_regular'>
+<li class="select input optional" id="job_spec_times_per_period_input">
+<select name="job_spec[times_per_period]" id="job_spec_times_per_period"><option selected="selected" value="1">Once</option>
+<option value="2">Twice</option>
+<option value="3">Three Times</option>
+<option value="4">Four Times</option>
+<option value="5">Five Times</option>
+<option value="6">Six Times</option>
+<option value="7">Seven Times</option></select>
+</li>
+every
+<li class="select input optional" id="job_spec_num_periods_input">
+<select name="job_spec[num_periods]" id="job_spec_num_periods"><option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option selected="selected" value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+<option value="32">32</option>
+<option value="33">33</option>
+<option value="34">34</option>
+<option value="35">35</option>
+<option value="36">36</option>
+<option value="37">37</option>
+<option value="38">38</option>
+<option value="39">39</option>
+<option value="40">40</option>
+<option value="41">41</option>
+<option value="42">42</option>
+<option value="43">43</option>
+<option value="44">44</option>
+<option value="45">45</option>
+<option value="46">46</option>
+<option value="47">47</option>
+<option value="48">48</option>
+<option value="49">49</option>
+<option value="50">50</option>
+<option value="51">51</option>
+<option value="52">52</option></select>
+</li>
+<li class="select input optional" id="job_spec_period_unit_without_week_input">
+<select name="job_spec[period_unit_without_week]" id="job_spec_period_unit_without_week"><option value="d">Days</option>
+<option selected="selected" value="w">Weeks</option>
+<option value="m">Months</option>
+<option value="y">Years</option></select>
+</li>
+<li class="select input optional" id="job_spec_month_week_or_day_input">
+<select name="job_spec[month_week_or_day]" id="job_spec_month_week_or_day"><option selected="selected" value="">current</option></select>
+</li>
+</span>
+</ol></fieldset><fieldset class="allowed_days inline" id="allowed_days"><ol><li><label for="job_spec_allowed_days_Allowed days">Allowed days</label>
+<table class='allowed_days'>
+<thead>
+<tr>
+<th class='centre'>
+<strong>All</strong>
+</th>
+<th class='centre'><span class="translation_missing" title="translation missing: en-GB.date.abbr_day_names.sun">Sun</span></th>
+<th class='centre'><span class="translation_missing" title="translation missing: en-GB.date.abbr_day_names.mon">Mon</span></th>
+<th class='centre'><span class="translation_missing" title="translation missing: en-GB.date.abbr_day_names.tue">Tue</span></th>
+<th class='centre'><span class="translation_missing" title="translation missing: en-GB.date.abbr_day_names.wed">Wed</span></th>
+<th class='centre'><span class="translation_missing" title="translation missing: en-GB.date.abbr_day_names.thu">Thu</span></th>
+<th class='centre'><span class="translation_missing" title="translation missing: en-GB.date.abbr_day_names.fri">Fri</span></th>
+<th class='centre'><span class="translation_missing" title="translation missing: en-GB.date.abbr_day_names.sat">Sat</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='centre all_days'><input type="checkbox" name="all_allowed_days" id="all_allowed_days" /></td>
+<td class='centre'><li class="boolean input optional" id="job_spec_allowed_days_sun_input">
+<input type="hidden" name="job_spec[allowed_days][sun]" value="0" autocomplete="off" /><input type="checkbox" name="job_spec[allowed_days][sun]" id="job_spec_allowed_days_sun" value="1" checked="checked" />
+</li></td>
+<td class='centre'><li class="boolean input optional" id="job_spec_allowed_days_mon_input">
+<input type="hidden" name="job_spec[allowed_days][mon]" value="0" autocomplete="off" /><input type="checkbox" name="job_spec[allowed_days][mon]" id="job_spec_allowed_days_mon" value="1" checked="checked" />
+</li></td>
+<td class='centre'><li class="boolean input optional" id="job_spec_allowed_days_tue_input">
+<input type="hidden" name="job_spec[allowed_days][tue]" value="0" autocomplete="off" /><input type="checkbox" name="job_spec[allowed_days][tue]" id="job_spec_allowed_days_tue" value="1" checked="checked" />
+</li></td>
+<td class='centre'><li class="boolean input optional" id="job_spec_allowed_days_wed_input">
+<input type="hidden" name="job_spec[allowed_days][wed]" value="0" autocomplete="off" /><input type="checkbox" name="job_spec[allowed_days][wed]" id="job_spec_allowed_days_wed" value="1" checked="checked" />
+</li></td>
+<td class='centre'><li class="boolean input optional" id="job_spec_allowed_days_thu_input">
+<input type="hidden" name="job_spec[allowed_days][thu]" value="0" autocomplete="off" /><input type="checkbox" name="job_spec[allowed_days][thu]" id="job_spec_allowed_days_thu" value="1" checked="checked" />
+</li></td>
+<td class='centre'><li class="boolean input optional" id="job_spec_allowed_days_fri_input">
+<input type="hidden" name="job_spec[allowed_days][fri]" value="0" autocomplete="off" /><input type="checkbox" name="job_spec[allowed_days][fri]" id="job_spec_allowed_days_fri" value="1" checked="checked" />
+</li></td>
+<td class='centre'><li class="boolean input optional" id="job_spec_allowed_days_sat_input">
+<input type="hidden" name="job_spec[allowed_days][sat]" value="0" autocomplete="off" /><input type="checkbox" name="job_spec[allowed_days][sat]" id="job_spec_allowed_days_sat" value="1" checked="checked" />
+</li></td>
+</tr>
+</tbody>
+</table>
+</li></ol></fieldset><script type='text/javascript' src='/javascripts/jquery.allowed_days.js?261019191430'></script>
+
+<li class="select input optional" id="job_spec_appointments_input">
+<label for="job_spec_appointments" class="label">Appointments</label><select name="job_spec[appointments]" id="job_spec_appointments"><option selected="selected" value="n">No Need To Confirm</option>
+<option value="1">Confirm The Day Before</option>
+<option value="3">Confirm A Few Days Before</option></select>
+</li>
+</div>
+<div class='main' id='planner'>
+<h3>Planner</h3>
+<fieldset class="inline"><ol><li class="select input optional" id="job_spec_plan_next_input">
+<label for="job_spec_plan_next" class="label">Plan first job</label><select name="job_spec[plan_next]" id="job_spec_plan_next"><option value="no">No</option>
+<option selected="selected" value="on">On</option></select>
+</li>
+<span id='next_due_date_caption'>next due</span>
+<span id='plan_date'><li class="date_picker input optional stringish" id="job_spec_plan_next_date_input">
+<input data-typed-in-year-range="1980:2028" data-year-range="2016:2028" data-first-day="0" maxlength="10" size="10" id="job_spec_plan_next_date" type="datepicker" step="1" value="20 Oct 2026" name="job_spec[plan_next_date]" />
+</li></span>
+<li class="hidden input optional" id="job_spec_plan_next_user_input">
+<input id="job_spec_plan_next_user" autocomplete="off" type="hidden" value="-1" name="job_spec[plan_next_user]" />
+</li>
+</ol></fieldset></div>
+<fieldset class="actions"><ol><input type="submit" name="edit" value="Save" id="job_spec_save" class="button" data-disable-with="Save" />
+</ol></fieldset></form>
+<a class="button cancel" href="/back">Back</a>
+</div>
+<!-- #footer -->
+<!-- = yield :footer -->
+<!-- = powered_by_aworka if subdomain -->
+<!-- .contact_us -->
+<!-- = contact_link -->
+</body>
+</html>

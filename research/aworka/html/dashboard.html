@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>aworka</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='IE=8' http-equiv='X-UA-Compatible'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-f110508657df00bb46ba2e03b378516c2abafaa7525eb55fbac556c51f22dea0.ico" />
+<link rel="stylesheet" media="all" href="/assets/application-e022ef084b6db6d1dbaf25c3a99fe32073c37deb9622f458ad11be0f8a271463.css" data-turbolinks-track="reload" />
+<script>
+//<![CDATA[
+var decimal_sep = '.';
+var currency_symbol_first = true;
+var currency_symbol = '£';
+var current_user = 8065;
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/route_endpoints.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/prototype.js?1.7.1'></script>
+<script type='text/javascript' src='/javascripts/scriptaculous.js?1.9.0'></script>
+<script type='text/javascript' src='/javascripts/event.simulate.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/rails.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/application.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/popup.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/edit_job.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/activity2.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/payment.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/dashboard.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/events.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/adjust_balance.js?261019191430'></script>
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="FDxibRYVKO2nsgiqoMBFi9u-S8bswtrlcoxcAsjRWL-_tFDLC3ksnhu0wMj4qfaX1-th2K0DwgEpZVzwLHFI6A" />
+
+
+</head>
+<body>
+<div id='help' style='display:none'>
+<div id='help_page'>
+<div id='help_body'>
+</div>
+<a class="button close" id="close_help" href="#">Close</a>
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</div>
+</div>
+
+<div id='header'>
+<div id='logo'>
+<img alt="Aworka Logo" height="45" src="/assets/aworka_white-ba7c6d4d5e2b39983554ad0d8eec6a8a96efd150fdd1a2a2fd5e2fa24c352703.svg" />
+</div>
+<h1>Reach To Clean</h1>
+<div class='nav' id='nav'>
+<ul>
+<li class="current"><a href="/dashboard">Home</a></li>
+<li><a href="/day_plans">Planner</a></li>
+<li><a href="/job_specs">Jobs</a></li>
+<li><a href="/debts">Debts</a></li>
+<li><a href="/expenses">Expenses</a></li>
+<li><a href="/messages">Messages</a></li>
+<li><a href="/users">Users</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class='nav' id='subnav'>
+<ul>
+<li class="current"><a href="/dashboard">Overview</a></li>
+<li><a href="/activities">Activity</a></li>
+<li><a href="/report/valuation">Valuation</a></li>
+<li><a href="/report/income-forecast">Income Forecast</a></li>
+<li><a href="/report/profit-and-loss">Profit & Loss</a></li>
+<li><a href="/report/customer-retention">Customer Retention</a></li>
+
+</ul>
+<div id='controls'>
+<span id='announcement_updates'>
+
+</span>
+<a class="button edit" href="/users/8065/edit">Settings</a>
+<a class="button cancel" rel="nofollow" data-method="delete" href="/user_session">Logout</a>
+<a data-controller="dashboard" data-action="index" class="button help" id="help_button" href="#">Help</a>
+</div>
+</div>
+<div id='messages'>
+
+<div class="notice error flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice success flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice info flash_notice" style="display:none"><div><h2></h2></div></div>
+
+
+
+</div>
+<div id='content'>
+<div class='grid'>
+<div class='widget' id='overview_widget'></div>
+<div class='widget' id='invoices_widget'></div>
+<div class='widget' id='events_widget'></div>
+<div class='widget' id='debts_widget'></div>
+<div class='widget' id='next_due_widget'></div>
+<div class='widget' id='pending_payments_widget'></div>
+</div>
+<div class='clear'></div>
+
+
+</div>
+<!-- #footer -->
+<!-- = yield :footer -->
+<!-- = powered_by_aworka if subdomain -->
+<!-- .contact_us -->
+<!-- = contact_link -->
+</body>
+</html>

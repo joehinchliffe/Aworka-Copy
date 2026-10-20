@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>aworka</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='IE=8' http-equiv='X-UA-Compatible'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-f110508657df00bb46ba2e03b378516c2abafaa7525eb55fbac556c51f22dea0.ico" />
+<link rel="stylesheet" media="all" href="/assets/application-e022ef084b6db6d1dbaf25c3a99fe32073c37deb9622f458ad11be0f8a271463.css" data-turbolinks-track="reload" />
+<script>
+//<![CDATA[
+var decimal_sep = '.';
+var currency_symbol_first = true;
+var currency_symbol = '£';
+var current_user = 8065;
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/route_endpoints.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.min.js?1.9.1'></script>
+<script type='text/javascript' src='/javascripts/jquery-ui.min.js?1.10.1'></script>
+<script type='text/javascript' src='/javascripts/jquery_ujs.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.loadmask.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.ui.touch-punch-improved.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.placeholder.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.autosize.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.magnific-popup.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.cookie.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jstz.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/underscore-min.js?1.8.3'></script>
+<script type='text/javascript' src='/javascripts/jquery.application.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/address_autocomplete.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/announcement_reads.js?261019191430'></script>
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="T8Esb8mLZAcLzbfMI4n85xkyKMrDidIhk0fpwFDPfuzkSR7J1OdgdLfLf6574E_7FWcC1IJIysXIrukytG9uuw" />
+
+
+</head>
+<body>
+<div id='help' style='display:none'>
+<div id='help_page'>
+<div id='help_body'>
+</div>
+<a class="button close" id="close_help" href="#">Close</a>
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</div>
+</div>
+
+<div id='header'>
+<div id='logo'>
+<img alt="Aworka Logo" height="45" src="/assets/aworka_white-ba7c6d4d5e2b39983554ad0d8eec6a8a96efd150fdd1a2a2fd5e2fa24c352703.svg" />
+</div>
+<h1>Reach To Clean</h1>
+<div class='nav' id='nav'>
+<ul>
+<li><a href="/dashboard">Home</a></li>
+<li><a href="/day_plans">Planner</a></li>
+<li><a href="/job_specs">Jobs</a></li>
+<li><a href="/debts">Debts</a></li>
+<li><a href="/expenses">Expenses</a></li>
+<li class="current"><a href="/messages">Messages</a></li>
+<li><a href="/users">Users</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class='nav' id='subnav'>
+<ul>
+<li><a href="/messages">History</a></li>
+<li><a href="/message_draft">Drafts</a></li>
+<li class="current"><a href="/message_templates">Templates</a></li>
+
+</ul>
+<div id='controls'>
+<span id='announcement_updates'>
+
+</span>
+<a class="button edit" href="/users/8065/edit">Settings</a>
+<a class="button cancel" rel="nofollow" data-method="delete" href="/user_session">Logout</a>
+<a data-controller="message_templates" data-action="new" class="button help" id="help_button" href="#">Help</a>
+</div>
+</div>
+<div id='messages'>
+
+<div class="notice error flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice success flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice info flash_notice" style="display:none"><div><h2></h2></div></div>
+
+
+
+</div>
+<div id='content'>
+<form class="formtastic message_template" id="new_message_template" novalidate="novalidate" action="/message_templates" accept-charset="UTF-8" data-remote="true" method="post"><h3>New Template</h3>
+<li class="string input required stringish" id="message_template_name_input">
+<label for="message_template_name" class="label">Template Name</label><input size="30" id="message_template_name" type="text" name="message_template[name]" />
+</li>
+
+<li class="select input optional" id="message_template_reason_input">
+<label for="message_template_reason" class="label">Purpose</label><select name="message_template[reason]" id="message_template_reason"><option value="">General</option>
+<option value="m">Marketing</option>
+<option value="i">Invoices</option>
+<option value="e">Estimates</option>
+<option value="r">Receipts</option>
+<option value="s">Statements</option>
+<option value="b">Upcoming Jobs</option>
+<option value="a">Jobs Done</option>
+<option value="q">Jobs Done Requiring Payment</option>
+<option value="n">Jobs Not Done</option>
+<option value="k">Jobs Skipped</option>
+<option value="p">Payment Reminders</option>
+<option value="g">Direct Debit Cancelled</option>
+<option value="j">Job Sheets</option>
+<option value="y">Prepayment Receipt</option></select>
+</li>
+<li><label for="message_template_Tags Reference">Tags reference</label><a class="button small" id="show_tags" href="#">Show...</a>
+<div class='readonly_panel rich_text' id='tag_info' style='display:none'>
+<a class="button small" id="hide_tags" href="#">Hide</a>
+<table>
+<tbody>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#name</a></td>
+<td>Full name of customer, e.g. Mr John Smith</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#informal_name</a></td>
+<td>Informal name of customer, e.g. John</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#formal_name</a></td>
+<td>Formal name of customer, e.g. Mr Smith</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#phone</a></td>
+<td>Customer&#39;s first phone number</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#mobile</a></td>
+<td>Customer&#39;s first mobile number</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#email</a></td>
+<td>Customer&#39;s email address</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#address</a></td>
+<td>Customer&#39;s full address</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#address_first_line</a></td>
+<td>First line of customer&#39;s address</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#company</a></td>
+<td>Company of customer</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#reference</a></td>
+<td>Customer reference</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#balance</a></td>
+<td>Customer balance (+ve for credit, -ve for debt)</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#debt</a></td>
+<td>Customer debt (+ve value of debt, or blank)</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#debt_since</a></td>
+<td>Date customer went into debt/credit</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#jobs</a></td>
+<td>Customer&#39;s active job descriptions</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#customer_id</a></td>
+<td>Unique number for customer</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#sender</a></td>
+<td>Name of Sender</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#informal_sender</a></td>
+<td><span class="translation_missing" title="translation missing: en-GB.message_template.tag.informal_sender">Informal Sender</span></td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#sender_email</a></td>
+<td>Sender&#39;s email address</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#job_date</a></td>
+<td>Date of next job, or Job Sheet date</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#job_day</a></td>
+<td>Day of next job (Yesterday, Today, Tomorrow, Monday, Tuesday, etc, or Date)</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#job_address</a></td>
+<td>First line of the job address, or a list when there are several</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#link(&lt;url&gt;, &lt;label&gt;)</a></td>
+<td>Enbed link</td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#portal(&lt;label&gt;)</a></td>
+<td><span class="translation_missing" title="translation missing: en-GB.message_template.tag.portal">Portal</span></td>
+</tr>
+<tr>
+<td><a class="template_tag" title="Click to insert into selected field" href="#">#set_up_direct_debit(&lt;label&gt;)</a></td>
+<td>Embed Direct Debit Signup link</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+<li class="string input optional stringish" id="message_template_email_subject_input">
+<label for="message_template_email_subject" class="label">Email Subject</label><input size="30" id="message_template_email_subject" type="text" name="message_template[email_subject]" />
+</li>
+<li class="text input optional" id="message_template_email_content_input">
+<label for="message_template_email_content" class="label">Email Content</label><textarea cols="40" rows="2" id="message_template_email_content" name="message_template[email_content]">
+</textarea>
+<p class="inline-hints">Your Email Signature will be added to the end of the message</p></li>
+<li class="string input optional stringish" id="message_template_email_bcc_input">
+<label for="message_template_email_bcc" class="label">Email Bcc</label><input size="30" id="message_template_email_bcc" type="text" name="message_template[email_bcc]" />
+<p class="inline-hints">Copy emails to external CRM or review sites</p></li>
+<li class="text input optional" id="message_template_sms_content_input">
+<label for="message_template_sms_content" class="label">SMS Content</label><textarea cols="40" rows="2" id="message_template_sms_content" class="sms_message" name="message_template[sms_content]">
+</textarea>
+</li>
+<li class="show_as_event_selector select input optional" id="message_template_show_as_event_input">
+<label for="message_template_show_as_event" class="label">Show as Event?</label><select name="message_template[show_as_event]" id="message_template_show_as_event"><option value="" label=" "></option>
+<option value="false">No</option>
+<option value="true">Yes</option></select>
+</li>
+<fieldset class="actions"><ol><input type="submit" name="commit" value="Save" class="button" data-disable-with="Save" />
+
+</ol></fieldset></form><script>
+//<![CDATA[
+setup_template_editor();
+//]]>
+</script>
+
+<a class="button cancel" href="/back">Back</a>
+</div>
+<!-- #footer -->
+<!-- = yield :footer -->
+<!-- = powered_by_aworka if subdomain -->
+<!-- .contact_us -->
+<!-- = contact_link -->
+</body>
+</html>

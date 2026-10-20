@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>aworka</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='IE=8' http-equiv='X-UA-Compatible'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-f110508657df00bb46ba2e03b378516c2abafaa7525eb55fbac556c51f22dea0.ico" />
+<link rel="stylesheet" media="all" href="/assets/application-e022ef084b6db6d1dbaf25c3a99fe32073c37deb9622f458ad11be0f8a271463.css" data-turbolinks-track="reload" />
+<script>
+//<![CDATA[
+var decimal_sep = '.';
+var currency_symbol_first = true;
+var currency_symbol = '£';
+var current_user = 8065;
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/route_endpoints.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.min.js?1.9.1'></script>
+<script type='text/javascript' src='/javascripts/jquery-ui.min.js?1.10.1'></script>
+<script type='text/javascript' src='/javascripts/jquery_ujs.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.loadmask.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.ui.touch-punch-improved.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.placeholder.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.autosize.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.magnific-popup.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.cookie.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jstz.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/underscore-min.js?1.8.3'></script>
+<script type='text/javascript' src='/javascripts/jquery.application.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/address_autocomplete.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/announcement_reads.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/mapping.js?261019191430'></script>
+<script src='https://unpkg.com/@googlemaps/markerclusterer/dist/index.min.js' type='text/javascript'></script>
+<script src='https://unpkg.com/supercluster@8.0.0/dist/supercluster.min.js' type='text/javascript'></script>
+<script>
+//<![CDATA[
+google_maps_boostrap('[GOOGLE_API_KEY]');
+//]]>
+</script>
+<script>
+//<![CDATA[
+var lat_lng_source_caption = {
+f: 'Fail', a: 'APPROX', c: 'Geo', g: 'GPS', m: 'Man', 3: '///'
+};
+
+//]]>
+</script>
+
+<script type='text/javascript' src='/javascripts/jquery.settings.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.edit_contact.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/hmrc/mtd.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/hmrc/income_tax.js?261019191430'></script>
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="8S6u2reldD3B25Qhkmd3gtYd1KhUGEaXNSTiqiDjZmJappx8qslwTn3dXEPKDsSe2kj-thXZXnNuzeJYxEN2NQ" />
+
+
+</head>
+<body>
+<div id='help' style='display:none'>
+<div id='help_page'>
+<div id='help_body'>
+</div>
+<a class="button close" id="close_help" href="#">Close</a>
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</div>
+</div>
+
+<div id='header'>
+<div id='logo'>
+<img alt="Aworka Logo" height="45" src="/assets/aworka_white-ba7c6d4d5e2b39983554ad0d8eec6a8a96efd150fdd1a2a2fd5e2fa24c352703.svg" />
+</div>
+<h1>Reach To Clean</h1>
+<div class='nav' id='nav'>
+<ul>
+<li><a href="/dashboard">Home</a></li>
+<li><a href="/day_plans">Planner</a></li>
+<li><a href="/job_specs">Jobs</a></li>
+<li><a href="/debts">Debts</a></li>
+<li><a href="/expenses">Expenses</a></li>
+<li><a href="/messages">Messages</a></li>
+<li class="current"><a href="/users">Users</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class='nav' id='subnav'>
+<ul>
+<li class="current"><a href="/users">Users</a></li>
+<li><a href="/round_assignments">Round Assignments</a></li>
+<li><a href="/role_infos">Roles</a></li>
+<li id="announcements_nav"><a href="/announcements">Announcements</a></li>
+
+</ul>
+<div id='controls'>
+<span id='announcement_updates'>
+
+</span>
+<a class="button edit" href="/users/8065/edit">Settings</a>
+<a class="button cancel" rel="nofollow" data-method="delete" href="/user_session">Logout</a>
+<a data-controller="users" data-action="edit" class="button help" id="help_button" href="#">Help</a>
+</div>
+</div>
+<div id='messages'>
+
+<div class="notice error flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice success flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice info flash_notice" style="display:none"><div><h2></h2></div></div>
+
+
+<div class='notice info'>
+<div>
+<h2>
+You are trying the Team Pay Monthly Plan
+<a class="button small ajax-popup-link" href="/subscription/edit">Change Plan</a>
+</h2>
+<p>
+£30 + no users
+=
+£30.00 ex VAT
+</p>
+<p>
+You have
+<strong>41 free days</strong>
+remaining
+</p>
+</div>
+</div>
+
+
+
+</div>
+<div id='content'>
+<form class="tabs formtastic user" id="settings_form" spellcheck="false" novalidate="novalidate" enctype="multipart/form-data" action="/users/8065" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" autocomplete="off" /><input type="hidden" name="authenticity_token" value="OcWaeyg3wn1Ep1VZoT7dZlUWfUqlO4Z1O5Oac69dSfXCfflDhKypRFXyRBY7aBg_14jkZpqR1tYoEftWNtK6Cw" autocomplete="off" /><li class="hidden input optional" id="user_saving_settings_input">
+<input id="user_saving_settings" value="true" autocomplete="off" type="hidden" name="user[saving_settings]" />
+</li>
+<div class='tab'>
+<h3>Business Details</h3>
+<li class="email input required stringish" id="user_email_input">
+<label for="user_email" class="label">Email</label><input size="30" id="user_email" type="email" value="[AWORKA_EMAIL]" name="user[email]" />
+</li>
+<li><label for="user_Password">Password</label><a data-href="/password_change/edit?user_id=8065" class="button edit ajax-popup-link" href="#">Change</a>
+</li><li class="string input optional stringish" id="user_contact_attributes_company_input">
+<label for="user_contact_attributes_company" class="label">Business Name</label><input size="30" id="user_contact_attributes_company" type="text" value="Reach To Clean" name="user[contact_attributes][company]" />
+</li>
+<input autocomplete="off" type="hidden" value="3094298" name="user[contact_attributes][id]" id="user_contact_attributes_id" /><fieldset class="inline"><ol><li class="string input optional stringish" id="user_contact_attributes_name_input">
+<label for="user_contact_attributes_name" class="label">My Name</label><input size="30" id="user_contact_attributes_name" type="text" value="Joe Hinchliffe" name="user[contact_attributes][name]" />
+</li>
+</ol></fieldset><div class='lat_lng_fields'>
+<li class="address_autocomplete input optional stringish address_autocomplete_input" id="user_contact_attributes_address_search_input">
+<div class="address_autocomplete_control"><div class="address_autocomplete_pill"><label for="user_contact_attributes_address_search" class="label">Find Address</label><input type="text" id="user_contact_attributes_address_search" placeholder="Start typing an address or postcode" size="30" class="address_autocomplete" autocomplete="off" aria-describedby="user_contact_attributes_address_search_status" data-search-url="/contacts/address_search" data-retrieve-url="/contacts/address_retrieve" /></div></div><p class="ui-helper-hidden-accessible address_autocomplete_status" id="user_contact_attributes_address_search_status" role="status" aria-live="polite"></p>
+</li>
+
+
+<li class="text input optional" id="user_contact_attributes_multiline_address_input">
+<label for="user_contact_attributes_multiline_address" class="label">Address</label><textarea cols="40" rows="2" id="user_contact_attributes_multiline_address" class="address_textarea" name="user[contact_attributes][multiline_address]">
+2 Heather Court WF1 3HF</textarea>
+</li>
+<li class="hidden input optional" id="user_contact_attributes_selected_geocoding_id_input">
+<input id="user_contact_attributes_selected_geocoding_id" autocomplete="off" type="hidden" name="user[contact_attributes][selected_geocoding_id]" />
+</li>
+<fieldset class="inline geocode_fields" style="display:none"><ol><li><label for="user_contact_attributes_Geocode">Geocode</label><div class='readonly_panel geocoded_address'></div>
+</li><a class="copy_address_button button small" href="#">Copy to Address</a>
+</ol></fieldset><li class="hidden input optional" id="user_contact_attributes_lat_lng_source_input">
+<input id="user_contact_attributes_lat_lng_source" autocomplete="off" type="hidden" name="user[contact_attributes][lat_lng_source]" />
+</li>
+<fieldset class="inline"><ol><li class="string input optional stringish" id="user_contact_attributes_lat_input">
+<label for="user_contact_attributes_lat" class="label">Lat/Long</label><input size="10" id="user_contact_attributes_lat" class="lat_lng lat" type="text" name="user[contact_attributes][lat]" />
+</li>
+<li class="string input optional stringish" id="user_contact_attributes_lng_input">
+<input size="10" id="user_contact_attributes_lng" class="lat_lng lng" type="text" name="user[contact_attributes][lng]" />
+</li>
+<span class='badge small lat_lng_source' style='display:none'></span>
+<a class="button small geocode_button" href="#">Geocode Address</a>
+<a class="button edit edit_on_map_button" href="#">Edit on Map</a>
+</ol></fieldset><div class='map_popup main mfp-hide'>
+<h2>Edit Location</h2>
+<p>Drag the map marker to adjust the address location</p>
+<div class='map_canvas'></div>
+<div class='map_form'>
+<a class="button cancel" href="#">Done</a>
+</div>
+</div>
+</div>
+
+<fieldset class="inline"><ol><li class="phone input optional stringish" id="user_contact_attributes_phone1_input">
+<label for="user_contact_attributes_phone1" class="label">Phone</label><input size="12" id="user_contact_attributes_phone1" type="tel" name="user[contact_attributes][phone1]" />
+</li>
+or
+<li class="phone input optional stringish" id="user_contact_attributes_phone2_input">
+<input size="12" id="user_contact_attributes_phone2" type="tel" name="user[contact_attributes][phone2]" />
+</li>
+or
+<li class="phone input optional stringish" id="user_contact_attributes_phone3_input">
+<input size="12" id="user_contact_attributes_phone3" type="tel" name="user[contact_attributes][phone3]" />
+</li>
+</ol></fieldset><input autocomplete="off" type="hidden" value="3094298" name="user[contact_attributes][id]" id="user_contact_attributes_id" />
+<li class="date_select input optional" id="user_year_end_input">
+<label for="user_year_end" class="label">Year End</label><select id="user_year_end_3i" name="user[year_end(3i)]">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5" selected="selected">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+</select>
+<select id="user_year_end_2i" name="user[year_end(2i)]">
+<option value="1">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4" selected="selected">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option value="7">July</option>
+<option value="8">August</option>
+<option value="9">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+</select>
+<input type="hidden" id="user_year_end_1i" name="user[year_end(1i)]" value="2020" autocomplete="off" />
+
+</li>
+<li class="string input optional stringish" id="user_website_input">
+<label for="user_website" class="label">Website URL</label><input size="30" id="user_website" type="text" name="user[website]" />
+</li>
+<li class="hidden input optional" id="user_clear_logo_input">
+<input id="user_clear_logo" autocomplete="off" type="hidden" name="user[clear_logo]" />
+</li>
+<fieldset class="inline "><ol><li class="file input optional" id="user_logo_input">
+<label for="user_logo" class="label">Your Logo</label><input id="user_logo" type="file" name="user[logo]" />
+</li>
+
+</ol></fieldset></div>
+
+<input autocomplete="off" type="hidden" value="6000" name="user[aworka_attributes][id]" id="user_aworka_attributes_id" /><div class='tab'>
+<h3>Taxes</h3>
+<fieldset class="inline"><ol><li class="boolean input optional" id="user_collects_sales_tax_input">
+<input type="hidden" name="user[collects_sales_tax]" value="0" autocomplete="off" /><label for="user_collects_sales_tax" class="">Collect VAT?</label><input type="checkbox" name="user[collects_sales_tax]" id="user_collects_sales_tax" value="1" data-href="/sales_tax_registrations/new" class="ajax-popup-link" data-no-reload="true" />
+</li>
+<span id='scheme_details' style='display:none'>
+<span class='readonly_panel'></span>
+</span>
+<a data-href="/sales_tax_registrations" class="button edit ajax-popup-link hidden" data-no-reload="true" id="edit_schemes_button" href="#">Edit Registration</a>
+</ol></fieldset><li class="select input optional" id="user_mtd_services_input">
+<label for="user_mtd_services" class="label">Use Making Tax Digital for</label><select name="user[mtd_services]" id="user_mtd_services" data-current-value="" data-authorize-url-vat="https://api.service.hmrc.gov.uk/oauth/authorize?client_id=0203kzicCx5SbAK_uGbcWylwvS4a&amp;redirect_uri=https%3A%2F%2Faworka.app%2Fhmrc_accounts%2Fauth_callback&amp;response_type=code&amp;scope=read%3Avat+write%3Avat&amp;state=BAh7BjoLc2NvcGVzWwdJIg1yZWFkOnZhdAY6BkVUSSIOd3JpdGU6dmF0BjsGVA%3D%3D--c3d5bcea955d33cc42cffe86e726a0d38a4e5079" data-authorize-url-income-tax="https://api.service.hmrc.gov.uk/oauth/authorize?client_id=0203kzicCx5SbAK_uGbcWylwvS4a&amp;redirect_uri=https%3A%2F%2Faworka.app%2Fhmrc_accounts%2Fauth_callback&amp;response_type=code&amp;scope=read%3Aself-assessment+write%3Aself-assessment&amp;state=BAh7BjoLc2NvcGVzWwdJIhlyZWFkOnNlbGYtYXNzZXNzbWVudAY6BkVUSSIad3JpdGU6c2VsZi1hc3Nlc3NtZW50BjsGVA%3D%3D--a1885c08c732bf6f72685f33a7964e4199a93abc" data-authorize-url-vat-and-income-tax="https://api.service.hmrc.gov.uk/oauth/authorize?client_id=0203kzicCx5SbAK_uGbcWylwvS4a&amp;redirect_uri=https%3A%2F%2Faworka.app%2Fhmrc_accounts%2Fauth_callback&amp;response_type=code&amp;scope=read%3Avat+write%3Avat+read%3Aself-assessment+write%3Aself-assessment&amp;state=BAh7BjoLc2NvcGVzWwlJIg1yZWFkOnZhdAY6BkVUSSIOd3JpdGU6dmF0BjsGVEkiGXJlYWQ6c2VsZi1hc3Nlc3NtZW50BjsGVEkiGndyaXRlOnNlbGYtYXNzZXNzbWVudAY7BlQ%3D--d73dc08f44020319eae595b9e02bfd7ce415f9b2"><option selected="selected" value="">Not Using</option>
+<option value="vat">VAT</option>
+<option value="income_tax">Income Tax</option>
+<option value="vat_and_income_tax">VAT &amp; Income Tax</option></select>
+</li>
+<div class='inline' id='income_tax_business_info' style='display:none'>
+</div>
+</div>
+
+
+<div class='tab' id='messaging'>
+<h3>Messaging</h3>
+<li class="boolean input optional" id="user_cc_emails_input">
+<input type="hidden" name="user[cc_emails]" value="0" autocomplete="off" /><label for="user_cc_emails" class="">Copy emails to me?</label><input type="checkbox" name="user[cc_emails]" id="user_cc_emails" value="1" />
+</li>
+<li class="text input optional" id="user_email_signature_input">
+<label for="user_email_signature" class="label">Email Signature</label><textarea cols="40" rows="2" id="user_email_signature" spellcheck="true" name="user[email_signature]">
+Joe Hinchliffe
+Reach To Clean</textarea>
+</li>
+<li class="select input optional" id="user_letter_format_input">
+<label for="user_letter_format" class="label">Invoice/Statement with</label><select name="user[letter_format]" id="user_letter_format"><option selected="selected" value="o">Link For Online Viewing</option>
+<option value="b">Link And Attachment</option>
+<option value="a">Attachment Only</option></select>
+</li>
+<fieldset class="inline"><ol><li class="select input optional" id="user_email_service_type_input">
+<label for="user_email_service_type" class="label">Send emails using</label><select name="user[email_service_type]" id="user_email_service_type"><option selected="selected" value="aworka">Aworka</option>
+<option value="smtp">SMTP</option>
+<option value="gmail">Gmail</option>
+<option value="outlook">Outlook</option></select>
+</li>
+<span id='email_using_aworka'>
+Sending from
+<strong>aworka8065@aworka.com.</strong>
+To send from your email address, use
+<strong>Gmail</strong>
+</span>
+<span id='email_using_smtp'>
+<a data-href="/smtp_server/edit" class="button edit ajax-popup-link email_service" id="configure_smtp" data-update-callback="update_email_status" data-no-reload="true" href="#">Configure</a>
+</span>
+<span id='email_using_gmail'>
+<!-- = user.email_service.description if user.email_service && user.email_service.service == :gmail -->
+<a data-authorize-url="https://accounts.google.com/o/oauth2/auth?access_type=offline&amp;client_id=318487743671-e5nbh9m6h3fa527vhisnv4dpjdqmvuu3.apps.googleusercontent.com&amp;prompt=consent&amp;redirect_uri=https%3A%2F%2Faworka.app%2Fgmail%2Fauthorize&amp;response_type=code&amp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fgmail.send" class="button edit email_service" id="configure_gmail" href="#">Configure</a>
+</span>
+<span id='email_using_outlook'>
+<!-- = user.email_service.description if user.email_service && user.email_service.service == :outlook -->
+<a data-authorize-url="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=639896ef-333b-41b5-88d9-0c23b8d7118d&amp;prompt=login&amp;redirect_uri=https%3A%2F%2Faworka.app%2Foutlook%2Fauthorize&amp;response_type=code&amp;scope=offline_access+User.Read+Mail.Send" class="button edit email_service" id="configure_outlook" href="#">Configure</a>
+</span>
+</ol></fieldset><fieldset class="inline"><ol><li class="boolean input optional" id="user_send_sms_input">
+<input type="hidden" name="user[send_sms]" value="0" autocomplete="off" /><label for="user_send_sms" class="">Send SMS messages?</label><input type="checkbox" name="user[send_sms]" id="user_send_sms" value="1" />
+</li>
+<span id='sms_account' style='display:none'>
+<span class='status readonly_panel' id='sms_details'></span>
+<a data-href="/sms_account/edit" class="button edit ajax-popup-link" data-update-callback="update_sms_status" data-no-reload="true" href="#">Edit</a>
+</span>
+</ol></fieldset></div>
+
+<div class='tab'>
+<h3>Invoicing</h3>
+<li class="string input optional stringish" id="user_invoice_title_input">
+<label for="user_invoice_title" class="label">Title</label><input placeholder="Invoice" size="30" id="user_invoice_title" type="text" name="user[invoice_title]" />
+</li>
+<li class="string input optional stringish" id="user_invoice_number_input">
+<label for="user_invoice_number" class="label">Next Invoice Ref</label><input size="30" id="user_invoice_number" type="text" name="user[invoice_number]" />
+</li>
+<li class="text input optional" id="user_invoice_notes_input">
+<label for="user_invoice_notes" class="label">Notes</label><textarea cols="40" rows="2" id="user_invoice_notes" spellcheck="true" name="user[invoice_notes]">
+</textarea>
+<p class="inline-hints">e.g. Payment Instructions</p></li>
+<li class="text input optional" id="user_letter_small_print_input">
+<label for="user_letter_small_print" class="label">Small Print</label><textarea cols="40" rows="2" id="user_letter_small_print" spellcheck="true" name="user[letter_small_print]">
+</textarea>
+<p class="inline-hints">e.g. Company Number and Registered Address</p></li>
+<li class="select input optional" id="user_show_notes_on_statements_input">
+<label for="user_show_notes_on_statements" class="label">Show Notes on</label><select name="user[show_notes_on_statements]" id="user_show_notes_on_statements"><option value="false">Invoices Only</option>
+<option selected="selected" value="true">Invoices &amp; Statements</option></select>
+</li>
+<li class="string input optional stringish" id="user_invoice_item_description_input">
+<label for="user_invoice_item_description" class="label">Default Job Description</label><input size="30" id="user_invoice_item_description" type="text" name="user[invoice_item_description]" />
+<p class="inline-hints">e.g. &#39;Exterior Window Cleaning&#39;</p></li>
+<li class="select input optional" id="user_show_balance_on_invoices_input">
+<label for="user_show_balance_on_invoices" class="label">Show Amount to Pay as</label><select name="user[show_balance_on_invoices]" id="user_show_balance_on_invoices"><option selected="selected" value="t">Invoice Total</option>
+<option value="i">Invoiced Balance</option>
+<option value="p">Credit Balance</option></select>
+</li>
+<fieldset class="inline"><ol><li class="input"><fieldset class="inline" id="terms"><ol>
+<span>
+<li class="select input optional" id="user_invoice_payment_terms_type_input">
+<label for="user_invoice_payment_terms_type" class="label">Payment Terms</label><select name="user[invoice_payment_terms_type]" id="user_invoice_payment_terms_type"><option value="x">Not Required</option>
+<option selected="selected" value="r">By Return</option>
+<option value="c">COD</option>
+<option value="n">From Invoice Date</option>
+<option value="e">From Month End</option></select>
+</li>
+<span id='payment_terms_fields' style='display:none'>
+<li class="string input optional stringish" id="user_invoice_payment_terms_input">
+<input size="3" id="user_invoice_payment_terms" class="right" type="text" value="0" name="user[invoice_payment_terms]" />
+</li>
+days.
+</span>
+</span>
+</ol></fieldset></li>
+</ol></fieldset><fieldset class="inline"><ol><li class="boolean input optional" id="user_show_next_due_on_invoices_input">
+<input type="hidden" name="user[show_next_due_on_invoices]" value="0" autocomplete="off" /><label for="user_show_next_due_on_invoices" class="">Show Next Job Date?</label><input type="checkbox" name="user[show_next_due_on_invoices]" id="user_show_next_due_on_invoices" value="1" />
+</li>
+(only on most recent invoice)
+</ol></fieldset><!-- = form.input :show_qr_code_on_invoices, :as => :boolean, :label => 'QR Code?' -->
+</div>
+
+<div class='tab'>
+<h3>Online Payments</h3>
+<fieldset class="inline"><ol><li class="boolean input optional" id="user_accepts_gocardless_input">
+<input type="hidden" name="user[accepts_gocardless]" value="0" autocomplete="off" /><label for="user_accepts_gocardless" class="">Accept GoCardless?</label><input type="checkbox" name="user[accepts_gocardless]" id="user_accepts_gocardless" value="1" data-authorize-url="https://connect.gocardless.com/oauth/authorize?client_id=g8EB4Gd0f0QYAxIe2-iD0xh6QhTACSKpLaw7_5aBVcJNg5i-xOr5ENE5f0avnPaU&amp;initial_view=signup&amp;prefill%5Bcountry_code%5D=GB&amp;prefill%5Bemail%5D=[AWORKA_EMAIL]&amp;prefill%5Bfamily_name%5D=Hinchliffe&amp;prefill%5Bgiven_name%5D=Joe&amp;prefill%5Borganisation_name%5D=Reach+To+Clean&amp;redirect_uri=https%3A%2F%2Faworka.app%2Fgocardless%2Faccounts%2Fauth_callback&amp;response_type=code&amp;scope=read_write" />
+</li>
+<span class='gocardless_details'>
+<li class="select input optional" id="user_gocardless_fee_expense_category_id_input">
+<label for="user_gocardless_fee_expense_category_id" class="label">Add Fees to</label><select name="user[gocardless_fee_expense_category_id]" id="user_gocardless_fee_expense_category_id"><option selected="selected" value="">Ignore Fees</option>
+<option value="-1">New Category...</option></select>
+</li>
+<li class="string input optional stringish" id="user_new_gocardless_fee_expense_category_input">
+<input placeholder="Payment Processing" size="20" id="user_new_gocardless_fee_expense_category" type="text" name="user[new_gocardless_fee_expense_category]" />
+</li>
+</span>
+</ol></fieldset><fieldset class="inline"><ol><li class="boolean input optional" id="user_accepts_paypal_input">
+<input type="hidden" name="user[accepts_paypal]" value="0" autocomplete="off" /><label for="user_accepts_paypal" class="">Accept PayPal?</label><input type="checkbox" name="user[accepts_paypal]" id="user_accepts_paypal" value="1" />
+</li>
+<span class='paypal_fields'>
+to email
+<li class="email input optional stringish" id="user_paypal_email_input">
+<input size="30" id="user_paypal_email" type="email" name="user[paypal_email]" />
+</li>
+for
+<li class="select input optional" id="user_paypal_limited_input">
+<select name="user[paypal_limited]" id="user_paypal_limited"><option value="false">Any amount</option>
+<option value="true">Amounts under</option></select>
+</li>
+<li class="string input optional stringish" id="user_paypal_threshold_input">
+<input size="7" id="user_paypal_threshold" class="money" type="text" name="user[paypal_threshold]" />
+</li>
+<li class="select input optional" id="user_paypal_fee_expense_category_id_input">
+<label for="user_paypal_fee_expense_category_id" class="label">Add Fees to</label><select name="user[paypal_fee_expense_category_id]" id="user_paypal_fee_expense_category_id"><option value="">Ignore Fees</option>
+<option selected="selected" value="-1">New Category...</option></select>
+</li>
+<li class="string input optional stringish" id="user_new_paypal_fee_expense_category_input">
+<input placeholder="Payment Processing" size="20" id="user_new_paypal_fee_expense_category" type="text" name="user[new_paypal_fee_expense_category]" />
+</li>
+</span>
+</ol></fieldset></div>
+
+<div class='tab'>
+<h3>Receipts</h3>
+
+<li class="string input optional stringish" id="user_receipt_number_input">
+<label for="user_receipt_number" class="label">Next Receipt Ref</label><input size="30" id="user_receipt_number" type="text" name="user[receipt_number]" />
+</li>
+<li class="text input optional" id="user_receipt_notes_input">
+<label for="user_receipt_notes" class="label">Notes for Receipt</label><textarea cols="40" rows="2" id="user_receipt_notes" spellcheck="true" name="user[receipt_notes]">
+</textarea>
+</li>
+</div>
+
+<div class='tab'>
+<h3>Estimating</h3>
+<li class="string input optional stringish" id="user_estimate_title_input">
+<label for="user_estimate_title" class="label">Title</label><input placeholder="Estimate" size="30" id="user_estimate_title" type="text" name="user[estimate_title]" />
+</li>
+<li class="string input optional stringish" id="user_estimate_number_input">
+<label for="user_estimate_number" class="label">Next Estimate Ref</label><input size="30" id="user_estimate_number" type="text" name="user[estimate_number]" />
+</li>
+<li class="text input optional" id="user_estimate_notes_input">
+<label for="user_estimate_notes" class="label">Notes for Estimate</label><textarea cols="40" rows="2" id="user_estimate_notes" spellcheck="true" name="user[estimate_notes]">
+</textarea>
+<p class="inline-hints">e.g. Terms of Service</p></li>
+<li class="boolean input optional" id="user_estimate_annual_total_input">
+<input type="hidden" name="user[estimate_annual_total]" value="0" autocomplete="off" /><label for="user_estimate_annual_total" class="">Show Annual Total</label><input type="checkbox" name="user[estimate_annual_total]" id="user_estimate_annual_total" value="1" />
+</li>
+</div>
+
+<div class='tab' id='features'>
+<h3>Features</h3>
+<li class="select input optional" id="user_aworka_attributes_profit_calc_input">
+<label for="user_aworka_attributes_profit_calc" class="label">Profit &amp; Loss Calculation</label><select name="user[aworka_attributes][profit_calc]" id="user_aworka_attributes_profit_calc"><option value="j">Accrual</option>
+<option value="p">Cash Basis</option></select>
+</li>
+<li class="boolean input optional" id="user_aworka_attributes_record_mileage_input">
+<input type="hidden" name="user[aworka_attributes][record_mileage]" value="0" autocomplete="off" /><label for="user_aworka_attributes_record_mileage" class="">Record Mileage?</label><input type="checkbox" name="user[aworka_attributes][record_mileage]" id="user_aworka_attributes_record_mileage" value="1" />
+</li>
+<li class="select input optional" id="user_aworka_attributes_first_week_day_input">
+<label for="user_aworka_attributes_first_week_day" class="label">First Week Day</label><select name="user[aworka_attributes][first_week_day]" id="user_aworka_attributes_first_week_day"><option selected="selected" value="0">Sun</option>
+<option value="1">Mon</option>
+<option value="2">Tue</option>
+<option value="3">Wed</option>
+<option value="4">Thu</option>
+<option value="5">Fri</option>
+<option value="6">Sat</option></select>
+</li>
+</div>
+
+<div class='tab'>
+<h3>Job & Customer Defaults</h3>
+<li class="select input optional" id="user_aworka_attributes_default_job_contact_method_input">
+<label for="user_aworka_attributes_default_job_contact_method" class="label">Contact Method</label><select name="user[aworka_attributes][default_job_contact_method]" id="user_aworka_attributes_default_job_contact_method"><option selected="selected" value="e">Email</option>
+<option value="s">SMS</option>
+<option value="b">Email &amp; SMS</option></select>
+</li>
+<fieldset class="inline"><ol><span>
+<li class="select input optional" id="user_aworka_attributes_default_job_payment_method_input">
+<label for="user_aworka_attributes_default_job_payment_method" class="label">Payment Method</label><select name="user[aworka_attributes][default_job_payment_method]" id="user_aworka_attributes_default_job_payment_method"><option selected="selected" value="c">On Day</option>
+<option value="x">Card</option>
+<option value="l">Collection</option>
+<option value="q">By Post</option>
+<option value="o">Online</option>
+<option value="t">Direct To Bank</option>
+<option value="e">Email Invoice</option>
+<option value="p">Paper Invoice</option>
+<option value="d">Direct Debit</option></select>
+</li>
+<span id='default_invoice_frequency'>
+<li class="select input required" id="user_aworka_attributes_default_job_payment_frequency_input">
+<select name="user[aworka_attributes][default_job_payment_frequency]" id="user_aworka_attributes_default_job_payment_frequency"><option value="x">Manually</option>
+<option selected="selected" value="a">After Each Job</option>
+<option value="o">Overnight</option></select>
+</li>
+</span>
+</span>
+</ol></fieldset><li class="select input optional" id="user_aworka_attributes_default_job_location_input">
+<label for="user_aworka_attributes_default_job_location" class="label">Job Location</label><select name="user[aworka_attributes][default_job_location]" id="user_aworka_attributes_default_job_location"><option selected="selected" value="c">Customer Address</option>
+<option value="o">Other Address</option>
+<option value="n">Not Applicable</option></select>
+</li>
+<fieldset class="inline"><ol><li class="input"><fieldset class="inline"><ol><span>
+<li class="string input required stringish" id="user_aworka_attributes_default_job_time_required_hours_input">
+<label for="user_aworka_attributes_default_job_time_required_hours" class="label">Time Required</label><input size="2" id="user_aworka_attributes_default_job_time_required_hours" class="right" type="text" value="0" name="user[aworka_attributes][default_job_time_required][hours]" />
+</li>
+hours
+<li class="string input required stringish" id="user_aworka_attributes_default_job_time_required_minutes_input">
+<input size="2" id="user_aworka_attributes_default_job_time_required_minutes" class="right" type="text" value="30" name="user[aworka_attributes][default_job_time_required][minutes]" />
+</li>
+mins.
+</span>
+</ol></fieldset></li>
+Show on Job Sheets?
+<li class="boolean input optional" id="user_aworka_attributes_show_times_on_job_sheets_input">
+<input type="hidden" name="user[aworka_attributes][show_times_on_job_sheets]" value="0" autocomplete="off" /><input type="checkbox" name="user[aworka_attributes][show_times_on_job_sheets]" id="user_aworka_attributes_show_times_on_job_sheets" value="1" />
+</li>
+</ol></fieldset><li class="select input optional" id="user_aworka_attributes_default_job_appointments_input">
+<label for="user_aworka_attributes_default_job_appointments" class="label">Job Appointments</label><select name="user[aworka_attributes][default_job_appointments]" id="user_aworka_attributes_default_job_appointments"><option selected="selected" value="n">No Need To Confirm</option>
+<option value="1">Confirm The Day Before</option>
+<option value="3">Confirm A Few Days Before</option></select>
+</li>
+<fieldset class="inline"><ol><li class="select input optional" id="user_aworka_attributes_default_job_regularity_input">
+<label for="user_aworka_attributes_default_job_regularity" class="label">Job frequency</label><select name="user[aworka_attributes][default_job_regularity]" id="user_aworka_attributes_default_job_regularity"><option value="o">One Off</option>
+<option value="c">On Request</option>
+<option selected="selected" value="r">Regularly</option></select>
+</li>
+<span id='frequency_regular'>
+<li class="select input optional" id="user_aworka_attributes_default_job_times_per_period_input">
+<select name="user[aworka_attributes][default_job_times_per_period]" id="user_aworka_attributes_default_job_times_per_period"><option selected="selected" value="1">Once</option>
+<option value="2">Twice</option>
+<option value="3">Three Times</option>
+<option value="4">Four Times</option>
+<option value="5">Five Times</option>
+<option value="6">Six Times</option>
+<option value="7">Seven Times</option></select>
+</li>
+per
+<li class="select input optional" id="user_aworka_attributes_default_job_num_periods_input">
+<select name="user[aworka_attributes][default_job_num_periods]" id="user_aworka_attributes_default_job_num_periods"><option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option selected="selected" value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+<option value="32">32</option>
+<option value="33">33</option>
+<option value="34">34</option>
+<option value="35">35</option>
+<option value="36">36</option>
+<option value="37">37</option>
+<option value="38">38</option>
+<option value="39">39</option>
+<option value="40">40</option>
+<option value="41">41</option>
+<option value="42">42</option>
+<option value="43">43</option>
+<option value="44">44</option>
+<option value="45">45</option>
+<option value="46">46</option>
+<option value="47">47</option>
+<option value="48">48</option>
+<option value="49">49</option>
+<option value="50">50</option>
+<option value="51">51</option>
+<option value="52">52</option></select>
+</li>
+<li class="select input optional" id="user_aworka_attributes_default_job_period_unit_input">
+<select name="user[aworka_attributes][default_job_period_unit]" id="user_aworka_attributes_default_job_period_unit"><option value="d">Day</option>
+<option selected="selected" value="w">Week</option>
+<option value="m">Month</option>
+<option value="y">Year</option></select>
+</li>
+period.
+</span>
+</ol></fieldset></div>
+
+<input autocomplete="off" type="hidden" value="6000" name="user[aworka_attributes][id]" id="user_aworka_attributes_id" /><div class='tab'>
+<h3>Planner</h3>
+<fieldset class="inline"><ol><li class="select input optional" id="user_planner_near_today_input">
+<label for="user_planner_near_today" class="label">View</label><select name="user[planner_near_today]" id="user_planner_near_today"><option selected="selected" value="true">This Week</option>
+<option value="false">This Month</option></select>
+</li>
+<span id='planner_week_range'>
+plus
+<li class="select input optional" id="user_planner_weeks_before_input">
+<select name="user[planner_weeks_before]" id="user_planner_weeks_before"><option value="0">No Weeks</option>
+<option selected="selected" value="1">One Week</option>
+<option value="2">Two Weeks</option></select>
+</li>
+before and
+<li class="select input optional" id="user_planner_weeks_after_input">
+<select name="user[planner_weeks_after]" id="user_planner_weeks_after"><option value="0">No Weeks</option>
+<option selected="selected" value="1">One Week</option>
+<option value="2">Two Weeks</option></select>
+</li>
+after.
+</span>
+</ol></fieldset><fieldset class="allowed_days inline" id="allowed_days"><ol><li><label for="user_days_worked_Days Worked">Days worked</label>
+<table class='allowed_days'>
+<thead>
+<tr>
+<th class='centre'>
+<strong>All</strong>
+</th>
+<th class='centre'><span class="translation_missing" title="translation missing: en-GB.date.abbr_day_names.sun">Sun</span></th>
+<th class='centre'><span class="translation_missing" title="translation missing: en-GB.date.abbr_day_names.mon">Mon</span></th>
+<th class='centre'><span class="translation_missing" title="translation missing: en-GB.date.abbr_day_names.tue">Tue</span></th>
+<th class='centre'><span class="translation_missing" title="translation missing: en-GB.date.abbr_day_names.wed">Wed</span></th>
+<th class='centre'><span class="translation_missing" title="translation missing: en-GB.date.abbr_day_names.thu">Thu</span></th>
+<th class='centre'><span class="translation_missing" title="translation missing: en-GB.date.abbr_day_names.fri">Fri</span></th>
+<th class='centre'><span class="translation_missing" title="translation missing: en-GB.date.abbr_day_names.sat">Sat</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class='centre all_days'><input type="checkbox" name="all_allowed_days" id="all_allowed_days" /></td>
+<td class='centre'><li class="boolean input optional" id="user_days_worked_sun_input">
+<input type="hidden" name="user[days_worked][sun]" value="0" autocomplete="off" /><input type="checkbox" name="user[days_worked][sun]" id="user_days_worked_sun" value="1" checked="checked" />
+</li></td>
+<td class='centre'><li class="boolean input optional" id="user_days_worked_mon_input">
+<input type="hidden" name="user[days_worked][mon]" value="0" autocomplete="off" /><input type="checkbox" name="user[days_worked][mon]" id="user_days_worked_mon" value="1" checked="checked" />
+</li></td>
+<td class='centre'><li class="boolean input optional" id="user_days_worked_tue_input">
+<input type="hidden" name="user[days_worked][tue]" value="0" autocomplete="off" /><input type="checkbox" name="user[days_worked][tue]" id="user_days_worked_tue" value="1" checked="checked" />
+</li></td>
+<td class='centre'><li class="boolean input optional" id="user_days_worked_wed_input">
+<input type="hidden" name="user[days_worked][wed]" value="0" autocomplete="off" /><input type="checkbox" name="user[days_worked][wed]" id="user_days_worked_wed" value="1" checked="checked" />
+</li></td>
+<td class='centre'><li class="boolean input optional" id="user_days_worked_thu_input">
+<input type="hidden" name="user[days_worked][thu]" value="0" autocomplete="off" /><input type="checkbox" name="user[days_worked][thu]" id="user_days_worked_thu" value="1" checked="checked" />
+</li></td>
+<td class='centre'><li class="boolean input optional" id="user_days_worked_fri_input">
+<input type="hidden" name="user[days_worked][fri]" value="0" autocomplete="off" /><input type="checkbox" name="user[days_worked][fri]" id="user_days_worked_fri" value="1" checked="checked" />
+</li></td>
+<td class='centre'><li class="boolean input optional" id="user_days_worked_sat_input">
+<input type="hidden" name="user[days_worked][sat]" value="0" autocomplete="off" /><input type="checkbox" name="user[days_worked][sat]" id="user_days_worked_sat" value="1" checked="checked" />
+</li></td>
+</tr>
+</tbody>
+</table>
+</li></ol></fieldset><script type='text/javascript' src='/javascripts/jquery.allowed_days.js?261019191430'></script>
+
+<fieldset class="inline"><ol><li class="boolean input optional" id="user_show_public_holidays_input">
+<input type="hidden" name="user[show_public_holidays]" value="0" autocomplete="off" /><label for="user_show_public_holidays" class="">Show Public Holidays?</label><input type="checkbox" name="user[show_public_holidays]" id="user_show_public_holidays" value="1" />
+</li>
+<span id='regions' style=''>
+in
+<li class="select input optional" id="user_holiday_region_input">
+<select name="user[holiday_region]" id="user_holiday_region"><option value="gb_eng">England</option>
+<option value="gb_wls">Wales</option>
+<option value="gb_sct">Scotland</option>
+<option value="gb_nir">Northern Ireland</option></select>
+</li>
+</span>
+</ol></fieldset><fieldset class="inline"><ol><li class="select input optional" id="user_add_jobs_order_input">
+<label for="user_add_jobs_order" class="label">Order Jobs by</label><select name="user[add_jobs_order]" id="user_add_jobs_order"><option selected="selected" value="n">Next Due Date</option>
+<option value="r">Round Order</option></select>
+</li>
+in
+<strong>Add Jobs</strong>
+popup.
+</ol></fieldset><li class="select input optional" id="user_default_job_plan_next_from_input">
+<label for="user_default_job_plan_next_from" class="label">Replan From</label><select name="user[default_job_plan_next_from]" id="user_default_job_plan_next_from"><option selected="selected" value="j">Last Job Date</option>
+<option value="d">Last Due Date</option></select>
+</li>
+<fieldset class="inline"><ol><li class="select input optional" id="user_default_job_plan_next_input">
+<label for="user_default_job_plan_next" class="label">Plan Next</label><select name="user[default_job_plan_next]" id="user_default_job_plan_next"><option value="false">No</option>
+<option selected="selected" value="true">From</option></select>
+</li>
+as default in
+<strong>Edit Job</strong>
+popup.
+</ol></fieldset><fieldset class="inline"><ol><li class="select input optional" id="user_default_job_paid_input">
+<label for="user_default_job_paid" class="label">Set Paid to</label><select name="user[default_job_paid]" id="user_default_job_paid"><option selected="selected" value="j">Job Price</option>
+<option value="b">Debt Balance</option></select>
+</li>
+as default in
+<strong>Edit Job</strong>
+popup, when job is marked Done.
+</ol></fieldset><li class="boolean input optional" id="user_planner_show_future_jobs_input">
+<input type="hidden" name="user[planner_show_future_jobs]" value="0" autocomplete="off" /><label for="user_planner_show_future_jobs" class="">Show Future Jobs?</label><input type="checkbox" name="user[planner_show_future_jobs]" id="user_planner_show_future_jobs" value="1" checked="checked" />
+</li>
+
+<fieldset class="inline"><ol><li class="select input optional" id="user_job_auto_mark_policy_input">
+<label for="user_job_auto_mark_policy" class="label">Jobs left To Do</label><select name="user[job_auto_mark_policy]" id="user_job_auto_mark_policy"><option selected="selected" value="n">are assumed Not Done</option>
+<option value="d">are marked Done overnight</option>
+<option value="i">stay To Do until the next job is due</option></select>
+</li>
+<span id='job_auto_mark_grace_period'>
+after
+<li class="select input optional" id="user_job_auto_mark_after_num_days_input">
+<select name="user[job_auto_mark_after_num_days]" id="user_job_auto_mark_after_num_days"><option value="1">1 Day</option>
+<option value="2">2 Days</option>
+<option value="3">3 Days</option>
+<option value="4">4 Days</option>
+<option value="5">5 Days</option>
+<option selected="selected" value="7">1 Week</option>
+<option value="14">2 Weeks</option></select>
+</li>
+</span>
+</ol></fieldset></div>
+
+<div class='tab'>
+<h3>Route Optimisation</h3>
+<li class="select input required" id="user_route_start_source_input">
+<label for="user_route_start_source" class="label">Start Day from</label><select name="user[route_start_source]" id="user_route_start_source"><option selected="selected" value="user">Joe Hinchliffe — Reach To Clean, 2 Heather Court WF1 3HF</option>
+<option value="furthest">Furthest job</option></select>
+</li>
+<li class="select input required" id="user_route_finish_source_input">
+<label for="user_route_finish_source" class="label">Finish Day at</label><select name="user[route_finish_source]" id="user_route_finish_source"><option selected="selected" value="user">Joe Hinchliffe — Reach To Clean, 2 Heather Court WF1 3HF</option>
+<option value="furthest">Furthest job</option></select>
+</li>
+<li class="boolean input optional" id="user_optimize_routes_overnight_input">
+<input type="hidden" name="user[optimize_routes_overnight]" value="0" autocomplete="off" /><label for="user_optimize_routes_overnight" class="">Optimise tomorrow&#39;s route overnight?</label><input type="checkbox" name="user[optimize_routes_overnight]" id="user_optimize_routes_overnight" value="1" />
+</li>
+<script>
+  $(function() {
+    const start = document.getElementById('user_route_start_source');
+    const finish = document.getElementById('user_route_finish_source');
+    if(!start || !finish) return;
+    const refresh = () => refresh_furthest_route_options(start, finish);
+    start.addEventListener('change', refresh);
+    finish.addEventListener('change', refresh);
+    refresh();
+  });
+</script>
+</div>
+
+
+<div class='tab' id='customer_data_retention'>
+<h3>Customer Data Retention</h3>
+<fieldset class="inline toggleable"><ol><li class="boolean input optional" id="user_aworka_attributes_suspend_regular_enabled_input">
+<input type="hidden" name="user[aworka_attributes][suspend_regular_enabled]" value="0" autocomplete="off" /><label for="user_aworka_attributes_suspend_regular_enabled" class="">Suspend overdue regular jobs</label><input type="checkbox" name="user[aworka_attributes][suspend_regular_enabled]" id="user_aworka_attributes_suspend_regular_enabled" value="1" />
+</li>
+<span>
+after
+<li class="select input optional" id="user_aworka_attributes_suspend_regular_num_periods_input">
+<select name="user[aworka_attributes][suspend_regular_num_periods]" id="user_aworka_attributes_suspend_regular_num_periods"><option value="1">1</option>
+<option value="2">2</option>
+<option selected="selected" value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option></select>
+</li>
+<li class="select input optional" id="user_aworka_attributes_suspend_regular_period_unit_input">
+<select name="user[aworka_attributes][suspend_regular_period_unit]" id="user_aworka_attributes_suspend_regular_period_unit"><option value="w">Weeks</option>
+<option selected="selected" value="m">Months</option>
+<option value="y">Years</option></select>
+</li>
+</span>
+</ol></fieldset><fieldset class="inline toggleable"><ol><li class="boolean input optional" id="user_aworka_attributes_suspend_on_request_enabled_input">
+<input type="hidden" name="user[aworka_attributes][suspend_on_request_enabled]" value="0" autocomplete="off" /><label for="user_aworka_attributes_suspend_on_request_enabled" class="">Suspend unrequested jobs</label><input type="checkbox" name="user[aworka_attributes][suspend_on_request_enabled]" id="user_aworka_attributes_suspend_on_request_enabled" value="1" />
+</li>
+<span>
+after
+<li class="select input optional" id="user_aworka_attributes_suspend_on_request_num_periods_input">
+<select name="user[aworka_attributes][suspend_on_request_num_periods]" id="user_aworka_attributes_suspend_on_request_num_periods"><option selected="selected" value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option></select>
+</li>
+<li class="select input optional" id="user_aworka_attributes_suspend_on_request_period_unit_input">
+<select name="user[aworka_attributes][suspend_on_request_period_unit]" id="user_aworka_attributes_suspend_on_request_period_unit"><option value="w">Weeks</option>
+<option value="m">Months</option>
+<option selected="selected" value="y">Years</option></select>
+</li>
+</span>
+</ol></fieldset><fieldset class="inline toggleable"><ol><li class="boolean input optional" id="user_aworka_attributes_delete_suspended_enabled_input">
+<input type="hidden" name="user[aworka_attributes][delete_suspended_enabled]" value="0" autocomplete="off" /><label for="user_aworka_attributes_delete_suspended_enabled" class="">Delete suspended and completed one off jobs</label><input type="checkbox" name="user[aworka_attributes][delete_suspended_enabled]" id="user_aworka_attributes_delete_suspended_enabled" value="1" />
+</li>
+<span>
+after
+<li class="select input optional" id="user_aworka_attributes_delete_suspended_num_periods_input">
+<select name="user[aworka_attributes][delete_suspended_num_periods]" id="user_aworka_attributes_delete_suspended_num_periods"><option value="1">1</option>
+<option value="2">2</option>
+<option selected="selected" value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option></select>
+</li>
+<li class="select input optional" id="user_aworka_attributes_delete_suspended_period_unit_input">
+<select name="user[aworka_attributes][delete_suspended_period_unit]" id="user_aworka_attributes_delete_suspended_period_unit"><option value="w">Weeks</option>
+<option selected="selected" value="m">Months</option>
+<option value="y">Years</option></select>
+</li>
+</span>
+</ol></fieldset><fieldset class="inline toggleable"><ol><li class="boolean input optional" id="user_aworka_attributes_delete_unconverted_estimates_enabled_input">
+<input type="hidden" name="user[aworka_attributes][delete_unconverted_estimates_enabled]" value="0" autocomplete="off" /><label for="user_aworka_attributes_delete_unconverted_estimates_enabled" class="">Delete unconverted estimates</label><input type="checkbox" name="user[aworka_attributes][delete_unconverted_estimates_enabled]" id="user_aworka_attributes_delete_unconverted_estimates_enabled" value="1" />
+</li>
+<span>
+after
+<li class="select input optional" id="user_aworka_attributes_delete_unconverted_estimates_num_periods_input">
+<select name="user[aworka_attributes][delete_unconverted_estimates_num_periods]" id="user_aworka_attributes_delete_unconverted_estimates_num_periods"><option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option selected="selected" value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option></select>
+</li>
+<li class="select input optional" id="user_aworka_attributes_delete_unconverted_estimates_period_unit_input">
+<select name="user[aworka_attributes][delete_unconverted_estimates_period_unit]" id="user_aworka_attributes_delete_unconverted_estimates_period_unit"><option value="w">Weeks</option>
+<option selected="selected" value="m">Months</option>
+<option value="y">Years</option></select>
+</li>
+</span>
+</ol></fieldset><fieldset class="inline toggleable"><ol><li class="boolean input optional" id="user_aworka_attributes_anonymize_deleted_enabled_input">
+<input type="hidden" name="user[aworka_attributes][anonymize_deleted_enabled]" value="0" autocomplete="off" /><label for="user_aworka_attributes_anonymize_deleted_enabled" class="">Anonymize deleted customers</label><input type="checkbox" name="user[aworka_attributes][anonymize_deleted_enabled]" id="user_aworka_attributes_anonymize_deleted_enabled" value="1" />
+</li>
+<span>
+after
+<li class="select input optional" id="user_aworka_attributes_anonymize_deleted_num_periods_input">
+<select name="user[aworka_attributes][anonymize_deleted_num_periods]" id="user_aworka_attributes_anonymize_deleted_num_periods"><option value="1">1</option>
+<option value="2">2</option>
+<option selected="selected" value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option></select>
+</li>
+<li class="select input optional" id="user_aworka_attributes_anonymize_deleted_period_unit_input">
+<select name="user[aworka_attributes][anonymize_deleted_period_unit]" id="user_aworka_attributes_anonymize_deleted_period_unit"><option value="w">Weeks</option>
+<option selected="selected" value="m">Months</option>
+<option value="y">Years</option></select>
+</li>
+</span>
+</ol></fieldset><fieldset class="inline toggleable"><ol><li class="boolean input optional" id="user_aworka_attributes_anonymize_invoices_enabled_input">
+<input type="hidden" name="user[aworka_attributes][anonymize_invoices_enabled]" value="0" autocomplete="off" /><label for="user_aworka_attributes_anonymize_invoices_enabled" class="">Anonymize invoices</label><input type="checkbox" name="user[aworka_attributes][anonymize_invoices_enabled]" id="user_aworka_attributes_anonymize_invoices_enabled" value="1" />
+</li>
+<span>
+after
+<li class="select input optional" id="user_aworka_attributes_anonymize_invoices_num_periods_input">
+<select name="user[aworka_attributes][anonymize_invoices_num_periods]" id="user_aworka_attributes_anonymize_invoices_num_periods"><option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option selected="selected" value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option></select>
+</li>
+<li class="select input optional" id="user_aworka_attributes_anonymize_invoices_period_unit_input">
+<select name="user[aworka_attributes][anonymize_invoices_period_unit]" id="user_aworka_attributes_anonymize_invoices_period_unit"><option value="w">Weeks</option>
+<option value="m">Months</option>
+<option selected="selected" value="y">Years</option></select>
+</li>
+</span>
+</ol></fieldset></div>
+
+<input autocomplete="off" type="hidden" value="6000" name="user[aworka_attributes][id]" id="user_aworka_attributes_id" /><div class='tab' id='api'>
+<h3>Aworka API</h3>
+<div id='api_application_settings'>
+<fieldset class="inline"><ol><li class="boolean input optional" id="api_application_enabled_input">
+<input type="hidden" name="api_application[enabled]" value="0" autocomplete="off" /><label for="api_application_enabled" class="">Enable API Access?</label><input type="checkbox" name="api_application[enabled]" id="api_application_enabled" value="1" checked="checked" data-href="/api_application" onchange="toggle_api_application(this);" />
+</li>
+</ol></fieldset><label for="api_client_id">Client ID</label>
+<div class='readonly_panel'>
+<span id='api_client_id_value'>[redacted]</span>
+</div>
+<a class="button small" title="Copy Client ID" onclick="return copy_text_from_element(&#39;api_client_id_value&#39;, this);" href="#">Copy</a>
+<br>
+<label for="api_client_secret">Client Secret</label>
+<div class='readonly_panel'>
+<span id='api_client_secret_hidden'>****************</span>
+<span id='api_client_secret_value' style='display:none'>[redacted]</span>
+</div>
+<a class="button small" onclick="$(&#39;#api_client_secret_hidden&#39;).hide(); $(&#39;#api_client_secret_value, #api_copy_secret_button, #api_new_secret_button&#39;).show(); $(this).hide(); return false;" href="#">Show Secret</a>
+<span id='api_copy_secret_button' style='display:none'>
+<a class="button small" title="Copy Client Secret" onclick="return copy_text_from_element(&#39;api_client_secret_value&#39;, this);" href="#">Copy</a>
+</span>
+<span id='api_new_secret_button' style='display:none'>
+<a class="button add small" data-confirm="Regenerate the API secret? Existing integrations using the old secret will stop working." data-remote="true" rel="nofollow" data-method="patch" href="/api_application/regenerate_secret">New Secret</a>
+</span>
+<br>
+<br>
+<label for="personal_access_tokens">Personal Access Tokens</label>
+<a data-href="/api/personal_access_tokens" class="button edit ajax-popup-link" data-no-reload="true" href="#">Manage Tokens</a>
+<br>
+<br>
+<label for="access_token">Documentation</label>
+<div class='readonly_panel'>https://aworka.app/api/doc</div>
+<a class="button small" href="/api/doc">View</a>
+</div>
+
+</div>
+
+<div class='tab'>
+<h3>Testimonial</h3>
+<li class="text input optional" id="user_aworka_attributes_testimonial_attributes_comments_input">
+<label for="user_aworka_attributes_testimonial_attributes_comments" class="label">Why do you like Aworka?</label><textarea cols="40" rows="7" id="user_aworka_attributes_testimonial_attributes_comments" spellcheck="true" name="user[aworka_attributes][testimonial_attributes][comments]">
+</textarea>
+</li>
+
+</div>
+
+<input autocomplete="off" type="hidden" value="11907" name="user[aworka_attributes][testimonial_attributes][id]" id="user_aworka_attributes_testimonial_attributes_id" /><input autocomplete="off" type="hidden" value="6000" name="user[aworka_attributes][id]" id="user_aworka_attributes_id" /><fieldset class="actions"><ol><input type="submit" name="commit" value="Save" class="button" data-disable-with="Save" />
+
+</ol></fieldset></form>
+<a class="button cancel" href="/back">Back</a>
+</div>
+<!-- #footer -->
+<!-- = yield :footer -->
+<!-- = powered_by_aworka if subdomain -->
+<!-- .contact_us -->
+<!-- = contact_link -->
+</body>
+</html>

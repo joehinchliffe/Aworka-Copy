@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>aworka</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='IE=8' http-equiv='X-UA-Compatible'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-f110508657df00bb46ba2e03b378516c2abafaa7525eb55fbac556c51f22dea0.ico" />
+<link rel="stylesheet" media="all" href="/assets/application-e022ef084b6db6d1dbaf25c3a99fe32073c37deb9622f458ad11be0f8a271463.css" data-turbolinks-track="reload" />
+<script>
+//<![CDATA[
+var decimal_sep = '.';
+var currency_symbol_first = true;
+var currency_symbol = '£';
+var current_user = 8065;
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/route_endpoints.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/prototype.js?1.7.1'></script>
+<script type='text/javascript' src='/javascripts/scriptaculous.js?1.9.0'></script>
+<script type='text/javascript' src='/javascripts/event.simulate.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/rails.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/application.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/popup.js?261019191430'></script>
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="Oy-9Fs893F6btJCYLYnxs1_lDDfNRM7k6D-q5Jn-WVyQp4-w0lHYLSeyWPp14EKvU7AmKYyF1gCz1qoWfV5JCw" />
+
+
+</head>
+<body>
+<div id='help' style='display:none'>
+<div id='help_page'>
+<div id='help_body'>
+</div>
+<a class="button close" id="close_help" href="#">Close</a>
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</div>
+</div>
+
+<div id='header'>
+<div id='logo'>
+<img alt="Aworka Logo" height="45" src="/assets/aworka_white-ba7c6d4d5e2b39983554ad0d8eec6a8a96efd150fdd1a2a2fd5e2fa24c352703.svg" />
+</div>
+<h1>Reach To Clean</h1>
+<div class='nav' id='nav'>
+<ul>
+<li><a href="/dashboard">Home</a></li>
+<li><a href="/day_plans">Planner</a></li>
+<li><a href="/job_specs">Jobs</a></li>
+<li><a href="/debts">Debts</a></li>
+<li><a href="/expenses">Expenses</a></li>
+<li><a href="/messages">Messages</a></li>
+<li><a href="/users">Users</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class='nav' id='subnav'>
+<ul>
+
+</ul>
+<div id='controls'>
+<span id='announcement_updates'>
+
+</span>
+<a class="button edit" href="/users/8065/edit">Settings</a>
+<a class="button cancel" rel="nofollow" data-method="delete" href="/user_session">Logout</a>
+<a data-controller="smtp_servers" data-action="edit" class="button help" id="help_button" href="#">Help</a>
+</div>
+</div>
+<div id='messages'>
+
+<div class="notice error flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice success flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice info flash_notice" style="display:none"><div><h2></h2></div></div>
+
+
+
+</div>
+<div id='content'>
+<h2>Edit SMTP Server Settings</h2>
+<form class="formtastic smtp_server" id="new_smtp_server" autocomplete="off" novalidate="novalidate" action="/smtp_server.html" accept-charset="UTF-8" data-remote="true" method="post"><li class="string input required stringish" id="smtp_server_address_input">
+<label for="smtp_server_address" class="label">SMTP Server</label><input size="30" id="smtp_server_address" type="text" name="smtp_server[address]" />
+</li>
+<li class="string input required stringish" id="smtp_server_port_input">
+<label for="smtp_server_port" class="label">Port</label><input size="4" id="smtp_server_port" type="text" value="587" name="smtp_server[port]" />
+</li>
+<li class="string input required stringish" id="smtp_server_user_name_input">
+<label for="smtp_server_user_name" class="label">User Name</label><input size="30" id="smtp_server_user_name" type="text" name="smtp_server[user_name]" />
+</li>
+<li class="password input required stringish" id="smtp_server_password_input">
+<label for="smtp_server_password" class="label">Password</label><input size="30" id="smtp_server_password" autocomplete="off" type="password" name="smtp_server[password]" />
+</li>
+<li class="select input optional" id="smtp_server_authentication_input">
+<label for="smtp_server_authentication" class="label">Authentication</label><select name="smtp_server[authentication]" id="smtp_server_authentication"><option selected="selected" value="plain">Plain</option>
+<option value="login">Login</option>
+<option value="cram_md5">CRAM-MD5</option></select>
+</li>
+<li class="boolean input optional" id="smtp_server_enable_starttls_auto_input">
+<input type="hidden" name="smtp_server[enable_starttls_auto]" value="0" autocomplete="off" /><label for="smtp_server_enable_starttls_auto" class="">Enable STARTTLS Auto?</label><input type="checkbox" name="smtp_server[enable_starttls_auto]" id="smtp_server_enable_starttls_auto" value="1" checked="checked" />
+</li>
+<fieldset class="inline"><ol><li class="string input optional stringish" id="smtp_server_min_time_between_sends_input">
+<label for="smtp_server_min_time_between_sends" class="label">Min time between sends</label><input size="3" id="smtp_server_min_time_between_sends" type="text" name="smtp_server[min_time_between_sends]" />
+</li>
+seconds.
+</ol></fieldset><fieldset class="actions"><ol><input type="submit" name="commit" value="Save" class="button" data-disable-with="Save" />
+<a class="button cancel" href="#">Cancel</a>
+</ol></fieldset></form><script>
+//<![CDATA[
+refresh_smtp();
+//]]>
+</script>
+
+<a class="button cancel" href="/back">Back</a>
+</div>
+<!-- #footer -->
+<!-- = yield :footer -->
+<!-- = powered_by_aworka if subdomain -->
+<!-- .contact_us -->
+<!-- = contact_link -->
+</body>
+</html>

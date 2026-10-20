@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>aworka</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='IE=8' http-equiv='X-UA-Compatible'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-f110508657df00bb46ba2e03b378516c2abafaa7525eb55fbac556c51f22dea0.ico" />
+<link rel="stylesheet" media="all" href="/assets/application-e022ef084b6db6d1dbaf25c3a99fe32073c37deb9622f458ad11be0f8a271463.css" data-turbolinks-track="reload" />
+<script>
+//<![CDATA[
+var decimal_sep = '.';
+var currency_symbol_first = true;
+var currency_symbol = '£';
+var current_user = 8065;
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/route_endpoints.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/prototype.js?1.7.1'></script>
+<script type='text/javascript' src='/javascripts/scriptaculous.js?1.9.0'></script>
+<script type='text/javascript' src='/javascripts/event.simulate.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/rails.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/application.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/popup.js?261019191430'></script>
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="4BVU3jr8XdECvxgtvHd4nnXaUyKUq1p9zveTXGs_T-VLnWZ4J5BZor650E_kHsuCeY95PNVqQpmVHpOuj59fsg" />
+
+
+</head>
+<body>
+<div id='help' style='display:none'>
+<div id='help_page'>
+<div id='help_body'>
+</div>
+<a class="button close" id="close_help" href="#">Close</a>
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</div>
+</div>
+
+<div id='header'>
+<div id='logo'>
+<img alt="Aworka Logo" height="45" src="/assets/aworka_white-ba7c6d4d5e2b39983554ad0d8eec6a8a96efd150fdd1a2a2fd5e2fa24c352703.svg" />
+</div>
+<h1>Reach To Clean</h1>
+<div class='nav' id='nav'>
+<ul>
+<li><a href="/dashboard">Home</a></li>
+<li><a href="/day_plans">Planner</a></li>
+<li><a href="/job_specs">Jobs</a></li>
+<li><a href="/debts">Debts</a></li>
+<li><a href="/expenses">Expenses</a></li>
+<li><a href="/messages">Messages</a></li>
+<li><a href="/users">Users</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class='nav' id='subnav'>
+<ul>
+
+</ul>
+<div id='controls'>
+<span id='announcement_updates'>
+
+</span>
+<a class="button edit" href="/users/8065/edit">Settings</a>
+<a class="button cancel" rel="nofollow" data-method="delete" href="/user_session">Logout</a>
+<a data-controller="sms_accounts" data-action="edit" class="button help" id="help_button" href="#">Help</a>
+</div>
+</div>
+<div id='messages'>
+
+<div class="notice error flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice success flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice info flash_notice" style="display:none"><div><h2></h2></div></div>
+
+
+
+</div>
+<div id='content'>
+<h2>Edit SMS Account Settings</h2>
+<form class="formtastic sms_account" id="new_sms_account" novalidate="novalidate" action="/sms_account.html" accept-charset="UTF-8" data-remote="true" method="post"><span id='sms_via'>
+<script id='providers' type='application/json'>{"Message::Account::TextGlobal":{"name":"Text Global","key":"API Key","sender_maxlength":16,"alphanumeric_sender_maxlength":11,"sender":"Sender","sender_help":"Enter a sender name (up to 11 characters) or phone number set up in your Text Global account.","secret":"","help":"Enter the API key from your Text Global account. Enable account-management:manage for the credit balance and numbers:manage for sender lookup. These lookups are optional.","sender_input":"list_or_field","signup_url":"https://www.textglobal.co.uk/aworka/","signup_help":"Aworka rate: 3.5p per UK message (160 characters)","connect_url":null,"connected":false,"connected_account_label":null},"Message::Account::WebexInteract":{"name":"Webex Interact","key":"Access Token","sender_maxlength":12,"alphanumeric_sender_maxlength":null,"sender":"Sender","sender_help":"Add and verify a sender in your Webex Interact account under Channel Setup → SMS.","secret":"","help":"To create an Access Token, go to the Developers tab in your Webex account and Create an API Project. You should see the token that you can copy and paste into field below.","sender_input":"list","signup_url":"https://app.webexinteract.com/signup","signup_help":"","connect_url":null,"connected":false,"connected_account_label":null},"Message::Account::Esendex":{"name":"Esendex","key":"API Key","sender_maxlength":20,"alphanumeric_sender_maxlength":11,"sender":"Sender","sender_help":"The sender shown to customers, for example your approved Sender ID, Esendex VMN, or short code.","secret":"Account Reference","help":"Create an API key in Esendex, then enter the API key, account reference, and sender.","sender_input":"field","signup_url":"https://www.esendex.co.uk/sign-up/","signup_help":"","connect_url":null,"connected":false,"connected_account_label":null},"Message::Account::HttpSms":{"name":"httpSMS","key":"API Key","sender_maxlength":16,"alphanumeric_sender_maxlength":null,"sender":"Registered Phone Number","sender_help":"The phone number registered in httpSMS.","secret":"","help":"Download and run the httpSMS Android app, using a Phone API Key to sign in to the app. Then enter the API Key from the httpSMS Settings page below (this is not the same as a Phone API Key).","sender_input":"field","signup_url":"https://httpsms.com/","signup_help":"","connect_url":null,"connected":false,"connected_account_label":null}}</script>
+<fieldset class="inline"><ol><li class="select input optional" id="sms_account_type_input">
+<label for="sms_account_type" class="label">Service Provider</label><select name="sms_account[type]" id="sms_account_type"><option selected="selected" value="Message::Account::TextGlobal">Text Global</option>
+<option value="Message::Account::WebexInteract">Webex Interact</option>
+<option value="Message::Account::Esendex">Esendex</option>
+<option value="Message::Account::HttpSms">httpSMS</option></select>
+</li>
+<a class="button small sms_account_signup" target="_blank" rel="noopener noreferrer" href="https://www.textglobal.co.uk/aworka/">Sign Up</a>
+<a class="button small sms_account_connect" style="display: none;" href="#">Connect</a>
+</ol></fieldset><p class='inline-hints sms_account_connected' style='display: none;'></p>
+<p class='inline-hints sms_account_signup_help' style=''>Aworka rate: 3.5p per UK message (160 characters)</p>
+<br>
+<p class='inline-hints sms_account_provider_help'>Enter the API key from your Text Global account. Enable account-management:manage for the credit balance and numbers:manage for sender lookup. These lookups are optional.</p>
+<li class="string input required stringish" id="sms_account_key_input">
+<label for="sms_account_key" class="label">Key</label><input size="30" id="sms_account_key" spellcheck="false" autocorrect="off" autocapitalize="off" type="text" name="sms_account[key]" />
+</li>
+<li class="string input optional stringish" id="sms_account_secret_input">
+<label for="sms_account_secret" class="label">Secret</label><input size="30" id="sms_account_secret" spellcheck="false" autocorrect="off" autocapitalize="off" type="text" name="sms_account[secret]" />
+</li>
+<li class="string input required stringish" id="sms_account_sender_input">
+<label for="sms_account_sender" class="label">Sender</label><input maxlength="16" size="20" id="sms_account_sender" type="text" value="Reach To Cl" name="sms_account[sender]" />
+<p class="inline-hints">Enter a sender name (up to 11 characters) or phone number set up in your Text Global account.</p></li>
+<li class="string input required stringish" id="sms_account_max_credits_per_message_input">
+<label for="sms_account_max_credits_per_message" class="label">Max Credits Per Message</label><input maxlength="1" size="3" id="sms_account_max_credits_per_message" type="text" value="1" name="sms_account[max_credits_per_message]" />
+<p class="inline-hints">1 credit is 160 characters</p></li>
+<fieldset class="actions"><ol><input type="submit" name="commit" value="Save" class="button" data-disable-with="Save" />
+<a class="button cancel" href="#">Cancel</a>
+</ol></fieldset></span>
+</form><script>
+//<![CDATA[
+refresh_sms();
+//]]>
+</script>
+
+<a class="button cancel" href="/back">Back</a>
+</div>
+<!-- #footer -->
+<!-- = yield :footer -->
+<!-- = powered_by_aworka if subdomain -->
+<!-- .contact_us -->
+<!-- = contact_link -->
+</body>
+</html>

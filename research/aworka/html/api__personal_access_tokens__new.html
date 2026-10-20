@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>aworka</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='IE=8' http-equiv='X-UA-Compatible'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-f110508657df00bb46ba2e03b378516c2abafaa7525eb55fbac556c51f22dea0.ico" />
+<link rel="stylesheet" media="all" href="/assets/application-e022ef084b6db6d1dbaf25c3a99fe32073c37deb9622f458ad11be0f8a271463.css" data-turbolinks-track="reload" />
+<script>
+//<![CDATA[
+var decimal_sep = '.';
+var currency_symbol_first = true;
+var currency_symbol = '£';
+var current_user = 8065;
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/route_endpoints.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.min.js?1.9.1'></script>
+<script type='text/javascript' src='/javascripts/jquery-ui.min.js?1.10.1'></script>
+<script type='text/javascript' src='/javascripts/jquery_ujs.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.loadmask.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.ui.touch-punch-improved.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.placeholder.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.autosize.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.magnific-popup.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.cookie.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jstz.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/underscore-min.js?1.8.3'></script>
+<script type='text/javascript' src='/javascripts/jquery.application.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/address_autocomplete.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/announcement_reads.js?261019191430'></script>
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="dwy3Ws_jQW3NlVmD5SyRpcwSnNJyPupOXZgTVNo9nQrchIX80o9FHnGTkeG9RSK5wEe2zDP_8qoGcROmPp2NXQ" />
+
+
+</head>
+<body>
+<div id='help' style='display:none'>
+<div id='help_page'>
+<div id='help_body'>
+</div>
+<a class="button close" id="close_help" href="#">Close</a>
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</div>
+</div>
+
+<div id='header'>
+<div id='logo'>
+<img alt="Aworka Logo" height="45" src="/assets/aworka_white-ba7c6d4d5e2b39983554ad0d8eec6a8a96efd150fdd1a2a2fd5e2fa24c352703.svg" />
+</div>
+<h1>Reach To Clean</h1>
+<div class='nav' id='nav'>
+<ul>
+<li><a href="/dashboard">Home</a></li>
+<li><a href="/day_plans">Planner</a></li>
+<li><a href="/job_specs">Jobs</a></li>
+<li><a href="/debts">Debts</a></li>
+<li><a href="/expenses">Expenses</a></li>
+<li><a href="/messages">Messages</a></li>
+<li><a href="/users">Users</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class='nav' id='subnav'>
+<ul>
+
+</ul>
+<div id='controls'>
+<span id='announcement_updates'>
+
+</span>
+<a class="button edit" href="/users/8065/edit">Settings</a>
+<a class="button cancel" rel="nofollow" data-method="delete" href="/user_session">Logout</a>
+<a data-controller="personal_access_tokens" data-action="new" class="button help" id="help_button" href="#">Help</a>
+</div>
+</div>
+<div id='messages'>
+
+<div class="notice error flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice success flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice info flash_notice" style="display:none"><div><h2></h2></div></div>
+
+
+
+</div>
+<div id='content'>
+<h2>New Personal Access Tokens</h2>
+<form class="ajax-popup-form formtastic api_personal_access_token" id="new_api_personal_access_token" autocomplete="off" data-success-callback="refresh_api_application_settings" novalidate="novalidate" action="/api/personal_access_tokens" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="T2i-2Vfg_K68UbQZeIpkdPbDPTMXuyq389iWAIRlET90-vu11MRfbEEeS27-QTv9IzobYKj5fyA7eV-dCQCXQw" autocomplete="off" /><li class="string input required stringish" id="api_personal_access_token_token_label_input">
+<label for="api_personal_access_token_token_label" class="label">Reference</label><input size="30" id="api_personal_access_token_token_label" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" type="text" name="api_personal_access_token[token_label]" />
+<p class="inline-hints">For example: ChatGPT June 2026, Zapier import, reporting script.</p></li>
+<li class="hidden input required" id="api_personal_access_token_user_id_input">
+<input id="api_personal_access_token_user_id" autocomplete="off" type="hidden" value="8065" name="api_personal_access_token[user_id]" />
+</li>
+<fieldset class="actions"><ol><input type="submit" name="commit" value="Create Token" class="button" data-disable-with="Create Token" />
+<a class="button cancel" href="#">Cancel</a>
+</ol></fieldset></form>
+<a class="button cancel" href="/back">Back</a>
+</div>
+<!-- #footer -->
+<!-- = yield :footer -->
+<!-- = powered_by_aworka if subdomain -->
+<!-- .contact_us -->
+<!-- = contact_link -->
+</body>
+</html>

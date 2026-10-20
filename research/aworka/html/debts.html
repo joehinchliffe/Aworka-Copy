@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>aworka</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='IE=8' http-equiv='X-UA-Compatible'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-f110508657df00bb46ba2e03b378516c2abafaa7525eb55fbac556c51f22dea0.ico" />
+<link rel="stylesheet" media="all" href="/assets/application-e022ef084b6db6d1dbaf25c3a99fe32073c37deb9622f458ad11be0f8a271463.css" data-turbolinks-track="reload" />
+<script>
+//<![CDATA[
+var decimal_sep = '.';
+var currency_symbol_first = true;
+var currency_symbol = '£';
+var current_user = 8065;
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/route_endpoints.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/prototype.js?1.7.1'></script>
+<script type='text/javascript' src='/javascripts/scriptaculous.js?1.9.0'></script>
+<script type='text/javascript' src='/javascripts/event.simulate.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/rails.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/application.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/popup.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/activity2.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/payment.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/adjust_balance.js?261019191430'></script>
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="xbXLbgmlOLDLAaiGXMR9rofUVrE3h67mt90hupD-2oduPfnIFMk8w3cHYOQErc6yi4F8r3ZGtgLsNCFIdF7K0A" />
+
+
+</head>
+<body>
+<div id='help' style='display:none'>
+<div id='help_page'>
+<div id='help_body'>
+</div>
+<a class="button close" id="close_help" href="#">Close</a>
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</div>
+</div>
+
+<div id='header'>
+<div id='logo'>
+<img alt="Aworka Logo" height="45" src="/assets/aworka_white-ba7c6d4d5e2b39983554ad0d8eec6a8a96efd150fdd1a2a2fd5e2fa24c352703.svg" />
+</div>
+<h1>Reach To Clean</h1>
+<div class='nav' id='nav'>
+<ul>
+<li><a href="/dashboard">Home</a></li>
+<li><a href="/day_plans">Planner</a></li>
+<li><a href="/job_specs">Jobs</a></li>
+<li class="current"><a href="/debts">Debts</a></li>
+<li><a href="/expenses">Expenses</a></li>
+<li><a href="/messages">Messages</a></li>
+<li><a href="/users">Users</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class='nav' id='subnav'>
+<ul>
+<li class="current"><a href="/debts">Current Debts</a></li>
+<li><a href="/aged_debts">Aged Debts</a></li>
+
+</ul>
+<div id='controls'>
+<span id='announcement_updates'>
+
+</span>
+<a class="button edit" href="/users/8065/edit">Settings</a>
+<a class="button cancel" rel="nofollow" data-method="delete" href="/user_session">Logout</a>
+<a data-controller="debts" data-action="index" class="button help" id="help_button" href="#">Help</a>
+</div>
+</div>
+<div id='messages'>
+
+<div class="notice error flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice success flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice info flash_notice" style="display:none"><div><h2></h2></div></div>
+
+
+
+</div>
+<div id='content'>
+<div id='button_bar'>
+
+<!-- - no_debts = (@num_debts ? @num_debts : @customers.total_entries).zero? -->
+<!-- - unless @customers.total_entries.zero? #no_debts -->
+
+<form novalidate="novalidate" class="formtastic issue_statements" action="/multiple_statements" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="DpvwJbgksD-5cX-Vpq7YgVSv0cmWzE6zCKD0fW4k8L3cWT4l84MVTL9PbFBN6LY8hWVZcNprrjRWb00u-QDwBA" autocomplete="off" /><li class="hidden input required" id="issue_statements_customer_ids_input">
+<input id="issue_statements_customer_ids" value="[]" autocomplete="off" type="hidden" name="issue_statements[customer_ids]" />
+</li>
+<input type="submit" name="commit" value="Issue Statements..." class="button small" id="issue_statements" data-disable-with="Issue Statements..." />
+</form></div>
+<div id='filter_bar'>
+<form autocomplete="off" id="filter_form" action="/debts/filter" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="M3gZbuY-Z42b-TpXY0bwNkvbj-LkSRAgfUppS3sLWGzklVKF1Au7dfQSyqUlM9lbtyPt_4XRpjcb92Pdtn5wug" autocomplete="off" />Show
+
+<select name="filter[category]" id="filter_category"><option selected="selected" value="any-method">All</option>
+<option value="on_day">On Day</option>
+<option value="card">Card</option>
+<option value="collection">Collection</option>
+<option value="by_post">By Post</option>
+<option value="online">Online</option>
+<option value="direct_to_bank">Direct To Bank</option>
+<option value="email_invoice">Email Invoice</option>
+<option value="paper_invoice">Paper Invoice</option>
+<option value="direct_debit">Direct Debit</option></select>
+
+<select name="filter[subcategory]" id="filter_subcategory"><option selected="selected" value="debts-and-credits">Debts &amp; Credits</option>
+<option value="debts">Debts</option>
+<option value="credits">Credits</option>
+<option value="invoiced-debts">Invoiced Debts</option>
+<option value="active-customer-debts">Active Customer Debts</option>
+<option value="zero-balances">Zero Balances</option></select>
+<span class='sort_order'>
+by
+<select name="filter[sort_order]" id="filter_sort_order"><option selected="selected" value="debt-since">Debt Since</option>
+<option value="balance">Balance</option>
+<option value="round-order">Round Order</option></select>
+</span>
+<span class='containing'>
+containing
+<input size="15" input_html="value " type="text" name="filter[containing]" id="filter_containing" />
+</span>
+<span class='round'>
+in
+<select name="filter[round]" id="filter_round"><option selected="selected" value="all-rounds">All Rounds</option>
+<option value="my-rounds">All Joe Hinchliffe Rounds</option>
+<option value=""></option></select>
+<input value="all-days" autocomplete="off" type="hidden" name="filter[round_day]" id="filter_round_day" />
+</span>
+<!-- = link_to 'More filters...', '#', :class => 'button small', :id => 'more_filters_button' if more_filters -->
+<input type="submit" name="commit" value="Refresh" class="button small" data-disable-with="Refresh" />
+<a class="button cancel" href="/debts/reset_filter">Reset</a>
+</form><script>
+//<![CDATA[
+var default_date = {
+day_ending:  [2026, 10, 20],
+week_ending:  [2026, 10, 24],
+month_ending: [2026, 10, 31],
+year_ending:  [2027, 4, 5],
+day_starting:  [2026, 10, 20],
+week_starting:  [2026, 10, 18],
+month_starting: [2026, 10, 1],
+year_starting:  [2026, 4, 6]
+};
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/filter.js?261019191430'></script>
+
+</div>
+<div class='autosize_table' style='visibility:hidden'>
+<table>
+<thead>
+<tr>
+<th>&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+<tfoot>
+<tr class='totals'>
+<td>&nbsp;</td>
+</tr>
+</tfoot>
+</table>
+<div class='under_table'>
+<div class='pagination'>
+<span class='previous_page disabled'>← Previous</span>
+<em class='current'>1</em>
+<a class='disabled' href='#'>2</a>
+<a class='disabled' href='#'>3</a>
+<a class='disabled' href='#'>4</a>
+<a class='disabled' href='#'>5</a>
+<a class='disabled' href='#'>6</a>
+<a class='disabled' href='#'>7</a>
+<a class='disabled' href='#'>8</a>
+<a class='disabled' href='#'>9</a>
+<span class='gap'>...</span>
+<a class='disabled' href='#'>&nbsp;</a>
+<a class='disabled' href='#'>&nbsp;</a>
+<a class='next_page disabled' href='#'>Next →</a>
+</div>
+</div>
+</div>
+
+
+
+</div>
+<!-- #footer -->
+<!-- = yield :footer -->
+<!-- = powered_by_aworka if subdomain -->
+<!-- .contact_us -->
+<!-- = contact_link -->
+</body>
+</html>

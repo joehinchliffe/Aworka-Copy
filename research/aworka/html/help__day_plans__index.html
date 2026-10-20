@@ -1,0 +1,333 @@
+<h1>Planner</h1>
+<p id='overview'>Plan the jobs for each day and record the payments for jobs you have done.</p>
+<div id='tasks'>
+<div class='task'>
+<h2>How do I add jobs done or to be done on a particular date?</h2>
+<ol>
+<li>Move the mouse into the date on the Planner that you wish to add jobs.</li>
+<li>
+Click
+<img alt='green plus icon' src='/images/plus.png'>
+</li>
+<li>
+A popup will appear showing a list of the jobs allowed on the date (if any), with the most overdue jobs at the top of the list.
+<br>
+Due and late jobs look like:
+<a class='job spec' style='background-color: rgb(232,57,52); color:white'>
+<span>Very Overdue</span>
+</a>
+<a class='job spec' style='background-color: rgb(243,155,97); color:white'>
+<span>Overdue</span>
+</a>
+<a class='job spec' style=''>
+<span>Due</span>
+</a>
+or
+<a class='job to_do'>
+<span>Not Due</span>
+</a>
+</li>
+<li>To plan work from a particular round, select from the popup menu at the bottom.</li>
+<li>
+Click jobs in the list to add them to the selected date.
+<br>
+On the planner, they will look like:
+<a class='job to_do'>
+<span>To Do Job</span>
+</a>
+or
+<a class='job to_do not_confirmed'>
+<span>Not Confirmed Job</span>
+</a>
+or
+<a class='job not_done'>
+<span>Not Done Job</span>
+</a>
+(if added to a date more than a week ago)
+</li>
+<li>
+You can also drag jobs from the list to any other date. If the popup is in the way, you can move it by dragging its title bar.
+</li>
+<li>
+To quickly find a specific job, start typing part of the job address or reference into the field at the bottom of the popup. As you type, the list will reduce to those jobs containing the text you have typed. You don't have to type the full job name and you don't have to start from the beginning of the name.
+</li>
+<li>You can also reduce the list to show only jobs from a particular round by selecting from the popup menu at the bottom.</li>
+<li>For jobs added that are already done, click them on the Planner to mark as done and edit payment details.</li>
+</ol>
+</div>
+<div class='task'>
+<h2>How do I confirm an appointment?</h2>
+<li>
+Jobs requiring an appointment, or prior arrangement with the customer look like
+<a class='job to_do not_confirmed'>
+<span>Not Confirmed Job</span>
+</a>
+</li>
+<li>
+To confirm the appointment, click the job, then click
+<strong>Confirmed</strong>
+<input type='checkbox'>
+to change the job to a
+<a class='job to_do confirmed'>
+<span>Confirmed Job</span>
+</a>
+and click
+<a class='button small'>Save</a>
+</li>
+</div>
+<div class='task'>
+<h2>How do I add a new job for a existing customer?</h2>
+<ol>
+<li>
+Go to the
+<a href="/job_specs">Jobs &amp; Customers</a>
+page.
+</li>
+<li>
+Find and click the existing customer's name in the
+<strong>Customer</strong>
+column to view the customer's details.
+</li>
+<li>
+Click
+<a class='button add small'>New Job</a>
+to enter new job details.
+</li>
+<li>
+Set the
+<strong>Start Date</strong>
+of the job and click
+<strong>Add to Planner?</strong>
+<input type='checkbox'>
+</li>
+<li>
+Click
+<a class='button small'>Save</a>
+to create the new job, and add it to the planner.
+</li>
+</ol>
+</div>
+<div class='task'>
+<h2>How do I add a new job for a new customer?</h2>
+<ol>
+<li>Move the mouse into the date.</li>
+<li>
+Click
+<img alt='green plus icon' src='/images/plus.png'>
+</li>
+<li>
+Click
+<a class='button add small'>New Customer</a>
+and enter the details of the new customer and job.
+</li>
+<li>
+The
+<strong>Start Date</strong>
+will already be set, along with
+<strong>Add to Planner?</strong>
+<input checked='checked' type='checkbox'>
+</li>
+<li>
+Click
+<a class='button small'>Save</a>
+to create the new customer and job, and add the job to the planner.
+</li>
+</ol>
+</div>
+<div class='task'>
+<h2>How do I mark a job as done and enter payment details?</h2>
+<ol>
+<li>
+Click a
+<a class='job to_do'>
+<span>To Do Job</span>
+</a>
+on the planner.
+</li>
+<li>
+In the popup, ensure the
+<strong>Status</strong>
+is set to
+<select>
+<option>Done</option>
+</select>
+</li>
+<li>
+Check and edit the amount
+<strong>Paid</strong>
+or leave blank if the customer didn't pay.
+</li>
+<li>
+For tips, enter the total including tip into the
+<strong>Paid</strong>
+field, click
+<strong>inc Tip?</strong>
+<input type='checkbox'>
+then check and edit the
+<strong>Tip</strong>
+amount.
+</li>
+<li>
+If the job wasn't done, change the status to
+<select>
+<option>Not Done</option>
+</select>
+</li>
+<li>
+Click
+<a class='button small'>Save</a>
+<br>
+The job will change to look like:
+<a class='job done'>
+<span>Done Job</span>
+</a>
+or
+<a class='job done paid'>
+<span>Paid Job</span>
+</a>
+or
+<a class='job not_done'>
+<span>Not Done Job</span>
+</a>
+</li>
+<li>
+The popup for the next
+<a class='job to_do'>
+<span>To Do Job</span>
+</a>
+will be opened ready for editing.
+</li>
+<li>
+After a week, pending
+<a class='job to_do'>
+<span>To Do Jobs</span>
+</a>
+will be automatically marked
+<a class='job not_done'>
+<span>Not Done</span>
+</a>
+</li>
+</ol>
+</div>
+<div class='task'>
+<h2>How do I edit price or job details?</h2>
+<ol>
+<li>Click the job on the planner</li>
+<li>
+In the popup, edit the
+<strong>Price</strong>
+perhaps to cover some extra work. You might also want to change the
+<strong>Time required</strong>
+for the job.
+</li>
+<li>
+Add
+<strong>Notes</strong>
+if required, perhaps to explain why the price/time has been changed.
+</li>
+<li>
+To keep the new price for future jobs, click
+<strong>Permanent?</strong>
+<input type='checkbox'>
+</li>
+<li>
+Click
+<a class='button small'>Save</a>
+</li>
+<li>
+To view or edit any other details of the customer or job, click the
+<a>Customer Name</a>
+or
+<a>Job Name</a>
+at the top of the popup.
+</li>
+</ol>
+</div>
+<div class='task'>
+<h2>How do I move and remove jobs from the planner?</h2>
+<ul>
+<li>Drag a job from one date to another to move it to a different day</li>
+<li>
+Move the mouse into a date and click
+<img alt='nudge icon' src='/images/nudge.png'>
+to nudge each
+<a class='job to_do'>
+<span>To Do Job</span>
+</a>
+and
+<a class='job not_done'>
+<span>Not Done Job</span>
+</a>
+forward to its next allowable date.
+</li>
+<li>
+If you move a job to a day of the week it isn't normally allowed, it will change to look like
+<a class='job to_do not_allowed'>
+<span>Not Allowed</span>
+</a>
+You can still do the job on the chosen date if you wish: this is to alert you that you may need to contact the customer to confirm.
+</li>
+<li>
+Move the mouse into a date and click
+<img alt='trash can icon' src='/images/trash.png'>
+to clear all jobs on the date.
+</li>
+<li>
+Drag a job to the
+<img alt='trash can icon' src='/images/trash.png'>
+to delete it, or click the job then
+<a class='button cancel'>Delete</a>
+in the popup.
+</li>
+</ul>
+</div>
+<div class='task'>
+<h2>How do I print a job sheet for work on a particular date?</h2>
+<ol>
+<li>Move the mouse into the date</li>
+<li>
+Click the
+<img alt='printer icon' src='/images/printer.png'>
+that will appear in the top right corner to the left of the other icons
+</li>
+<li>The print sheet will appear on the screen ready for printing.</li>
+</ol>
+</div>
+<div class='task'>
+<h2>How do I view other dates on the planner?</h2>
+<ul>
+<li>
+Click
+<a class='up_button'></a>
+to show the previous week.
+</li>
+<li>
+Click
+<a class='down_button'></a>
+to show the next week.
+</li>
+<li>
+Click
+<a class='left_button'></a>
+to show previous month.
+</li>
+<li>
+Click
+<a class='right_button'></a>
+to show next month.
+</li>
+<li>
+Choose from the month popup menu between previous and next month buttons to jump to a month
+up to one year past or future.
+</li>
+<li>
+To show just this week, last week and next week, either choose
+<select>
+<option>Near Today</option>
+</select>
+or click
+<a class='button cancel'>Today</a>
+</li>
+</ul>
+</div>
+</div>

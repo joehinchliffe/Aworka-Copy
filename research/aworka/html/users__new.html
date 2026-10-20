@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>aworka</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='IE=8' http-equiv='X-UA-Compatible'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-f110508657df00bb46ba2e03b378516c2abafaa7525eb55fbac556c51f22dea0.ico" />
+<link rel="stylesheet" media="all" href="/assets/application-e022ef084b6db6d1dbaf25c3a99fe32073c37deb9622f458ad11be0f8a271463.css" data-turbolinks-track="reload" />
+<script>
+//<![CDATA[
+var decimal_sep = '.';
+var currency_symbol_first = true;
+var currency_symbol = '£';
+var current_user = 8065;
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/route_endpoints.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.min.js?1.9.1'></script>
+<script type='text/javascript' src='/javascripts/jquery-ui.min.js?1.10.1'></script>
+<script type='text/javascript' src='/javascripts/jquery_ujs.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.loadmask.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.ui.touch-punch-improved.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.placeholder.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.autosize.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.magnific-popup.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.cookie.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jstz.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/underscore-min.js?1.8.3'></script>
+<script type='text/javascript' src='/javascripts/jquery.application.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/address_autocomplete.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/announcement_reads.js?261019191430'></script>
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="D8VweGw4Rg-q3nAFtZgmPXfya51tw31vdgMCIwHjCyykTULecVRCfBbYuGft8ZUhe6dBgywCZYst6gLR5UMbew" />
+
+
+</head>
+<body>
+<div id='help' style='display:none'>
+<div id='help_page'>
+<div id='help_body'>
+</div>
+<a class="button close" id="close_help" href="#">Close</a>
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</div>
+</div>
+
+<div id='header'>
+<div id='logo'>
+<img alt="Aworka Logo" height="45" src="/assets/aworka_white-ba7c6d4d5e2b39983554ad0d8eec6a8a96efd150fdd1a2a2fd5e2fa24c352703.svg" />
+</div>
+<h1>Reach To Clean</h1>
+<div class='nav' id='nav'>
+<ul>
+<li><a href="/dashboard">Home</a></li>
+<li><a href="/day_plans">Planner</a></li>
+<li><a href="/job_specs">Jobs</a></li>
+<li><a href="/debts">Debts</a></li>
+<li><a href="/expenses">Expenses</a></li>
+<li><a href="/messages">Messages</a></li>
+<li class="current"><a href="/users">Users</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class='nav' id='subnav'>
+<ul>
+<li class="current"><a href="/users">Users</a></li>
+<li><a href="/round_assignments">Round Assignments</a></li>
+<li><a href="/role_infos">Roles</a></li>
+<li id="announcements_nav"><a href="/announcements">Announcements</a></li>
+
+</ul>
+<div id='controls'>
+<span id='announcement_updates'>
+
+</span>
+<a class="button edit" href="/users/8065/edit">Settings</a>
+<a class="button cancel" rel="nofollow" data-method="delete" href="/user_session">Logout</a>
+<a data-controller="users" data-action="new" class="button help" id="help_button" href="#">Help</a>
+</div>
+</div>
+<div id='messages'>
+
+<div class="notice error flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice success flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice info flash_notice" style="display:none"><div><h2></h2></div></div>
+
+
+
+</div>
+<div id='content'>
+<h3>New User</h3>
+<div class='notice info'>
+<div>
+<h2>Your subscription price will increase if you add a user</h2>
+</div>
+</div>
+
+<form class="formtastic user" id="new_user" novalidate="novalidate" action="/users" accept-charset="UTF-8" data-remote="true" method="post"><li class="hidden input optional" id="user_saving_settings_input">
+<input id="user_saving_settings" value="true" autocomplete="off" type="hidden" name="user[saving_settings]" />
+</li>
+<li class="email input required stringish" id="user_email_input">
+<label for="user_email" class="label">Email</label><input size="30" id="user_email" type="email" name="user[email]" />
+</li>
+<li class="password input required stringish" id="user_password_input">
+<label for="user_password" class="label">Password</label><input size="30" id="user_password" autocomplete="new-password" type="password" name="user[password]" />
+</li>
+<li class="password input optional stringish" id="user_password_confirmation_input">
+<label for="user_password_confirmation" class="label">Confirm Password</label><input size="30" id="user_password_confirmation" autocomplete="new-password" type="password" name="user[password_confirmation]" />
+</li>
+<li class="string input optional stringish" id="user_contact_attributes_name_input">
+<label for="user_contact_attributes_name" class="label">User Name</label><input size="30" id="user_contact_attributes_name" type="text" name="user[contact_attributes][name]" />
+</li>
+<div class='address_fields'>
+<li class="address_autocomplete input optional stringish address_autocomplete_input" id="user_contact_attributes_address_search_input">
+<div class="address_autocomplete_control"><div class="address_autocomplete_pill"><label for="user_contact_attributes_address_search" class="label">Find Address</label><input type="text" id="user_contact_attributes_address_search" placeholder="Start typing an address or postcode" size="30" class="address_autocomplete" autocomplete="off" aria-describedby="user_contact_attributes_address_search_status" data-search-url="/contacts/address_search" data-retrieve-url="/contacts/address_retrieve" /></div></div><p class="ui-helper-hidden-accessible address_autocomplete_status" id="user_contact_attributes_address_search_status" role="status" aria-live="polite"></p>
+</li>
+
+<li class="string input optional stringish" id="user_contact_attributes_company_input">
+<label for="user_contact_attributes_company" class="label">Business Name</label><input placeholder="Reach To Clean" size="30" id="user_contact_attributes_company" type="text" name="user[contact_attributes][company]" />
+</li>
+<li class="text input optional" id="user_contact_attributes_multiline_address_input">
+<label for="user_contact_attributes_multiline_address" class="label">Address</label><textarea cols="40" rows="2" id="user_contact_attributes_multiline_address" class="address_textarea" name="user[contact_attributes][multiline_address]">
+</textarea>
+</li>
+<li class="hidden input optional" id="user_contact_attributes_lat_input">
+<input id="user_contact_attributes_lat" autocomplete="off" type="hidden" name="user[contact_attributes][lat]" />
+</li>
+<li class="hidden input optional" id="user_contact_attributes_lng_input">
+<input id="user_contact_attributes_lng" autocomplete="off" type="hidden" name="user[contact_attributes][lng]" />
+</li>
+<li class="hidden input optional" id="user_contact_attributes_lat_lng_source_input">
+<input id="user_contact_attributes_lat_lng_source" autocomplete="off" type="hidden" name="user[contact_attributes][lat_lng_source]" />
+</li>
+<li class="hidden input optional" id="user_contact_attributes_selected_geocoding_id_input">
+<input id="user_contact_attributes_selected_geocoding_id" autocomplete="off" type="hidden" name="user[contact_attributes][selected_geocoding_id]" />
+</li>
+</div>
+<li class="phone input optional stringish" id="user_contact_attributes_phone1_input">
+<label for="user_contact_attributes_phone1" class="label">Phone Number</label><input size="30" id="user_contact_attributes_phone1" type="tel" name="user[contact_attributes][phone1]" />
+</li>
+<li class="select input optional" id="user_role_info_input">
+<label for="user_role_info_id" class="label">Role</label><select name="user[role_info_id]" id="user_role_info_id"><option value="1451">Franchisee</option>
+<option value="1452">Employee</option></select>
+</li>
+<li class="select input optional" id="user_employer_id_input">
+<label for="user_employer_id" class="label">Manager</label><select name="user[employer_id]" id="user_employer_id"><option value="">Self Managed</option>
+<option value="8065">Joe Hinchliffe</option></select>
+</li>
+<li class="boolean input optional" id="user_email_login_details_input">
+<input type="hidden" name="user[email_login_details]" value="0" autocomplete="off" /><label for="user_email_login_details" class="">Email Login Details?</label><input type="checkbox" name="user[email_login_details]" id="user_email_login_details" value="1" checked="checked" />
+</li>
+<fieldset class="actions"><ol><input type="submit" name="commit" value="Save" class="button" data-disable-with="Save" />
+<a class="button cancel" href="/back">Cancel</a>
+</ol></fieldset><script type='text/javascript' src='/javascripts/jquery.edit_contact.js?261019191430'></script>
+</form>
+<a class="button cancel" href="/back">Back</a>
+</div>
+<!-- #footer -->
+<!-- = yield :footer -->
+<!-- = powered_by_aworka if subdomain -->
+<!-- .contact_us -->
+<!-- = contact_link -->
+</body>
+</html>

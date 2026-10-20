@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>aworka</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='IE=8' http-equiv='X-UA-Compatible'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-f110508657df00bb46ba2e03b378516c2abafaa7525eb55fbac556c51f22dea0.ico" />
+<link rel="stylesheet" media="all" href="/assets/application-e022ef084b6db6d1dbaf25c3a99fe32073c37deb9622f458ad11be0f8a271463.css" data-turbolinks-track="reload" />
+<script>
+//<![CDATA[
+var decimal_sep = '.';
+var currency_symbol_first = true;
+var currency_symbol = '£';
+var current_user = 8065;
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/route_endpoints.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/prototype.js?1.7.1'></script>
+<script type='text/javascript' src='/javascripts/scriptaculous.js?1.9.0'></script>
+<script type='text/javascript' src='/javascripts/event.simulate.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/rails.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/application.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/popup.js?261019191430'></script>
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="UmHMhcl6aMqxe0GYXDxbV742TybFlJcPMVX-L3u0sbH56f4j1BZsuQ19ifoEVehLsmNlOIRVj-tqvP7dnxSh5g" />
+
+
+</head>
+<body>
+<div id='help' style='display:none'>
+<div id='help_page'>
+<div id='help_body'>
+</div>
+<a class="button close" id="close_help" href="#">Close</a>
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</div>
+</div>
+
+<div id='header'>
+<div id='logo'>
+<img alt="Aworka Logo" height="45" src="/assets/aworka_white-ba7c6d4d5e2b39983554ad0d8eec6a8a96efd150fdd1a2a2fd5e2fa24c352703.svg" />
+</div>
+<h1>Reach To Clean</h1>
+<div class='nav' id='nav'>
+<ul>
+<li><a href="/dashboard">Home</a></li>
+<li><a href="/day_plans">Planner</a></li>
+<li><a href="/job_specs">Jobs</a></li>
+<li><a href="/debts">Debts</a></li>
+<li><a href="/expenses">Expenses</a></li>
+<li><a href="/messages">Messages</a></li>
+<li><a href="/users">Users</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class='nav' id='subnav'>
+<ul>
+
+</ul>
+<div id='controls'>
+<span id='announcement_updates'>
+
+</span>
+<a class="button edit" href="/users/8065/edit">Settings</a>
+<a class="button cancel" rel="nofollow" data-method="delete" href="/user_session">Logout</a>
+<a data-controller="sales_tax_registrations" data-action="new" class="button help" id="help_button" href="#">Help</a>
+</div>
+</div>
+<div id='messages'>
+
+<div class="notice error flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice success flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice info flash_notice" style="display:none"><div><h2></h2></div></div>
+
+
+
+</div>
+<div id='content'>
+<h3>New VAT Registration</h3>
+<form class="formtastic sales_tax_registration" id="new_sales_tax_registration" novalidate="novalidate" action="/sales_tax_registrations" accept-charset="UTF-8" data-remote="true" method="post"><fieldset class="inline"><ol><li class="date_picker input optional stringish" id="sales_tax_registration_start_date_input">
+<label for="sales_tax_registration_start_date" class="label">From</label><input data-typed-in-year-range="1980:2028" data-year-range="2016:2028" data-first-day="0" maxlength="10" size="10" id="sales_tax_registration_start_date" type="datepicker" step="1" value="1 Oct 2026" name="sales_tax_registration[start_date]" />
+</li>
+<li class="date_picker input optional stringish" id="sales_tax_registration_end_date_input">
+<label for="sales_tax_registration_end_date" class="label">To</label><input data-typed-in-year-range="1980:2028" data-year-range="2016:2028" data-first-day="0" placeholder="Present" maxlength="10" size="10" id="sales_tax_registration_end_date" type="datepicker" step="1" name="sales_tax_registration[end_date]" />
+</li>
+</ol></fieldset><fieldset class="inline"><ol><li class="select input optional" id="sales_tax_registration_return_period_input">
+<label for="sales_tax_registration_return_period" class="label">Return Period</label><select name="sales_tax_registration[return_period]" id="sales_tax_registration_return_period"><option value="1">Monthly</option>
+<option value="2">Bimonthly</option>
+<option selected="selected" value="3">Quarterly</option>
+<option value="12">Annually</option></select>
+</li>
+<li class="select input optional" id="sales_tax_registration_return_start_month_input">
+<label for="sales_tax_registration_return_start_month" class="label">starting</label><select name="sales_tax_registration[return_start_month]" id="sales_tax_registration_return_start_month"><option value="1">Jan</option>
+<option value="2">Feb</option>
+<option value="3">Mar</option>
+<option value="4">Apr</option>
+<option value="5">May</option>
+<option value="6">Jun</option>
+<option selected="selected" value="7">Jul</option>
+<option value="8">Aug</option>
+<option value="9">Sep</option>
+<option value="10">Oct</option>
+<option value="11">Nov</option>
+<option value="12">Dec</option></select>
+</li>
+</ol></fieldset><li class="string input required stringish" id="sales_tax_registration_reg_no_input">
+<label for="sales_tax_registration_reg_no" class="label">VAT Reg No</label><input size="30" id="sales_tax_registration_reg_no" type="text" name="sales_tax_registration[reg_no]" />
+</li>
+<li class="string input required stringish" id="sales_tax_registration_rate_input">
+<label for="sales_tax_registration_rate" class="label">Rate</label><input size="7" id="sales_tax_registration_rate" value="20%" class="percentage" type="text" name="sales_tax_registration[rate]" />
+</li>
+<fieldset class="inline"><ol><li class="select input optional" id="sales_tax_registration_type_input">
+<label for="sales_tax_registration_type" class="label">Scheme</label><select name="sales_tax_registration[type]" id="sales_tax_registration_type"><option data-scheme="standard" selected="selected" value="SalesTaxRegistration::Standard">Standard</option>
+<option data-scheme="cash_accounting" value="SalesTaxRegistration::CashAccounting">Cash Accounting</option>
+<option data-scheme="flat_rate_basic" value="SalesTaxRegistration::FlatRateBasic">Flat Rate (basic turnover)</option>
+<option data-scheme="flat_rate_cash" value="SalesTaxRegistration::FlatRateCash">Flat Rate (cash based turnover)</option>
+<option data-scheme="annual" value="SalesTaxRegistration::Annual">Annual</option></select>
+</li>
+<li class="string input optional stringish" id="sales_tax_registration_flat_rate_input">
+<input size="7" id="sales_tax_registration_flat_rate" value="0%" class="percentage" type="text" name="sales_tax_registration[flat_rate]" />
+</li>
+</ol></fieldset><fieldset class="inline"><ol><li class="string input optional stringish" id="sales_tax_registration_capital_asset_threshold_input">
+<label for="sales_tax_registration_capital_asset_threshold" class="label">Reclaim Capital Assets ≥</label><input placeholder="No Claims" size="7" id="sales_tax_registration_capital_asset_threshold" class="money" value="2000.00" type="text" name="sales_tax_registration[capital_asset_threshold]" />
+</li>
+inc VAT
+</ol></fieldset><fieldset class="actions"><ol><input type="submit" name="save" value="Save" class="button" data-disable-with="Save" />
+
+<a class="button cancel" href="#">Cancel</a>
+</ol></fieldset></form><script>
+//<![CDATA[
+set_up_sales_tax_registration()
+//]]>
+</script>
+
+<a class="button cancel" href="/back">Back</a>
+</div>
+<!-- #footer -->
+<!-- = yield :footer -->
+<!-- = powered_by_aworka if subdomain -->
+<!-- .contact_us -->
+<!-- = contact_link -->
+</body>
+</html>

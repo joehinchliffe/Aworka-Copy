@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>aworka</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='IE=8' http-equiv='X-UA-Compatible'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-f110508657df00bb46ba2e03b378516c2abafaa7525eb55fbac556c51f22dea0.ico" />
+<link rel="stylesheet" media="all" href="/assets/application-e022ef084b6db6d1dbaf25c3a99fe32073c37deb9622f458ad11be0f8a271463.css" data-turbolinks-track="reload" />
+<script>
+//<![CDATA[
+var decimal_sep = '.';
+var currency_symbol_first = true;
+var currency_symbol = '£';
+var current_user = 8065;
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/route_endpoints.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/prototype.js?1.7.1'></script>
+<script type='text/javascript' src='/javascripts/scriptaculous.js?1.9.0'></script>
+<script type='text/javascript' src='/javascripts/event.simulate.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/rails.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/application.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/popup.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/planner.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/edit_job.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/payment.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/touch.js?261019191430'></script>
+<link rel="stylesheet" media="screen" href="https://api.mapbox.com/mapbox-gl-js/v3.13.0/mapbox-gl.css" />
+<script src='https://api.mapbox.com/mapbox-gl-js/v3.13.0/mapbox-gl.js'></script>
+<script type='text/javascript' src='/javascripts/optimize_route.js?261019191430'></script>
+
+
+<script>
+//<![CDATA[
+var rounds = {
+
+};
+var tasks = {
+
+};
+var users = {
+'8065': {index: 0, name: 'Joe Hinchliffe'}
+};
+var payment_methods = {
+c: {index: 0, name: 'On Day'},
+x: {index: 1, name: 'Card'},
+q: {index: 2, name: 'By Post'},
+o: {index: 3, name: 'Online'},
+t: {index: 4, name: 'Direct to Bank'},
+e: {index: 5, name: 'Email Invoice'},
+p: {index: 6, name: 'Paper Invoice'},
+d: {index: 7, name: 'Direct Debit'},
+g: {index: 8, name: 'GoCardless'},
+l: {index: 9, name: 'Collection'}
+};
+var num_rounds = $H(rounds).keys().length;
+var today = string_to_date('2026-10-20');
+var reset_planner = 'user';
+var allowed_to = {
+add:        true,
+remove:     true,
+edit:       true,
+move:       true,
+nudge:      true,
+show_times: false,
+reorder:    true,
+optimize:   true
+};
+
+//]]>
+</script>
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="0c8KfC6GwRsGKKqaQOsNL4UDbQkH4aWBmywWzx2znFp6RzjaM-rFaLouYvgYgr4ziVZHF0YgvWXAxRY9-ROMDQ" />
+
+
+</head>
+<body>
+<div id='help' style='display:none'>
+<div id='help_page'>
+<div id='help_body'>
+</div>
+<a class="button close" id="close_help" href="#">Close</a>
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</div>
+</div>
+
+<div id='header'>
+<div id='logo'>
+<img alt="Aworka Logo" height="45" src="/assets/aworka_white-ba7c6d4d5e2b39983554ad0d8eec6a8a96efd150fdd1a2a2fd5e2fa24c352703.svg" />
+</div>
+<h1>Reach To Clean</h1>
+<div class='nav' id='nav'>
+<ul>
+<li><a href="/dashboard">Home</a></li>
+<li class="current"><a href="/day_plans">Planner</a></li>
+<li><a href="/job_specs">Jobs</a></li>
+<li><a href="/debts">Debts</a></li>
+<li><a href="/expenses">Expenses</a></li>
+<li><a href="/messages">Messages</a></li>
+<li><a href="/users">Users</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class='nav' id='subnav'>
+<ul>
+<li class="current"><a href="/day_plans">Planner</a></li>
+<li><a href="/job_sheets?date=2026-10-20&amp;user_id=8065">Job Sheets</a></li>
+<li><a href="/events">Events</a></li>
+<li><a href="/holidays">Time Off</a></li>
+
+</ul>
+<div id='controls'>
+<span id='announcement_updates'>
+
+</span>
+<a class="button edit" href="/users/8065/edit">Settings</a>
+<a class="button cancel" rel="nofollow" data-method="delete" href="/user_session">Logout</a>
+<a data-controller="day_plans" data-action="index" class="button help" id="help_button" href="#">Help</a>
+</div>
+</div>
+<div id='messages'>
+
+<div class="notice error flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice success flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice info flash_notice" style="display:none"><div><h2></h2></div></div>
+
+
+
+</div>
+<div id='content'>
+<form onsubmit="return false;" action="/day_plans" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="veRYR4u29P3CHICjvjQg4k8Nnqw_f5H_7tIaVBljCHoeIfYRYha0IGG1YrKyEc1y4JuOtzuG1mljJscBzlfu0A" autocomplete="off" /><div id='filter_bar'>
+<a class="up_button" title="Previous Week" id="prev_week" href="#">Prevous Week</a>
+<div id='month_controls'>
+<a class="left_button" title="Previous Month" id="last_month" href="#">Last Month</a>
+<select name="planner_filter[show_date]" id="planner_filter_show_date"><option value="2024-10">Oct 2024</option>
+<option value="2024-11">Nov 2024</option>
+<option value="2024-12">Dec 2024</option>
+<option value="2025-01">Jan 2025</option>
+<option value="2025-02">Feb 2025</option>
+<option value="2025-03">Mar 2025</option>
+<option value="2025-04">Apr 2025</option>
+<option value="2025-05">May 2025</option>
+<option value="2025-06">Jun 2025</option>
+<option value="2025-07">Jul 2025</option>
+<option value="2025-08">Aug 2025</option>
+<option value="2025-09">Sep 2025</option>
+<option value="2025-10">Oct 2025</option>
+<option value="2025-11">Nov 2025</option>
+<option value="2025-12">Dec 2025</option>
+<option value="2026-01">January</option>
+<option value="2026-02">February</option>
+<option value="2026-03">March</option>
+<option value="2026-04">April</option>
+<option value="2026-05">May</option>
+<option value="2026-06">June</option>
+<option value="2026-07">July</option>
+<option value="2026-08">August</option>
+<option value="2026-09">September</option>
+<option value="today">Near Today</option>
+<option selected="selected" value="2026-10">October</option>
+<option value="2026-11">November</option>
+<option value="2026-12">December</option>
+<option value="2027-01">Jan 2027</option>
+<option value="2027-02">Feb 2027</option>
+<option value="2027-03">Mar 2027</option>
+<option value="2027-04">Apr 2027</option>
+<option value="2027-05">May 2027</option>
+<option value="2027-06">Jun 2027</option>
+<option value="2027-07">Jul 2027</option>
+<option value="2027-08">Aug 2027</option>
+<option value="2027-09">Sep 2027</option>
+<option value="2027-10">Oct 2027</option></select>
+<a class="right_button" title="Next Month" id="next_month" href="#">Next Month</a>
+<a class="button cancel" id="reset" href="#">Reset</a>
+</div>
+<div id='display_controls'>
+Show
+<select id="planner_names" name="planner_filter[planner_user]"><option selected="selected" value="j">Job Address/Ref</option>
+<option value="c">Customer</option></select>
+Highlight
+<select id="planner_highlight" name="planner_filter[planner_highlight]"><option selected="selected" value="s"></option>
+<option value="e">Early/Late</option>
+<option value="d">Debts</option>
+<option value="t">Tasks</option>
+<option value="r">Rounds</option>
+<option value="u">Round Assignee</option>
+<option value="f">Frequency</option>
+<option value="p">Payment Methods</option>
+<option value="j">Job Notes</option></select>
+</div>
+</div>
+<div class='print_only'>
+<h1 id='planner_title'>Planner for  27 Sep - 31 Oct</h1>
+</div>
+<table class='planner' data-user-id='8065' data-user-status='enabled'>
+<thead>
+<tr>
+<th>Sunday</th>
+<th>Monday</th>
+<th>Tuesday</th>
+<th>Wednesday</th>
+<th>Thursday</th>
+<th>Friday</th>
+<th>Saturday</th>
+</tr>
+</thead>
+<tbody id='planner_dates'>
+<tr class='week' id='week_2026-09-27'>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>27 Sep</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Sun 27 Sep' id='date_2026-09-27'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>28</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Mon 28 Sep' id='date_2026-09-28'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>29</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Tue 29 Sep' id='date_2026-09-29'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>30</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Wed 30 Sep' id='date_2026-09-30'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class='first_week first_day'>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>1 Oct</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Thu 1 Oct' id='date_2026-10-01'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class='first_week'>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>2</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Fri 2 Oct' id='date_2026-10-02'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class='first_week'>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>3</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Sat 3 Oct' id='date_2026-10-03'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<script>
+//<![CDATA[
+setup_week('week_2026-09-27');
+
+//]]>
+</script>
+<script>
+//<![CDATA[
+load_week('2026-09-27')
+//]]>
+</script>
+</tr>
+<tr class='week' id='week_2026-10-04'>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>4 Oct</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Sun 4 Oct' id='date_2026-10-04'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>5</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Mon 5 Oct' id='date_2026-10-05'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>6</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Tue 6 Oct' id='date_2026-10-06'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>7</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Wed 7 Oct' id='date_2026-10-07'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>8</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Thu 8 Oct' id='date_2026-10-08'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>9</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Fri 9 Oct' id='date_2026-10-09'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>10</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Sat 10 Oct' id='date_2026-10-10'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<script>
+//<![CDATA[
+setup_week('week_2026-10-04');
+
+//]]>
+</script>
+<script>
+//<![CDATA[
+load_week('2026-10-04')
+//]]>
+</script>
+</tr>
+<tr class='week' id='week_2026-10-11'>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>11 Oct</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Sun 11 Oct' id='date_2026-10-11'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>12</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Mon 12 Oct' id='date_2026-10-12'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>13</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Tue 13 Oct' id='date_2026-10-13'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>14</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Wed 14 Oct' id='date_2026-10-14'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>15</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Thu 15 Oct' id='date_2026-10-15'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>16</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Fri 16 Oct' id='date_2026-10-16'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>17</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Sat 17 Oct' id='date_2026-10-17'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<script>
+//<![CDATA[
+setup_week('week_2026-10-11');
+
+//]]>
+</script>
+<script>
+//<![CDATA[
+load_week('2026-10-11')
+//]]>
+</script>
+</tr>
+<tr class='week' id='week_2026-10-18'>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>18 Oct</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Sun 18 Oct' id='date_2026-10-18'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>19</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Yesterday' id='date_2026-10-19'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class='today'>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>20</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Today' id='date_2026-10-20'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>21</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Tomorrow' id='date_2026-10-21'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>22</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Thu 22 Oct' id='date_2026-10-22'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>23</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Fri 23 Oct' id='date_2026-10-23'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>24</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Sat 24 Oct' id='date_2026-10-24'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<script>
+//<![CDATA[
+setup_week('week_2026-10-18');
+
+//]]>
+</script>
+<script>
+//<![CDATA[
+load_week('2026-10-18')
+//]]>
+</script>
+</tr>
+<tr class='week' id='week_2026-10-25'>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>25 Oct</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Sun 25 Oct' id='date_2026-10-25'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>26</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Mon 26 Oct' id='date_2026-10-26'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>27</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Tue 27 Oct' id='date_2026-10-27'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>28</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Wed 28 Oct' id='date_2026-10-28'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>29</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Thu 29 Oct' id='date_2026-10-29'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>30</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Fri 30 Oct' id='date_2026-10-30'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<td class=''>
+<div class='day_wrapper'>
+<div class="day_title"><p class='day_number'>31</p>
+<div class='buttons'></div>
+</div><div class='day_content' data-formatted-date='Sat 31 Oct' id='date_2026-10-31'>
+<div class='days_jobs'>
+
+<p class='day_time'>&nbsp</p>
+</div>
+</div>
+</div>
+</td>
+<script>
+//<![CDATA[
+setup_week('week_2026-10-25');
+
+//]]>
+</script>
+<script>
+//<![CDATA[
+load_week('2026-10-25')
+//]]>
+</script>
+</tr>
+
+</tbody>
+</table>
+<div id='planner_bottom'>
+<a class="down_button" title="Next Week" id="next_week" onclick="javascript:return false;" href="#">Show Later</a>
+<div id='planner_filter'>
+Show jobs containing
+<input value="" size="15" incremental="true" class="filter_search" type="search" name="planner_filter[search]" id="planner_filter_search" />
+<span>
+in
+<select name="planner_filter[round]" id="planner_filter_round"></select>
+</span>
+<a class="button cancel" id="reset_filter" href="#">Reset</a>
+</div>
+</div>
+<div class='hidden' id='optimize_popup'>
+<div class='mfp-bg'></div>
+<div class='mfp-content mfp-close-btn-in'>
+<div class='main'>
+<div class="notice info hidden"><div><h2>Optimsation already in progress</h2></div></div>
+<h3>
+Route for Joe Hinchliffe
+<span class='route_date'></span>
+</h3>
+<div class='button_bar'>
+<div class='route_endpoint_controls hidden'>
+<label for='route_start_source'>Start</label>
+<select name="route_start_source" id="route_start_source"></select>
+<label for='route_finish_source'>Finish</label>
+<select name="route_finish_source" id="route_finish_source"></select>
+</div>
+<a class="button" id="optimize_button" href="#">Optimise</a>
+<span class='status readonly_panel hidden'></span>
+<select name="dropped_point" id="dropped_point" class="hidden"></select>
+<a class="button small" id="reverse_button" href="#">Reverse</a>
+<a class="button small hidden" id="revert_button" href="#">Revert to Round Order</a>
+<a class="button cancel hidden" id="cancel_button" href="#">Stop</a>
+</div>
+<div class="notice error route_optimization_notice hidden"><div><h2></h2></div></div>
+<div data-access-token='[MAPBOX_TOKEN]' data-driving-side='left' data-user-id='8065' id='route_map'></div>
+
+
+<button class='mfp-close' title='Close (Esc)' type='button'>×</button>
+</div>
+</div>
+</div>
+
+</form>
+
+</div>
+<!-- #footer -->
+<!-- = yield :footer -->
+<!-- = powered_by_aworka if subdomain -->
+<!-- .contact_us -->
+<!-- = contact_link -->
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>aworka</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='IE=8' http-equiv='X-UA-Compatible'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-f110508657df00bb46ba2e03b378516c2abafaa7525eb55fbac556c51f22dea0.ico" />
+<link rel="stylesheet" media="all" href="/assets/application-e022ef084b6db6d1dbaf25c3a99fe32073c37deb9622f458ad11be0f8a271463.css" data-turbolinks-track="reload" />
+<script>
+//<![CDATA[
+var decimal_sep = '.';
+var currency_symbol_first = true;
+var currency_symbol = '£';
+var current_user = 8065;
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/route_endpoints.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/prototype.js?1.7.1'></script>
+<script type='text/javascript' src='/javascripts/scriptaculous.js?1.9.0'></script>
+<script type='text/javascript' src='/javascripts/event.simulate.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/rails.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/application.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/popup.js?261019191430'></script>
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="mHJOV3TyoSLbfSmpCgPmo5_HVagQMZajUAA8OdkB3Y0z-nzxaZ6lUWd74ctSalW_k5J_tlHwjkcL6TzLPaHN2g" />
+
+
+</head>
+<body>
+<div id='help' style='display:none'>
+<div id='help_page'>
+<div id='help_body'>
+</div>
+<a class="button close" id="close_help" href="#">Close</a>
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</div>
+</div>
+
+<div id='header'>
+<div id='logo'>
+<img alt="Aworka Logo" height="45" src="/assets/aworka_white-ba7c6d4d5e2b39983554ad0d8eec6a8a96efd150fdd1a2a2fd5e2fa24c352703.svg" />
+</div>
+<h1>Reach To Clean</h1>
+<div class='nav' id='nav'>
+<ul>
+<li><a href="/dashboard">Home</a></li>
+<li><a href="/day_plans">Planner</a></li>
+<li><a href="/job_specs">Jobs</a></li>
+<li><a href="/debts">Debts</a></li>
+<li><a href="/expenses">Expenses</a></li>
+<li><a href="/messages">Messages</a></li>
+<li class="current"><a href="/users">Users</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class='nav' id='subnav'>
+<ul>
+<li><a href="/users">Users</a></li>
+<li><a href="/round_assignments">Round Assignments</a></li>
+<li class="current"><a href="/role_infos">Roles</a></li>
+<li id="announcements_nav"><a href="/announcements">Announcements</a></li>
+
+</ul>
+<div id='controls'>
+<span id='announcement_updates'>
+
+</span>
+<a class="button edit" href="/users/8065/edit">Settings</a>
+<a class="button cancel" rel="nofollow" data-method="delete" href="/user_session">Logout</a>
+<a data-controller="role_infos" data-action="edit" class="button help" id="help_button" href="#">Help</a>
+</div>
+</div>
+<div id='messages'>
+
+<div class="notice error flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice success flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice info flash_notice" style="display:none"><div><h2></h2></div></div>
+
+
+
+</div>
+<div id='content'>
+<form class="formtastic role_info" id="edit_role_info_1451" novalidate="novalidate" action="/role_infos/1451" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" autocomplete="off" /><input type="hidden" name="authenticity_token" value="b9G-2Tm0mbRAyXl_giWKwhbBKBAUn3LQzXarAiDOnLIpYVhQTTF0hg3nSFV2vM2fLq5duP5tujirDG_IxDPF4w" autocomplete="off" /><div class='main'>
+<h3>Edit Role</h3>
+<li class="string input required stringish" id="role_info_name_input">
+<label for="role_info_name" class="label">Role</label><input size="30" id="role_info_name" type="text" value="Franchisee" name="role_info[name]" />
+</li>
+<br>
+<h3>Role Permissions</h3>
+<div class='grid roles'>
+<div>
+<h2>Access</h2>
+<li class="boolean input optional" id="role_info_manage_users_input">
+<input type="hidden" name="role_info[manage_users]" value="0" autocomplete="off" /><label for="role_info_manage_users" class="">Administrator</label><input type="checkbox" name="role_info[manage_users]" id="role_info_manage_users" value="1" />
+</li>
+<li class="boolean input optional" id="role_info_manage_all_debts_input">
+<input type="hidden" name="role_info[manage_all_debts]" value="0" autocomplete="off" /><label for="role_info_manage_all_debts" class="">Debt Collection Only</label><input type="checkbox" name="role_info[manage_all_debts]" id="role_info_manage_all_debts" value="1" />
+</li>
+<li class="boolean input optional" id="role_info_access_via_web_input">
+<input type="hidden" name="role_info[access_via_web]" value="0" autocomplete="off" /><label for="role_info_access_via_web" class="">Access Via Web</label><input type="checkbox" name="role_info[access_via_web]" id="role_info_access_via_web" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_access_via_mobile_input">
+<input type="hidden" name="role_info[access_via_mobile]" value="0" autocomplete="off" /><label for="role_info_access_via_mobile" class="">Access Via Mobile</label><input type="checkbox" name="role_info[access_via_mobile]" id="role_info_access_via_mobile" value="1" checked="checked" />
+</li>
+</div>
+<div>
+<h2>Jobs & Customers</h2>
+<li class="boolean input optional" id="role_info_create_jobs_input">
+<input type="hidden" name="role_info[create_jobs]" value="0" autocomplete="off" /><label for="role_info_create_jobs" class="">Create Customers/Jobs</label><input type="checkbox" name="role_info[create_jobs]" id="role_info_create_jobs" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_edit_job_details_input">
+<input type="hidden" name="role_info[edit_job_details]" value="0" autocomplete="off" /><label for="role_info_edit_job_details" class="">Edit Customers/Jobs</label><input type="checkbox" name="role_info[edit_job_details]" id="role_info_edit_job_details" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_delete_jobs_input">
+<input type="hidden" name="role_info[delete_jobs]" value="0" autocomplete="off" /><label for="role_info_delete_jobs" class="">Delete Jobs</label><input type="checkbox" name="role_info[delete_jobs]" id="role_info_delete_jobs" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_suspend_jobs_input">
+<input type="hidden" name="role_info[suspend_jobs]" value="0" autocomplete="off" /><label for="role_info_suspend_jobs" class="">Suspend Jobs</label><input type="checkbox" name="role_info[suspend_jobs]" id="role_info_suspend_jobs" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_show_invoiced_job_prices_input">
+<input type="hidden" name="role_info[show_invoiced_job_prices]" value="0" autocomplete="off" /><label for="role_info_show_invoiced_job_prices" class="">Show Account Customer Prices</label><input type="checkbox" name="role_info[show_invoiced_job_prices]" id="role_info_show_invoiced_job_prices" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_export_jobs_input">
+<input type="hidden" name="role_info[export_jobs]" value="0" autocomplete="off" /><label for="role_info_export_jobs" class="">Export Jobs</label><input type="checkbox" name="role_info[export_jobs]" id="role_info_export_jobs" value="1" />
+</li>
+</div>
+<div>
+<h2>Planner</h2>
+<li class="boolean input optional" id="role_info_add_jobs_input">
+<input type="hidden" name="role_info[add_jobs]" value="0" autocomplete="off" /><label for="role_info_add_jobs" class="">Add Jobs</label><input type="checkbox" name="role_info[add_jobs]" id="role_info_add_jobs" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_edit_jobs_input">
+<input type="hidden" name="role_info[edit_jobs]" value="0" autocomplete="off" /><label for="role_info_edit_jobs" class="">Edit Jobs</label><input type="checkbox" name="role_info[edit_jobs]" id="role_info_edit_jobs" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_move_jobs_input">
+<input type="hidden" name="role_info[move_jobs]" value="0" autocomplete="off" /><label for="role_info_move_jobs" class="">Move Jobs</label><input type="checkbox" name="role_info[move_jobs]" id="role_info_move_jobs" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_remove_jobs_input">
+<input type="hidden" name="role_info[remove_jobs]" value="0" autocomplete="off" /><label for="role_info_remove_jobs" class="">Remove Jobs</label><input type="checkbox" name="role_info[remove_jobs]" id="role_info_remove_jobs" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_adjust_prices_input">
+<input type="hidden" name="role_info[adjust_prices]" value="0" autocomplete="off" /><label for="role_info_adjust_prices" class="">Adjust Prices</label><input type="checkbox" name="role_info[adjust_prices]" id="role_info_adjust_prices" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_enter_payments_input">
+<input type="hidden" name="role_info[enter_payments]" value="0" autocomplete="off" /><label for="role_info_enter_payments" class="">Enter Payments</label><input type="checkbox" name="role_info[enter_payments]" id="role_info_enter_payments" value="1" checked="checked" />
+</li>
+</div>
+<div>
+<h2>Accounts & Admin</h2>
+<li class="boolean input optional" id="role_info_manage_debts_input">
+<input type="hidden" name="role_info[manage_debts]" value="0" autocomplete="off" /><label for="role_info_manage_debts" class="">Access Debt List</label><input type="checkbox" name="role_info[manage_debts]" id="role_info_manage_debts" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_write_off_debts_input">
+<input type="hidden" name="role_info[write_off_debts]" value="0" autocomplete="off" /><label for="role_info_write_off_debts" class="">Write Off Debts</label><input type="checkbox" name="role_info[write_off_debts]" id="role_info_write_off_debts" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_send_invoices_input">
+<input type="hidden" name="role_info[send_invoices]" value="0" autocomplete="off" /><label for="role_info_send_invoices" class="">Send Invoices</label><input type="checkbox" name="role_info[send_invoices]" id="role_info_send_invoices" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_send_estimates_input">
+<input type="hidden" name="role_info[send_estimates]" value="0" autocomplete="off" /><label for="role_info_send_estimates" class="">Send Estimates</label><input type="checkbox" name="role_info[send_estimates]" id="role_info_send_estimates" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_view_reports_input">
+<input type="hidden" name="role_info[view_reports]" value="0" autocomplete="off" /><label for="role_info_view_reports" class="">View Reports</label><input type="checkbox" name="role_info[view_reports]" id="role_info_view_reports" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_export_reports_input">
+<input type="hidden" name="role_info[export_reports]" value="0" autocomplete="off" /><label for="role_info_export_reports" class="">Export Reports</label><input type="checkbox" name="role_info[export_reports]" id="role_info_export_reports" value="1" checked="checked" />
+</li>
+</div>
+<div>
+<h2>Other Tasks</h2>
+<li class="boolean input optional" id="role_info_record_expenses_input">
+<input type="hidden" name="role_info[record_expenses]" value="0" autocomplete="off" /><label for="role_info_record_expenses" class="">Record Expenses</label><input type="checkbox" name="role_info[record_expenses]" id="role_info_record_expenses" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_edit_settings_input">
+<input type="hidden" name="role_info[edit_settings]" value="0" autocomplete="off" /><label for="role_info_edit_settings" class="">Edit Settings</label><input type="checkbox" name="role_info[edit_settings]" id="role_info_edit_settings" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_book_time_off_input">
+<input type="hidden" name="role_info[book_time_off]" value="0" autocomplete="off" /><label for="role_info_book_time_off" class="">Book Time Off</label><input type="checkbox" name="role_info[book_time_off]" id="role_info_book_time_off" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_create_events_input">
+<input type="hidden" name="role_info[create_events]" value="0" autocomplete="off" /><label for="role_info_create_events" class="">Create Events</label><input type="checkbox" name="role_info[create_events]" id="role_info_create_events" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_send_messages_input">
+<input type="hidden" name="role_info[send_messages]" value="0" autocomplete="off" /><label for="role_info_send_messages" class="">Send Messages</label><input type="checkbox" name="role_info[send_messages]" id="role_info_send_messages" value="1" checked="checked" />
+</li>
+<li class="boolean input optional" id="role_info_track_sales_input">
+<input type="hidden" name="role_info[track_sales]" value="0" autocomplete="off" /><label for="role_info_track_sales" class="">Edit Sales Sources</label><input type="checkbox" name="role_info[track_sales]" id="role_info_track_sales" value="1" />
+</li>
+</div>
+</div>
+<div class='clear'></div>
+<fieldset class="actions"><ol><input type="submit" name="commit" value="Save" class="button" data-disable-with="Save" />
+<a class="button cancel" rel="nofollow" data-method="delete" href="/role_infos/1451">Delete</a>
+</ol></fieldset></div>
+</form>
+<a class="button cancel" href="/back">Back</a>
+</div>
+<!-- #footer -->
+<!-- = yield :footer -->
+<!-- = powered_by_aworka if subdomain -->
+<!-- .contact_us -->
+<!-- = contact_link -->
+</body>
+</html>

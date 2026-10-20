@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>aworka</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='IE=8' http-equiv='X-UA-Compatible'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-f110508657df00bb46ba2e03b378516c2abafaa7525eb55fbac556c51f22dea0.ico" />
+<link rel="stylesheet" media="all" href="/assets/application-e022ef084b6db6d1dbaf25c3a99fe32073c37deb9622f458ad11be0f8a271463.css" data-turbolinks-track="reload" />
+<script>
+//<![CDATA[
+var decimal_sep = '.';
+var currency_symbol_first = true;
+var currency_symbol = '£';
+var current_user = 8065;
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/route_endpoints.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.min.js?1.9.1'></script>
+<script type='text/javascript' src='/javascripts/jquery-ui.min.js?1.10.1'></script>
+<script type='text/javascript' src='/javascripts/jquery_ujs.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.loadmask.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.ui.touch-punch-improved.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.placeholder.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.autosize.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.magnific-popup.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.cookie.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jstz.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/underscore-min.js?1.8.3'></script>
+<script type='text/javascript' src='/javascripts/jquery.application.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/address_autocomplete.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/announcement_reads.js?261019191430'></script>
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="Bw7qJ_d4R-U8WeMu7wzPmkQiKX0bFx_ptRv-BWqtAtishtiB6hRDloBfK0y3ZXyGSHcDY1rWBw3u8v73jg0Sjw" />
+
+
+</head>
+<body>
+<div id='help' style='display:none'>
+<div id='help_page'>
+<div id='help_body'>
+</div>
+<a class="button close" id="close_help" href="#">Close</a>
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</div>
+</div>
+
+<div id='header'>
+<div id='logo'>
+<img alt="Aworka Logo" height="45" src="/assets/aworka_white-ba7c6d4d5e2b39983554ad0d8eec6a8a96efd150fdd1a2a2fd5e2fa24c352703.svg" />
+</div>
+<h1>Reach To Clean</h1>
+<div class='nav' id='nav'>
+<ul>
+<li><a href="/dashboard">Home</a></li>
+<li><a href="/day_plans">Planner</a></li>
+<li><a href="/job_specs">Jobs</a></li>
+<li><a href="/debts">Debts</a></li>
+<li class="current"><a href="/expenses">Expenses</a></li>
+<li><a href="/messages">Messages</a></li>
+<li><a href="/users">Users</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class='nav' id='subnav'>
+<ul>
+<li class="current"><a href="/expenses">Expenses</a></li>
+<li><a href="/recurring_expenses">Recurring Expenses</a></li>
+
+</ul>
+<div id='controls'>
+<span id='announcement_updates'>
+
+</span>
+<a class="button edit" href="/users/8065/edit">Settings</a>
+<a class="button cancel" rel="nofollow" data-method="delete" href="/user_session">Logout</a>
+<a data-controller="expenses" data-action="new" class="button help" id="help_button" href="#">Help</a>
+</div>
+</div>
+<div id='messages'>
+
+<div class="notice error flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice success flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice info flash_notice" style="display:none"><div><h2></h2></div></div>
+
+
+
+</div>
+<div id='content'>
+<script>
+//<![CDATA[
+var sales_tax_registrations = [];
+var new_expense = true;
+var locale_sales_tax_rate = '20%';
+
+//]]>
+</script><h3>
+New
+
+Expense
+</h3>
+<form class="formtastic expense_expense" id="expense_editor" spellcheck="false" novalidate="novalidate" action="/expenses" accept-charset="UTF-8" data-remote="true" method="post"><fieldset class="inline"><ol><li class="date_picker input required stringish" id="expense_expense_date_input">
+<label for="expense_expense_date" class="label">Date</label><input data-typed-in-year-range="1980:2028" data-year-range="2016:2028" data-first-day="0" maxlength="10" size="10" id="expense_expense_date" type="datepicker" step="1" value="20 Oct 2026" name="expense_expense[date]" />
+</li>
+</ol></fieldset><fieldset class="inline"><ol><li class="string input optional stringish" id="expense_expense_new_category_input">
+<label for="expense_expense_new_category" class="label">Category</label><input size="30" id="expense_expense_new_category" type="text" name="expense_expense[new_category]" />
+</li>
+</ol></fieldset><fieldset class="inline"><ol><li class="select input optional" id="expense_expense_supplier_id_input">
+<label for="expense_expense_supplier_id" class="label">Supplier</label><select name="expense_expense[supplier_id]" id="expense_expense_supplier_id"><option value="0"></option>
+<option value="-1">New Supplier...</option></select>
+</li>
+<li class="string input optional stringish" id="expense_expense_new_supplier_input">
+<input size="20" id="expense_expense_new_supplier" type="text" name="expense_expense[new_supplier]" />
+</li>
+</ol></fieldset>
+<li class="string input optional stringish" id="expense_expense_reference_input">
+<label for="expense_expense_reference" class="label">Reference</label><input size="30" id="expense_expense_reference" type="text" name="expense_expense[reference]" />
+</li>
+<li class="text input optional" id="expense_expense_description_input">
+<label for="expense_expense_description" class="label">Description</label><textarea cols="40" rows="2" id="expense_expense_description" spellcheck="true" name="expense_expense[description]">
+</textarea>
+</li>
+<fieldset class="inline"><ol><li class="string input optional stringish" id="expense_expense_amount_input">
+<label for="expense_expense_amount" class="label">Amount</label><input placeholder="Add Later" size="7" id="expense_expense_amount" class="money" value="" type="text" name="expense_expense[amount]" />
+</li>
+<li class="select input optional" id="expense_expense_sales_tax_status_expense_input">
+<select name="expense_expense[sales_tax_status_expense]" id="expense_expense_sales_tax_status_expense"><option selected="selected" value="inc_tax_at_rate">inc VAT at rate</option>
+<option value="inc_tax_charged">inc VAT charged</option>
+<option value="zero_rate">Zero Rated</option>
+<option value="exempt">Exempt</option>
+<option value="out_of_scope">Out of Scope</option></select>
+</li>
+<span id='expense_sales_tax_fields'>
+<li class="string input optional stringish" id="expense_expense_sales_tax_rate_input">
+<input size="7" id="expense_expense_sales_tax_rate" value="20%" class="percentage" type="text" name="expense_expense[sales_tax_rate]" />
+</li>
+<li class="string input optional stringish" id="expense_expense_sales_tax_charged_input">
+<input size="7" id="expense_expense_sales_tax_charged" class="money" value="0.00" type="text" name="expense_expense[sales_tax_charged]" />
+</li>
+</span>
+</ol></fieldset><li class="select input optional" id="expense_expense_payment_method_input">
+<label for="expense_expense_payment_method" class="label">Paid By</label><select name="expense_expense[payment_method]" id="expense_expense_payment_method"><option value="" label=" "></option>
+<option value="c">Cash</option>
+<option value="q">Cheque</option>
+<option value="x">Card</option>
+<option value="d">Direct Debit</option>
+<option value="s">Standing Order</option>
+<option value="o">Online</option>
+<option value="t">Bank Transfer</option>
+<option value="p">PayPal</option>
+<option value="r">Recurring Card</option></select>
+</li>
+<li class="string input optional stringish" id="expense_expense_payment_reference_input">
+<label for="expense_expense_payment_reference" class="label">Pay Ref</label><input size="30" id="expense_expense_payment_reference" type="text" name="expense_expense[payment_reference]" />
+</li>
+<fieldset class="inline"><ol><li class="select input optional" id="expense_expense_tax_treatment_input">
+<label for="expense_expense_tax_treatment" class="label">Tax Treatment</label><select name="expense_expense[tax_treatment]" id="expense_expense_tax_treatment"><option selected="selected" value="business_use">All Business Use</option>
+<option value="private_use_percentage">Some Private Use</option>
+<option value="custom">Other</option></select>
+</li>
+<li class="string input optional stringish" id="expense_expense_private_use_percentage_input">
+<input size="7" id="expense_expense_private_use_percentage" class="percentage" type="text" name="expense_expense[private_use_percentage]" />
+</li>
+</ol></fieldset><fieldset class="inline" id="tax_treatment_custom_options"><ol><li class="string input optional stringish" id="expense_expense_allowable_for_income_tax_input">
+<label for="expense_expense_allowable_for_income_tax" class="label">Allowable For Income Tax</label><input placeholder="None" size="7" id="expense_expense_allowable_for_income_tax" class="money" value="" type="text" name="expense_expense[allowable_for_income_tax]" />
+</li>
+<li class="string input optional stringish" id="expense_expense_reclaimable_sales_tax_input">
+<label for="expense_expense_reclaimable_sales_tax" class="label">Reclaimable VAT</label><input placeholder="None" size="7" id="expense_expense_reclaimable_sales_tax" class="money" value="" type="text" name="expense_expense[reclaimable_sales_tax]" />
+</li>
+</ol></fieldset><li class="text input optional" id="expense_expense_tax_notes_input">
+<label for="expense_expense_tax_notes" class="label">Tax Notes</label><textarea cols="40" rows="2" id="expense_expense_tax_notes" name="expense_expense[tax_notes]">
+</textarea>
+</li>
+<fieldset class="actions"><ol><input type="submit" name="save" value="Save" class="button" data-disable-with="Save" />
+</ol></fieldset></form><script>
+//<![CDATA[
+init_expense_editor();
+//]]>
+</script>
+
+<a class="button cancel" href="/back">Back</a>
+</div>
+<!-- #footer -->
+<!-- = yield :footer -->
+<!-- = powered_by_aworka if subdomain -->
+<!-- .contact_us -->
+<!-- = contact_link -->
+</body>
+</html>

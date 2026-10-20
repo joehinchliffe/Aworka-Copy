@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>aworka</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='IE=8' http-equiv='X-UA-Compatible'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-f110508657df00bb46ba2e03b378516c2abafaa7525eb55fbac556c51f22dea0.ico" />
+<link rel="stylesheet" media="all" href="/assets/application-e022ef084b6db6d1dbaf25c3a99fe32073c37deb9622f458ad11be0f8a271463.css" data-turbolinks-track="reload" />
+<script>
+//<![CDATA[
+var decimal_sep = '.';
+var currency_symbol_first = true;
+var currency_symbol = '£';
+var current_user = 8065;
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/route_endpoints.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.min.js?1.9.1'></script>
+<script type='text/javascript' src='/javascripts/jquery-ui.min.js?1.10.1'></script>
+<script type='text/javascript' src='/javascripts/jquery_ujs.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.loadmask.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.ui.touch-punch-improved.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.placeholder.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.autosize.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.magnific-popup.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.cookie.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jstz.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/underscore-min.js?1.8.3'></script>
+<script type='text/javascript' src='/javascripts/jquery.application.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/address_autocomplete.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/announcement_reads.js?261019191430'></script>
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="UpGE3ncXr97wP2TwRwvtmoRf5bjyS8n-c-uweqwZCnv5GbZ4anurrUw5rJIfYl6GiArPprOK0RooArCISLkaLA" />
+
+
+</head>
+<body>
+<div id='help' style='display:none'>
+<div id='help_page'>
+<div id='help_body'>
+</div>
+<a class="button close" id="close_help" href="#">Close</a>
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</div>
+</div>
+
+<div id='header'>
+<div id='logo'>
+<img alt="Aworka Logo" height="45" src="/assets/aworka_white-ba7c6d4d5e2b39983554ad0d8eec6a8a96efd150fdd1a2a2fd5e2fa24c352703.svg" />
+</div>
+<h1>Reach To Clean</h1>
+<div class='nav' id='nav'>
+<ul>
+<li><a href="/dashboard">Home</a></li>
+<li><a href="/day_plans">Planner</a></li>
+<li><a href="/job_specs">Jobs</a></li>
+<li><a href="/debts">Debts</a></li>
+<li><a href="/expenses">Expenses</a></li>
+<li><a href="/messages">Messages</a></li>
+<li><a href="/users">Users</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class='nav' id='subnav'>
+<ul>
+<li class="current"><a href="/subscription/edit">Change Subscription Plan</a></li>
+
+</ul>
+<div id='controls'>
+<span id='announcement_updates'>
+
+</span>
+<a class="button edit" href="/users/8065/edit">Settings</a>
+<a class="button cancel" rel="nofollow" data-method="delete" href="/user_session">Logout</a>
+<a data-controller="subscriptions" data-action="edit" class="button help" id="help_button" href="#">Help</a>
+</div>
+</div>
+<div id='messages'>
+
+<div class="notice error flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice success flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice info flash_notice" style="display:none"><div><h2></h2></div></div>
+
+
+
+</div>
+<div id='content'>
+<div id='plans'>
+<h3>
+Change
+Subscription Plan
+</h3>
+<form class="formtastic subscription_record" id="edit_subscription_record_1946" novalidate="novalidate" action="/subscription" accept-charset="UTF-8" method="post"><input type="hidden" name="_method" value="patch" autocomplete="off" /><input type="hidden" name="authenticity_token" value="RkZ7bu5XHE-CPeaVJPO0BxkVMjL0eBqHsU_g1t88p1xc6t_sUoi3m4SrpTQhOfbjvopfL-tgT2coPuehZzlH-w" autocomplete="off" /><div class='billing'>
+<fieldset class="inline"><ol>Billed
+<li class="select input optional" id="subscription_record_billed_input">
+<select name="subscription_record[billed]" id="subscription_record_billed" class="toggle_css"><option selected="selected" value="monthly">Monthly</option>
+<option value="yearly">Yearly</option></select>
+</li>
+</ol></fieldset></div>
+<div class='plan_columns'>
+<div class='plan monthly'>
+<div class='very_large'>Simple</div>
+<p class='balanced_wrap'>Just the basics to keep your business on track.</p>
+<div class='base_price'>
+<p>
+</p>
+<h2>£15</h2>
+<p>inc VAT</p>
+</div>
+<div class='choose_plan_buttons'>
+<p><input type="submit" name="simple_monthly" value="Try Plan" id="simple_monthly" class="button" data-disable-with="Try Plan" /></p>
+</div>
+<div class='features'>
+<p>Includes these features...</p>
+<ul>
+<li class=''>
+<div class='feature-title'>
+Unlimited Customers &amp; Jobs
+</div>
+</li>
+<li class=''>
+<div class='feature-title'>
+Job Planning
+</div>
+<p class='feature-description'>Organise your jobs on a calendar.</p>
+<p class='feature-description'>Automatic job replanning based on job frequency.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Daily Job Sheets
+</div>
+<p class='feature-description'>Printable sheets to work from.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Payments &amp; Debts
+</div>
+<p class='feature-description'>Enter payments and tips.</p>
+<p class='feature-description'>Keep track of customer debts.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Invoices, Statements, Estimates, Receipts
+</div>
+<p class='feature-description'>With your payment terms and logo.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Expenses
+</div>
+<p class='feature-description'>Categorise your business expenses.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Mobile App
+</div>
+<p class='feature-description'>Update jobs and payments on the go.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Send Emails
+</div>
+<p class='feature-description'>Send messages and invoices to your customers.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Send SMS
+</div>
+<p class='feature-description'>Text your customers.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Reports
+</div>
+<p class='feature-description'>Profit &amp; Loss, Income Forecast, Valuation, Expenses, Estimates.</p>
+<p class='feature-description'>Categorised financial reports, totalled by days, weeks, months or years.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Price Revisions
+</div>
+<p class='feature-description'>Adjust all your prices easily, by fixed amounts or percentages.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Anonymise Customers
+</div>
+<p class='feature-description'>Anonymise customers&#39; personal information to protect their privacy.</p>
+<p class='feature-description'>Helps you to comply with data protection legislation, for example the GDPR.</p>
+</li>
+</ul>
+
+</div>
+</div>
+
+<div class='plan monthly'>
+<div class='very_large'>Smart</div>
+<p class='balanced_wrap'>Save time with automation and features to improve customer experience.</p>
+<div class='base_price'>
+<p>
+</p>
+<h2>£20</h2>
+<p>inc VAT</p>
+</div>
+<div class='choose_plan_buttons'>
+<p><input type="submit" name="smart_monthly" value="Try Plan" id="smart_monthly" class="button" data-disable-with="Try Plan" /></p>
+</div>
+<div class='features'>
+<p>All Simple plan features, plus...</p>
+<ul>
+<li class=''>
+<div class='feature-title'>
+Automatic Invoices
+</div>
+<p class='feature-description'>Issue invoices automatically after each job, or periodically.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+GoCardless Payments
+</div>
+<p class='feature-description'>Collect payments by direct debit.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+PayPal Payments
+</div>
+<p class='feature-description'>Accept customer payments by PayPal.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Events and To Do List
+</div>
+<p class='feature-description'>Keep track of customer interactions and &#39;To Do&#39; reminders.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Mass Messaging
+</div>
+<p class='feature-description'>Select and message multiple customers in one go.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Message Templates
+</div>
+<p class='feature-description'>Create reusable message templates with tags to personalise for each customer.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Multi Job Editing
+</div>
+<p class='feature-description'>Make edits to multiple jobs in one go.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Advanced Job Filtering
+</div>
+<p class='feature-description'>Filter your jobs/customers for more flexible messaging and bulk editing.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Mapping
+</div>
+<p class='feature-description'>Locate customers on a map.</p>
+<p class='feature-description'>Get Google, Apple or Waze directions on the mobile app.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Address Lookup
+<span class='small badge good'>NEW</span>
+</div>
+<p class='feature-description'>Find addresses as you type, and verify or correct addresses when standard geocoding cannot locate them.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Mileage
+</div>
+<p class='feature-description'>Add vehicles and mileage expenses.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Recurring Expenses
+</div>
+<p class='feature-description'>Create regular expenses automatically, for loan repayments, installments, subscriptions.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Track Sales Sources
+</div>
+<p class='feature-description'>Record how new jobs are won.</p>
+<p class='feature-description'>Generate a report to compare marketing strategies.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Customer Retention Report
+<span class='small badge good'>NEW</span>
+</div>
+<p class='feature-description'>Track customers gained, retained and lost over time.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Automatic Data Retention
+</div>
+<p class='feature-description'>Anonymise inactive customers&#39; automatically, to meet your own privacy policy.</p>
+<p class='feature-description'>Automate housekeeping of old jobs and customers.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+MTD for Income Tax
+</div>
+<p class='feature-description'>Send quarterly updates to HMRC via Making Tax Digital.</p>
+</li>
+</ul>
+
+</div>
+</div>
+
+<div class='plan selected_plan monthly'>
+<div class='very_large'>Team</div>
+<p class='balanced_wrap'>Divide work between multiple operatives and/or franchisees.</p>
+<div class='base_price'>
+<p>
+From
+</p>
+<h2>£30</h2>
+<p>including one employee</p>
+<p>+ £15 per franchisee</p>
+<p>+ £10 per employee</p>
+<p>ex VAT</p>
+</div>
+<div class='choose_plan_buttons'>
+<p><a class="button cancel" href="/back">&larr; Stay on Plan</a></p>
+</div>
+<div class='features'>
+<p>All Smart plan features, plus...</p>
+<ul>
+<li class=''>
+<div class='feature-title'>
+Multiple Users
+</div>
+<p class='feature-description'>Add multiple users as employees, or self-employed/franchisees, with their own jobs.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Includes Additional User
+</div>
+</li>
+<li class=''>
+<div class='feature-title'>
+User Roles
+</div>
+<p class='feature-description'>Create roles to control what users can see and do.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Route Optimisation
+</div>
+<p class='feature-description'>Find the shortest driving route for the day&#39;s work</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+VAT
+</div>
+<p class='feature-description'>Set job prices to include or exclude VAT.</p>
+<p class='feature-description'>Show VAT breakdown on invoices.</p>
+<p class='feature-description'>Calculate your VAT return figures, from income and expenses.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+MTD for VAT
+</div>
+<p class='feature-description'>Submit returns to HMRC via Making Tax Digital</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+API Access
+</div>
+<p class='feature-description'>Connect your web site to your Aworka account</p>
+<p class='feature-description'>Access and update your Aworka data with external tools</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Quickbooks
+<span class='small badge'>SOON</span>
+</div>
+<p class='feature-description'>Upload your sales, invoices, payments and expenses to Quickbooks Online.</p>
+<p class='feature-description'>(Xero to follow)</p>
+</li>
+</ul>
+
+</div>
+</div>
+
+<div class='plan yearly'>
+<div class='very_large'>Simple</div>
+<p class='balanced_wrap'>Just the basics to keep your business on track.</p>
+<div class='base_price'>
+<p>
+Save 20%
+</p>
+<h2>£150</h2>
+<p>inc VAT</p>
+</div>
+<div class='choose_plan_buttons'>
+<p><input type="submit" name="simple_yearly" value="Try Plan" id="simple_yearly" class="button" data-disable-with="Try Plan" /></p>
+</div>
+<div class='features'>
+<p>Includes these features...</p>
+<ul>
+<li class=''>
+<div class='feature-title'>
+Unlimited Customers &amp; Jobs
+</div>
+</li>
+<li class=''>
+<div class='feature-title'>
+Job Planning
+</div>
+<p class='feature-description'>Organise your jobs on a calendar.</p>
+<p class='feature-description'>Automatic job replanning based on job frequency.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Daily Job Sheets
+</div>
+<p class='feature-description'>Printable sheets to work from.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Payments &amp; Debts
+</div>
+<p class='feature-description'>Enter payments and tips.</p>
+<p class='feature-description'>Keep track of customer debts.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Invoices, Statements, Estimates, Receipts
+</div>
+<p class='feature-description'>With your payment terms and logo.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Expenses
+</div>
+<p class='feature-description'>Categorise your business expenses.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Mobile App
+</div>
+<p class='feature-description'>Update jobs and payments on the go.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Send Emails
+</div>
+<p class='feature-description'>Send messages and invoices to your customers.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Send SMS
+</div>
+<p class='feature-description'>Text your customers.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Reports
+</div>
+<p class='feature-description'>Profit &amp; Loss, Income Forecast, Valuation, Expenses, Estimates.</p>
+<p class='feature-description'>Categorised financial reports, totalled by days, weeks, months or years.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Price Revisions
+</div>
+<p class='feature-description'>Adjust all your prices easily, by fixed amounts or percentages.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Anonymise Customers
+</div>
+<p class='feature-description'>Anonymise customers&#39; personal information to protect their privacy.</p>
+<p class='feature-description'>Helps you to comply with data protection legislation, for example the GDPR.</p>
+</li>
+</ul>
+
+</div>
+</div>
+
+<div class='plan yearly'>
+<div class='very_large'>Smart</div>
+<p class='balanced_wrap'>Save time with automation and features to improve customer experience.</p>
+<div class='base_price'>
+<p>
+Save 20%
+</p>
+<h2>£200</h2>
+<p>inc VAT</p>
+</div>
+<div class='choose_plan_buttons'>
+<p><input type="submit" name="smart_yearly" value="Try Plan" id="smart_yearly" class="button" data-disable-with="Try Plan" /></p>
+</div>
+<div class='features'>
+<p>All Simple plan features, plus...</p>
+<ul>
+<li class=''>
+<div class='feature-title'>
+Automatic Invoices
+</div>
+<p class='feature-description'>Issue invoices automatically after each job, or periodically.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+GoCardless Payments
+</div>
+<p class='feature-description'>Collect payments by direct debit.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+PayPal Payments
+</div>
+<p class='feature-description'>Accept customer payments by PayPal.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Events and To Do List
+</div>
+<p class='feature-description'>Keep track of customer interactions and &#39;To Do&#39; reminders.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Mass Messaging
+</div>
+<p class='feature-description'>Select and message multiple customers in one go.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Message Templates
+</div>
+<p class='feature-description'>Create reusable message templates with tags to personalise for each customer.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Multi Job Editing
+</div>
+<p class='feature-description'>Make edits to multiple jobs in one go.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Advanced Job Filtering
+</div>
+<p class='feature-description'>Filter your jobs/customers for more flexible messaging and bulk editing.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Mapping
+</div>
+<p class='feature-description'>Locate customers on a map.</p>
+<p class='feature-description'>Get Google, Apple or Waze directions on the mobile app.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Address Lookup
+<span class='small badge good'>NEW</span>
+</div>
+<p class='feature-description'>Find addresses as you type, and verify or correct addresses when standard geocoding cannot locate them.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Mileage
+</div>
+<p class='feature-description'>Add vehicles and mileage expenses.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Recurring Expenses
+</div>
+<p class='feature-description'>Create regular expenses automatically, for loan repayments, installments, subscriptions.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Track Sales Sources
+</div>
+<p class='feature-description'>Record how new jobs are won.</p>
+<p class='feature-description'>Generate a report to compare marketing strategies.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Customer Retention Report
+<span class='small badge good'>NEW</span>
+</div>
+<p class='feature-description'>Track customers gained, retained and lost over time.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Automatic Data Retention
+</div>
+<p class='feature-description'>Anonymise inactive customers&#39; automatically, to meet your own privacy policy.</p>
+<p class='feature-description'>Automate housekeeping of old jobs and customers.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+MTD for Income Tax
+</div>
+<p class='feature-description'>Send quarterly updates to HMRC via Making Tax Digital.</p>
+</li>
+</ul>
+
+</div>
+</div>
+
+<div class='plan selected_plan yearly'>
+<div class='very_large'>Team</div>
+<p class='balanced_wrap'>Divide work between multiple operatives and/or franchisees.</p>
+<div class='base_price'>
+<p>
+&nbsp;
+</p>
+<h2>
+-
+</h2>
+<p>
+&nbsp;
+</p>
+</div>
+<div class='choose_plan_buttons'>
+<h3>Only Available Monthly</h3>
+</div>
+<div class='features'>
+<p>All Smart plan features, plus...</p>
+<ul>
+<li class=''>
+<div class='feature-title'>
+Multiple Users
+</div>
+<p class='feature-description'>Add multiple users as employees, or self-employed/franchisees, with their own jobs.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Includes Additional User
+</div>
+</li>
+<li class=''>
+<div class='feature-title'>
+User Roles
+</div>
+<p class='feature-description'>Create roles to control what users can see and do.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Route Optimisation
+</div>
+<p class='feature-description'>Find the shortest driving route for the day&#39;s work</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+VAT
+</div>
+<p class='feature-description'>Set job prices to include or exclude VAT.</p>
+<p class='feature-description'>Show VAT breakdown on invoices.</p>
+<p class='feature-description'>Calculate your VAT return figures, from income and expenses.</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+MTD for VAT
+</div>
+<p class='feature-description'>Submit returns to HMRC via Making Tax Digital</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+API Access
+</div>
+<p class='feature-description'>Connect your web site to your Aworka account</p>
+<p class='feature-description'>Access and update your Aworka data with external tools</p>
+</li>
+<li class=''>
+<div class='feature-title'>
+Quickbooks
+<span class='small badge'>SOON</span>
+</div>
+<p class='feature-description'>Upload your sales, invoices, payments and expenses to Quickbooks Online.</p>
+<p class='feature-description'>(Xero to follow)</p>
+</li>
+</ul>
+
+</div>
+</div>
+
+</div>
+<p class='centre'>
+Features available
+<span class='badge'>SOON</span>
+are currently being trialled by a limited group of users. For info and possible early access
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</p>
+</form><div class='confirm_plan' style='display: none'></div>
+</div>
+
+<a class="button cancel" href="/back">Back</a>
+</div>
+<!-- #footer -->
+<!-- = yield :footer -->
+<!-- = powered_by_aworka if subdomain -->
+<!-- .contact_us -->
+<!-- = contact_link -->
+</body>
+</html>

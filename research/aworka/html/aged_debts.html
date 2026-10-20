@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>aworka</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='IE=8' http-equiv='X-UA-Compatible'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-f110508657df00bb46ba2e03b378516c2abafaa7525eb55fbac556c51f22dea0.ico" />
+<link rel="stylesheet" media="all" href="/assets/application-e022ef084b6db6d1dbaf25c3a99fe32073c37deb9622f458ad11be0f8a271463.css" data-turbolinks-track="reload" />
+<script>
+//<![CDATA[
+var decimal_sep = '.';
+var currency_symbol_first = true;
+var currency_symbol = '£';
+var current_user = 8065;
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/route_endpoints.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.min.js?1.9.1'></script>
+<script type='text/javascript' src='/javascripts/jquery-ui.min.js?1.10.1'></script>
+<script type='text/javascript' src='/javascripts/jquery_ujs.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.loadmask.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.ui.touch-punch-improved.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.placeholder.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.autosize.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.magnific-popup.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.cookie.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jstz.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/underscore-min.js?1.8.3'></script>
+<script type='text/javascript' src='/javascripts/jquery.application.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/address_autocomplete.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/announcement_reads.js?261019191430'></script>
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="YRX0G5TsYdHjKm4Ch5Uo-e7cgsej4Q4b62_91uhh_HfKnca9iYBlol8spmDf_Jvl4omo2eIgFv-whv0kDMHsIA" />
+
+
+</head>
+<body>
+<div id='help' style='display:none'>
+<div id='help_page'>
+<div id='help_body'>
+</div>
+<a class="button close" id="close_help" href="#">Close</a>
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</div>
+</div>
+
+<div id='header'>
+<div id='logo'>
+<img alt="Aworka Logo" height="45" src="/assets/aworka_white-ba7c6d4d5e2b39983554ad0d8eec6a8a96efd150fdd1a2a2fd5e2fa24c352703.svg" />
+</div>
+<h1>Reach To Clean</h1>
+<div class='nav' id='nav'>
+<ul>
+<li><a href="/dashboard">Home</a></li>
+<li><a href="/day_plans">Planner</a></li>
+<li><a href="/job_specs">Jobs</a></li>
+<li class="current"><a href="/debts">Debts</a></li>
+<li><a href="/expenses">Expenses</a></li>
+<li><a href="/messages">Messages</a></li>
+<li><a href="/users">Users</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class='nav' id='subnav'>
+<ul>
+<li><a href="/debts">Current Debts</a></li>
+<li class="current"><a href="/aged_debts">Aged Debts</a></li>
+
+</ul>
+<div id='controls'>
+<span id='announcement_updates'>
+
+</span>
+<a class="button edit" href="/users/8065/edit">Settings</a>
+<a class="button cancel" rel="nofollow" data-method="delete" href="/user_session">Logout</a>
+<a data-controller="aged_debts" data-action="index" class="button help" id="help_button" href="#">Help</a>
+</div>
+</div>
+<div id='messages'>
+
+<div class="notice error flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice success flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice info flash_notice" style="display:none"><div><h2></h2></div></div>
+
+
+
+</div>
+<div id='content'>
+<div id='button_bar'>
+
+
+</div>
+<div id='filter_bar'>
+<form autocomplete="off" id="filter_form" action="/aged_debts/filter" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="NrhQNNj2uCk7EKBazwrwumP8hbQf6-iQnSdbdU9cMBfiDHQpFMMEi8C1HiLCyyePMpvD8mhSJoZaARkxt7Kn4Q" autocomplete="off" />Show
+
+<input autocomplete="off" type="hidden" value="aged_debts" name="filter[category]" id="filter_category" />
+
+<select name="filter[subcategory]" id="filter_subcategory"><option selected="selected" value="debts-and-credits">Debts &amp; Credits</option>
+<option value="debts">Debts</option>
+<option value="credits">Credits</option></select>
+<span class='sort_order'>
+by
+<select name="filter[sort_order]" id="filter_sort_order"><option selected="selected" value="debt-since">Debt Since</option>
+<option value="balance">Balance</option></select>
+</span>
+<span class='dates'>
+for
+<span id='date_fields'>
+<select id="filter_date_3i" name="filter[date(3i)]">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30" selected="selected">30</option>
+<option value="31">31</option>
+</select>
+<select id="filter_date_2i" name="filter[date(2i)]">
+<option value="1">January</option>
+<option value="2">February</option>
+<option value="3">March</option>
+<option value="4">April</option>
+<option value="5">May</option>
+<option value="6">June</option>
+<option value="7">July</option>
+<option value="8">August</option>
+<option value="9" selected="selected">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+</select>
+<select id="filter_date_1i" name="filter[date(1i)]">
+<option value="2018">2018</option>
+<option value="2019">2019</option>
+<option value="2020">2020</option>
+<option value="2021">2021</option>
+<option value="2022">2022</option>
+<option value="2023">2023</option>
+<option value="2024">2024</option>
+<option value="2025">2025</option>
+<option value="2026" selected="selected">2026</option>
+<option value="2027">2027</option>
+<option value="2028">2028</option>
+</select>
+
+</span>
+</span>
+<!-- = link_to 'More filters...', '#', :class => 'button small', :id => 'more_filters_button' if more_filters -->
+<input type="submit" name="commit" value="Refresh" class="button small" data-disable-with="Refresh" />
+<a class="button cancel" href="/aged_debts/reset_filter">Reset</a>
+</form><script>
+//<![CDATA[
+var default_date = {
+day_ending:  [2026, 10, 20],
+week_ending:  [2026, 10, 24],
+month_ending: [2026, 10, 31],
+year_ending:  [2027, 4, 5],
+day_starting:  [2026, 10, 20],
+week_starting:  [2026, 10, 18],
+month_starting: [2026, 10, 1],
+year_starting:  [2026, 4, 6]
+};
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/jquery.filter.js?261019191430'></script>
+
+</div>
+<div class='autosize_table' style='visibility:hidden'>
+<table>
+<thead>
+<tr>
+<th>&nbsp;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+<tfoot>
+<tr class='totals'>
+<td>&nbsp;</td>
+</tr>
+</tfoot>
+</table>
+<div class='under_table'>
+<div class='pagination'>
+<span class='previous_page disabled'>← Previous</span>
+<em class='current'>1</em>
+<a class='disabled' href='#'>2</a>
+<a class='disabled' href='#'>3</a>
+<a class='disabled' href='#'>4</a>
+<a class='disabled' href='#'>5</a>
+<a class='disabled' href='#'>6</a>
+<a class='disabled' href='#'>7</a>
+<a class='disabled' href='#'>8</a>
+<a class='disabled' href='#'>9</a>
+<span class='gap'>...</span>
+<a class='disabled' href='#'>&nbsp;</a>
+<a class='disabled' href='#'>&nbsp;</a>
+<a class='next_page disabled' href='#'>Next →</a>
+</div>
+</div>
+</div>
+
+
+
+</div>
+<!-- #footer -->
+<!-- = yield :footer -->
+<!-- = powered_by_aworka if subdomain -->
+<!-- .contact_us -->
+<!-- = contact_link -->
+</body>
+</html>

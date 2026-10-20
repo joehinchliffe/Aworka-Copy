@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+<title>aworka</title>
+<meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+<meta content='IE=8' http-equiv='X-UA-Compatible'>
+<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-f110508657df00bb46ba2e03b378516c2abafaa7525eb55fbac556c51f22dea0.ico" />
+<link rel="stylesheet" media="all" href="/assets/application-e022ef084b6db6d1dbaf25c3a99fe32073c37deb9622f458ad11be0f8a271463.css" data-turbolinks-track="reload" />
+<script>
+//<![CDATA[
+var decimal_sep = '.';
+var currency_symbol_first = true;
+var currency_symbol = '£';
+var current_user = 8065;
+
+//]]>
+</script><script type='text/javascript' src='/javascripts/route_endpoints.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.min.js?1.9.1'></script>
+<script type='text/javascript' src='/javascripts/jquery-ui.min.js?1.10.1'></script>
+<script type='text/javascript' src='/javascripts/jquery_ujs.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.loadmask.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.ui.touch-punch-improved.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.placeholder.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.autosize.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.magnific-popup.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.cookie.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jstz.min.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/underscore-min.js?1.8.3'></script>
+<script type='text/javascript' src='/javascripts/jquery.application.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/address_autocomplete.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/announcement_reads.js?261019191430'></script>
+<script type='text/javascript' src='/javascripts/jquery.events.js?261019191430'></script>
+
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="mouCfCYAVb0cOJLtctvEXomTwocrd2nYwpxQ3T5PDpgxA7DaO2xRzqA-Wo8qsndChcbomWq2cTyZdVAv2u8ezw" />
+
+
+</head>
+<body>
+<div id='help' style='display:none'>
+<div id='help_page'>
+<div id='help_body'>
+</div>
+<a class="button close" id="close_help" href="#">Close</a>
+<a class="button help contact_us" href="/questions/new">Contact Us</a>
+</div>
+</div>
+
+<div id='header'>
+<div id='logo'>
+<img alt="Aworka Logo" height="45" src="/assets/aworka_white-ba7c6d4d5e2b39983554ad0d8eec6a8a96efd150fdd1a2a2fd5e2fa24c352703.svg" />
+</div>
+<h1>Reach To Clean</h1>
+<div class='nav' id='nav'>
+<ul>
+<li><a href="/dashboard">Home</a></li>
+<li class="current"><a href="/day_plans">Planner</a></li>
+<li><a href="/job_specs">Jobs</a></li>
+<li><a href="/debts">Debts</a></li>
+<li><a href="/expenses">Expenses</a></li>
+<li><a href="/messages">Messages</a></li>
+<li><a href="/users">Users</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class='nav' id='subnav'>
+<ul>
+<li><a href="/day_plans">Planner</a></li>
+<li><a href="/job_sheets?date=2026-10-20&amp;user_id=8065">Job Sheets</a></li>
+<li class="current"><a href="/events">Events</a></li>
+<li><a href="/holidays">Time Off</a></li>
+
+</ul>
+<div id='controls'>
+<span id='announcement_updates'>
+
+</span>
+<a class="button edit" href="/users/8065/edit">Settings</a>
+<a class="button cancel" rel="nofollow" data-method="delete" href="/user_session">Logout</a>
+<a data-controller="events" data-action="new" class="button help" id="help_button" href="#">Help</a>
+</div>
+</div>
+<div id='messages'>
+
+<div class="notice error flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice success flash_notice" style="display:none"><div><h2></h2></div></div>
+<div class="notice info flash_notice" style="display:none"><div><h2></h2></div></div>
+
+
+
+</div>
+<div id='content'>
+<form class="formtastic event" id="new_event" novalidate="novalidate" action="/events" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="4aKLeNpe7JSAZL2gS7zvnbAlbxCtwOBhHnm5SQpT-l4UZUy5YAevyPbwANQFzw4nwrb7DypRVfpBSi0z9vNa6A" autocomplete="off" /><div class='div main'>
+<h3>
+New Event
+</h3>
+<li class="hidden input optional" id="event_linked_to_input">
+<input id="event_linked_to" autocomplete="off" type="hidden" name="event[linked_to]" />
+</li>
+<li class="hidden input optional" id="event_linked_id_input">
+<input id="event_linked_id" autocomplete="off" type="hidden" name="event[linked_id]" />
+</li>
+<li class="select input optional" id="event_event_type_input">
+<label for="event_event_type" class="label">Type</label><select name="event[event_type]" id="event_event_type"><option selected="selected" value="e">Event</option>
+<option value="t">To Do</option></select>
+</li>
+<li class="hidden input optional" id="event_user_id_input">
+<input id="event_user_id" autocomplete="off" type="hidden" value="8065" name="event[user_id]" />
+</li>
+<fieldset class="inline"><ol><li class="date_picker input optional stringish" id="event_start_date_input">
+<label for="event_start_date" class="label">When</label><input data-typed-in-year-range="1980:2028" data-year-range="2016:2028" data-first-day="0" maxlength="10" size="10" id="event_start_date" type="datepicker" step="1" value="20 Oct 2026" name="event[start_date]" />
+</li>
+<li class="string input optional stringish" id="event_start_hours_mins_input">
+<label for="event_start_hours_mins" class="label">at</label><input maxlength="5" size="5" id="event_start_hours_mins" class="set_time" type="text" name="event[start_hours_mins]" />
+</li>
+</ol></fieldset><li class="string input required stringish" id="event_summary_input">
+<label for="event_summary" class="label">Summary</label><input size="30" id="event_summary" type="text" name="event[summary]" />
+</li>
+<li class="text input optional" id="event_details_input">
+<label for="event_details" class="label">Details</label><textarea cols="40" rows="2" id="event_details" name="event[details]">
+</textarea>
+</li>
+<fieldset class="actions"><ol><input type="submit" name="save" value="Save" class="button" data-disable-with="Save" />
+
+</ol></fieldset></div>
+</form><script>
+//<![CDATA[
+setup_event_editor();
+//]]>
+</script>
+
+<a class="button cancel" href="/back">Back</a>
+</div>
+<!-- #footer -->
+<!-- = yield :footer -->
+<!-- = powered_by_aworka if subdomain -->
+<!-- .contact_us -->
+<!-- = contact_link -->
+</body>
+</html>
