@@ -101,7 +101,7 @@ export async function addJobAction(customerId: string, _: FormState, f: FormData
 
 export async function adjustmentAction(customerId: string, f: FormData) {
   const type = String(f.get("type"));
-  const user = await requireUser(type === "bad_debt" ? "write_off_debts" : "enter_payments");
+  const user = await requireUser("write_off_debts");
   const pounds = Number(f.get("amount") ?? 0);
   await addAdjustment(user.accountId, user.id, customerId, type, Math.round(pounds * 100), (f.get("notes") as string) || null, todayIso());
   revalidatePath(`/customers/${customerId}`);

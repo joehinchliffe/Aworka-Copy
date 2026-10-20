@@ -13,8 +13,8 @@ export async function listRounds(accountId: string) {
   return db.select({
     round: schema.rounds,
     userName: schema.users.name,
-    jobs: sql<number>`(select count(*)::int from job_specs s where s.round_id = ${schema.rounds.id} and s.status in ('active', 'suspended'))`,
-    value: sql<number>`(select coalesce(sum(s.price), 0)::int from job_specs s where s.round_id = ${schema.rounds.id} and s.status = 'active')`,
+    jobs: sql<number>`(select count(*)::int from job_specs s where s.round_id = ${schema.rounds.id} and s.account_id = ${schema.rounds.accountId} and s.status in ('active', 'suspended'))`,
+    value: sql<number>`(select coalesce(sum(s.price), 0)::int from job_specs s where s.round_id = ${schema.rounds.id} and s.account_id = ${schema.rounds.accountId} and s.status = 'active')`,
   }).from(schema.rounds)
     .leftJoin(schema.users, eq(schema.users.id, schema.rounds.userId))
     .where(eq(schema.rounds.accountId, accountId))

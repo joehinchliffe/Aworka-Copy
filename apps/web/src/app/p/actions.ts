@@ -42,11 +42,10 @@ export async function payInvoiceAction(viewToken: string) {
   if (!row) redirect("/");
   const amount = Math.min(row.invoice.amountToPay, Math.max(0, -row.customer.balance));
   if (row.invoice.paidAt || amount < STRIPE_MIN_PENCE) redirect(`/v/${viewToken}`);
-  const portal = await ensurePortalToken(row.customer.id);
   let url: string;
   try {
     const s = await createCheckoutSession(row.account.id, row.customer.id, amount, `${row.account.businessName}: invoice ${row.invoice.number}`,
-      `${appUrl()}/p/${portal}/paid?session_id={CHECKOUT_SESSION_ID}`, `${appUrl()}/v/${viewToken}`,
+      `${appUrl()}/v/${viewToken}/paid?session_id={CHECKOUT_SESSION_ID}`, `${appUrl()}/v/${viewToken}`,
       { invoiceId: row.invoice.id, email: row.contact.email });
     url = s.url;
   } catch {

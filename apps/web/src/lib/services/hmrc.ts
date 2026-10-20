@@ -20,22 +20,29 @@ export const HMRC_SCOPES = {
 } as const;
 
 function sign(value: string) {
-  return createHmac("sha256", process.env.APP_SECRET ?? "dev-only-secret-change-me").update(value).digest("base64url");
+  const secret = process.env.APP_SECRET;
+  if (!secret && process.env.NODE_ENV === "production") throw new Error("APP_SECRET must be set in production");
+  return createHmac("sha256", secret ?? "dev-only-secret-change-me").update(value).digest("base64url");
 }
-export function makeState(accountId: string) {
-  return `${accountId}.${sign(accountId)}`;
+const STATE_TTL_MS = 30 * 60_000;
+/** Signed OAuth state bound to an account and provider, valid for 30 minutes. */
+export function makeState(accountId: string, provider = "generic", now = Date.now()) {
+  const body = `${provider}.${accountId}.${now + STATE_TTL_MS}`;
+  return `${body}.${sign(body)}`;
 }
-export function readState(state: string): string | null {
-  const [id, mac] = state.split(".");
-  if (!id || !mac) return null;
-  const a = Buffer.from(mac), b = Buffer.from(sign(id));
-  return a.length === b.length && timingSafeEqual(a, b) ? id : null;
+export function readState(state: string, provider = "generic", now = Date.now()): string | null {
+  const parts = state.split(".");
+  if (parts.length !== 4) return null;
+  const [p, id, exp, mac] = parts as [string, string, string, string];
+  const a = Buffer.from(mac), b = Buffer.from(sign(`${p}.${id}.${exp}`));
+  if (a.length !== b.length || !timingSafeEqual(a, b)) return null;
+  return p === provider && Number(exp) > now ? id : null;
 }
 
 export function authorizeUrl(accountId: string, scope: keyof typeof HMRC_SCOPES) {
   const q = new URLSearchParams({
     response_type: "code", client_id: process.env.HMRC_CLIENT_ID ?? "", scope: HMRC_SCOPES[scope],
-    state: makeState(accountId), redirect_uri: redirectUri(),
+    state: makeState(accountId, "hmrc"), redirect_uri: redirectUri(),
   });
   return `${authBase()}/oauth/authorize?${q}`;
 }

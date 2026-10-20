@@ -92,6 +92,7 @@ export async function updateUser(actor: Actor, userId: string, raw: z.input<type
   const u = editUserInput.parse(raw);
   const existing = await getUserRow(actor.accountId, userId);
   if (!existing) throw new Error("User not found");
+  if (existing.isOwner && !actor.isOwner) throw new Error("Only the owner can change the owner's details");
   await checkEmailFree(u.email, userId);
   await checkRefs(actor.accountId, u.roleId, u.managerId, userId);
   if (u.password !== undefined && u.password.length < 8) throw new Error("Password must be at least 8 characters");

@@ -14,7 +14,7 @@ const redirectUri = () => `${process.env.APP_URL ?? "http://localhost:3000"}/api
 const MINOR = "minorversion=75";
 
 export function qboAuthorizeUrl(accountId: string) {
-  const q = new URLSearchParams({ client_id: process.env.QBO_CLIENT_ID ?? "", response_type: "code", scope: "com.intuit.quickbooks.accounting", redirect_uri: redirectUri(), state: makeState(accountId) });
+  const q = new URLSearchParams({ client_id: process.env.QBO_CLIENT_ID ?? "", response_type: "code", scope: "com.intuit.quickbooks.accounting", redirect_uri: redirectUri(), state: makeState(accountId, "quickbooks") });
   return `https://appcenter.intuit.com/connect/oauth2?${q}`;
 }
 

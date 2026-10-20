@@ -54,9 +54,12 @@ describe("VAT returns", () => {
 
 describe("HMRC", () => {
   it("signs and verifies OAuth state", () => {
-    const s = makeState("acc-1");
-    expect(readState(s)).toBe("acc-1");
-    expect(readState(s.replace(/.$/, "x"))).toBeNull();
+    const s = makeState("acc-1", "hmrc", 1_000);
+    expect(readState(s, "hmrc", 2_000)).toBe("acc-1");
+    expect(readState(s, "quickbooks", 2_000)).toBeNull(); // bound to provider
+    expect(readState(s, "hmrc", 1_000 + 31 * 60_000)).toBeNull(); // expired
+    const [p, id, , mac] = s.split(".");
+    expect(readState([p, id, String(9e15), mac].join("."), "hmrc", 2_000)).toBeNull(); // tampered expiry
   });
   it("builds fraud-prevention headers", () => {
     const h = fraudHeaders({

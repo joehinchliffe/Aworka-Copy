@@ -97,6 +97,7 @@ export async function createCustomerWithJob(accountId: string, userId: string, r
 type Tx = Parameters<Parameters<typeof db.transaction>[0]>[0];
 
 async function insertJobSpec(tx: Tx, accountId: string, userId: string, customerId: string, customerContactId: string, j: z.output<typeof jobSpecInput>, today: string) {
+  await assertOwnedRefs(accountId, j.roundId, j.taskId);
   let roundId = j.roundId ?? null;
   if (!roundId && j.newRoundName) {
     const [round] = await tx.insert(schema.rounds).values({ accountId, name: j.newRoundName, userId }).returning();
@@ -130,6 +131,12 @@ export async function addJobSpec(accountId: string, userId: string, customerId: 
   const customer = await db.query.customers.findFirst({ where: and(eq(schema.customers.id, customerId), eq(schema.customers.accountId, accountId)) });
   if (!customer) throw new Error("Customer not found");
   return db.transaction((tx) => insertJobSpec(tx, accountId, userId, customerId, customer.contactId, j, today));
+}
+
+/** Round and task ids supplied by a client must belong to the same account. */
+async function assertOwnedRefs(accountId: string, roundId?: string | null, taskId?: string | null) {
+  if (roundId && !(await db.query.rounds.findFirst({ where: and(eq(schema.rounds.id, roundId), eq(schema.rounds.accountId, accountId)) }))) throw new ValidationError(["Unknown round"]);
+  if (taskId && !(await db.query.tasks.findFirst({ where: and(eq(schema.tasks.id, taskId), eq(schema.tasks.accountId, accountId)) }))) throw new ValidationError(["Unknown task"]);
 }
 
 export class ValidationError extends Error {
@@ -220,6 +227,8 @@ export async function updateCustomer(accountId: string, customerId: string, raw:
 
 /** Record a balance adjustment such as a bad-debt write-off (amount in the customer's favour). */
 export async function addAdjustment(accountId: string, userId: string, customerId: string, type: string, amount: number, notes: string | null, today: string) {
+  const owned = await db.query.customers.findFirst({ where: and(eq(schema.customers.id, customerId), eq(schema.customers.accountId, accountId)) });
+  if (!owned) throw new Error("Customer not found");
   await db.transaction(async (tx) => {
     await tx.insert(schema.adjustments).values({ accountId, customerId, date: today, type, amount, notes });
     await recomputeBalance(customerId, today, tx);
@@ -249,6 +258,7 @@ export async function updateJobSpec(accountId: string, userId: string, id: strin
   const j = jobSpecInput.parse(raw);
   const spec = await getJobSpec(accountId, id);
   if (!spec) throw new Error("Job not found");
+  await assertOwnedRefs(accountId, j.roundId, j.taskId);
   await db.transaction(async (tx) => {
     let roundId = j.roundId ?? spec.roundId;
     if (!j.roundId && j.newRoundName) {

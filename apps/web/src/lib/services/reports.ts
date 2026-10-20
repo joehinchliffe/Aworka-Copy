@@ -454,9 +454,9 @@ export async function activity(accountId: string, f: ActivityFilter, today: IsoD
   }
   const rows = await db.select({ a: schema.activities, contact: schema.contacts, userName: schema.users.name })
     .from(schema.activities)
-    .leftJoin(schema.customers, eq(schema.customers.id, schema.activities.customerId))
+    .leftJoin(schema.customers, and(eq(schema.customers.id, schema.activities.customerId), eq(schema.customers.accountId, accountId)))
     .leftJoin(schema.contacts, eq(schema.contacts.id, schema.customers.contactId))
-    .leftJoin(schema.users, eq(schema.users.id, schema.activities.userId))
+    .leftJoin(schema.users, and(eq(schema.users.id, schema.activities.userId), eq(schema.users.accountId, accountId)))
     .where(and(...conds))
     .orderBy(desc(schema.activities.date), desc(schema.activities.createdAt))
     .limit(f.limit ?? 2000);

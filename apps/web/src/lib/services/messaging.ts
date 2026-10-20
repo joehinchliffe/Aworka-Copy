@@ -25,7 +25,8 @@ export interface Transport {
 
 export const logTransport: Transport = {
   async send(m) {
-    console.log(`[${m.channel}] to=${m.to} subject=${m.subject ?? ""}\n${m.body}`);
+    // Development fallback: never log bodies, which contain private links.
+    console.log(`[${m.channel}] queued message delivered to log transport (${m.body.length} chars)`);
   },
 };
 

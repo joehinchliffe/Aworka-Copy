@@ -27,7 +27,9 @@ export function parseCsv(text: string): string[][] {
 
 export function toCsv(rows: (string | number | null | undefined)[][]): string {
   return rows.map((r) => r.map((v) => {
-    const s = v == null ? "" : String(v);
+    let s = v == null ? "" : String(v);
+    // Stop spreadsheet apps treating text as a formula.
+    if (/^[=+\-@\t\r]/.test(s) && !/^-?\d+(\.\d+)?$/.test(s)) s = `'${s}`;
     return /[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
   }).join(",")).join("\r\n") + "\r\n";
 }
