@@ -59,6 +59,11 @@ await page.click("button:has-text('Invoice done jobs now')");
 await page.waitForURL(/\/invoices\//);
 await shot("06-invoice");
 
+step("map");
+await page.goto(`${BASE}/map`);
+await page.waitForSelector(".leaflet-interactive", { timeout: 15000 });
+await shot("07-map");
+
 await browser.close();
 if (errors.length) { console.error("page errors:", errors); process.exit(1); }
 console.log("OK");

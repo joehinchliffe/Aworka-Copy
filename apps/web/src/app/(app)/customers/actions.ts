@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { maskFromDays } from "@rounds/domain";
 import { requireUser } from "@/lib/session";
+import { geocodeContact } from "@/lib/services/geocoding";
 import { todayIso } from "@/lib/time";
 import {
   addAdjustment, addJobSpec, anonymiseCustomer, createCustomerWithJob, updateCustomer, ValidationError,
@@ -77,6 +78,8 @@ export async function createCustomerAction(_: FormState, f: FormData): Promise<F
   try {
     const r = await createCustomerWithJob(user.accountId, user.id, customerFrom(f), jobFrom(f), todayIso());
     id = r.customer.id;
+    await geocodeContact(r.customer.contactId);
+    if (r.jobSpec.jobContactId && r.jobSpec.jobContactId !== r.customer.contactId) await geocodeContact(r.jobSpec.jobContactId);
   } catch (e) { return errorsOf(e); }
   revalidatePath("/customers");
   redirect(`/customers/${id}`);
