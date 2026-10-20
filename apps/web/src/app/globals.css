@@ -96,3 +96,29 @@ legend { font-weight: 600; padding: 0 4px; }
 .chip.not-allowed { outline: 2px solid var(--danger); }
 .jobsheet-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--line); }
 details > summary { cursor: pointer; }
+
+/* ---- Dashboard and reports ---- */
+.dash-top { margin-bottom: 4px; }
+a.stat-link { display: block; color: inherit; }
+a.stat-link:hover { text-decoration: none; border-color: var(--brand); }
+.event-list { list-style: none; margin: 0; padding: 0; }
+.event-list li { display: flex; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.event-list li:last-child { border-bottom: none; }
+.event-when { min-width: 110px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.report-filters { margin-bottom: 12px; align-items: flex-end; }
+.report-filters > div { min-width: 140px; }
+.report-presets { display: flex; gap: 12px; flex-wrap: wrap; font-size: 13px; width: 100%; }
+.period-pick .row { flex-wrap: nowrap; }
+.pnl td:first-child { white-space: nowrap; }
+.pnl tr.pnl-section th { background: var(--bg); color: var(--ink); padding-top: 12px; }
+.pnl tr.pnl-total td { font-weight: 600; border-top: 1px solid var(--muted); }
+.pnl tr.pnl-profit td { font-weight: 700; font-size: 16px; border-top: 2px solid var(--ink); background: var(--brand-soft); }
+@media print {
+  .table-wrap { border: none; overflow: visible; }
+  .pnl table { font-size: 11px; }
+  .pnl th, .pnl td { padding: 3px 5px; }
+  .pnl tr.pnl-profit td { background: none; }
+}
+@media (max-width: 600px) {
+  .period-pick .row { flex-wrap: wrap; }
+}
