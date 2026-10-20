@@ -96,3 +96,25 @@ legend { font-weight: 600; padding: 0 4px; }
 .chip.not-allowed { outline: 2px solid var(--danger); }
 .jobsheet-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--line); }
 details > summary { cursor: pointer; }
+
+/* ---- Expenses and mileage (routes under /expenses) ---- */
+.exp-filters { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.exp-filters > select { max-width: 240px; }
+.exp-period { flex-wrap: nowrap; }
+.exp-period select { width: auto; }
+.notice.exp-warn { background: var(--warn-soft); color: var(--warn); }
+.notice.exp-info { background: var(--info-soft); color: #1d4ed8; }
+.exp-radios { gap: 16px; margin-bottom: 4px; }
+.exp-radios label { margin: 0; color: var(--ink); font-size: 14px; }
+.exp-item-wrap { display: flex; align-items: center; gap: 12px; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.exp-item-wrap:last-child { border-bottom: none; }
+.exp-item { flex: 1; }
+.exp-item .notice { margin: 6px 0 0; }
+.exp-item-form { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.exp-item-form input[name="name"] { max-width: 280px; }
+.exp-item-form label { margin: 0; color: var(--ink); font-size: 14px; }
+.exp-vehicle { padding: 6px 0; border-bottom: 1px solid var(--line); }
+@media (max-width: 600px) {
+  .exp-period { flex-wrap: wrap; }
+  .exp-filters > select { max-width: none; }
+}
