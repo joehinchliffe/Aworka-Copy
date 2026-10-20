@@ -1,6 +1,7 @@
 "use client";
 import { useActionState, useState } from "react";
 import { DAY_NAMES } from "@/lib/format";
+import { AddressLookup } from "./AddressLookup";
 
 type FormState = { errors?: string[] } | undefined;
 type Action = (state: FormState, f: FormData) => Promise<FormState>;
@@ -32,7 +33,10 @@ export function ContactFields({ prefix, d = {} }: { prefix: string; d?: Contact 
         <div><label>Last name</label><input name={`${prefix}lastName`} defaultValue={d.lastName ?? ""} /></div>
       </div>
       <label>Company</label><input name={`${prefix}company`} defaultValue={d.company ?? ""} />
+      <AddressLookup prefix={prefix} />
       <label>Address</label><textarea name={`${prefix}address`} defaultValue={d.address ?? ""} rows={3} />
+      <input type="hidden" name={`${prefix}lat`} defaultValue="" />
+      <input type="hidden" name={`${prefix}lng`} defaultValue="" />
       <div className="field-row">
         <div><label>Postcode</label><input name={`${prefix}postcode`} defaultValue={d.postcode ?? ""} /></div>
         <div><label>Phone</label><input name={`${prefix}phone1`} type="tel" defaultValue={d.phone1 ?? ""} /></div>

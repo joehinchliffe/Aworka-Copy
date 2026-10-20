@@ -20,7 +20,7 @@ async function run(fn: () => Promise<unknown>, path = "/settings", ok = "Saved")
 export async function businessAction(_: FormState, f: FormData): Promise<FormState> {
   const user = await requireUser();
   return run(() => updateBusiness(user, {
-    businessName: s(f, "businessName") ?? "", address: s(f, "address"), phone: s(f, "phone"), website: s(f, "website"),
+    businessName: s(f, "businessName") ?? "", address: s(f, "address"), phone: s(f, "phone"), website: s(f, "website"), email: s(f, "email"),
     yearEndDay: s(f, "yearEndDay") as unknown as number, yearEndMonth: s(f, "yearEndMonth") as unknown as number,
   }));
 }

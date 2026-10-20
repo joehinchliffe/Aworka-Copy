@@ -3,6 +3,7 @@ import { eq } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { deliverQueued, logTransport, type Transport } from "./messaging";
 import { toE164 } from "@/lib/sms";
+import { emailTransportFor, type EmailDeps } from "./email";
 
 export { smsSegments, toE164, type SmsCount } from "@/lib/sms";
 
@@ -129,6 +130,7 @@ export function smtpTransport(url: string, fromAddress: string | undefined): Tra
         to: m.to,
         subject: m.subject ?? "",
         text: m.body,
+        replyTo: m.replyTo ?? undefined,
       });
     },
   };
@@ -154,11 +156,26 @@ export function transportFromEnv(env: Env = process.env): Transport {
   };
 }
 
-/** Deliver queued messages for every account (cron entry point). */
-export async function deliverAllQueued(transport: Transport = transportFromEnv(), perAccountLimit = 100) {
+/**
+ * Deliver queued messages for every account (cron entry point). Email goes
+ * through each account's chosen sender (own SMTP, Gmail, Outlook), falling
+ * back to the platform `transport`; failures are recorded per message.
+ */
+export async function deliverAllQueued(transport: Transport = transportFromEnv(), perAccountLimit = 100, deps: EmailDeps = {}) {
   const accounts = await db.selectDistinct({ accountId: schema.messages.accountId }).from(schema.messages)
     .where(eq(schema.messages.status, "queued"));
   let attempted = 0;
-  for (const { accountId } of accounts) attempted += await deliverQueued(accountId, transport, perAccountLimit);
+  for (const { accountId } of accounts) {
+    let t = transport;
+    let limit = perAccountLimit;
+    try {
+      const chosen = await emailTransportFor(accountId, transport, deps);
+      t = chosen.transport;
+      if (chosen.maxPerRun) limit = Math.min(limit, chosen.maxPerRun);
+    } catch {
+      /* unreadable settings or credentials: use the platform transport */
+    }
+    attempted += await deliverQueued(accountId, t, limit);
+  }
   return { accounts: accounts.length, attempted };
 }

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 import { db, schema } from "@/db";
 import { decrypt, encrypt } from "@/lib/crypto";
 
-export type Provider = "stripe" | "gocardless";
+export type Provider = "stripe" | "gocardless" | "smtp" | "gmail" | "outlook";
 export type Integration = typeof schema.integrations.$inferSelect;
 
 /** The account's live connection to a provider, or null when not connected. */
