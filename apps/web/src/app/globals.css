@@ -96,3 +96,26 @@ legend { font-weight: 600; padding: 0 4px; }
 .chip.not-allowed { outline: 2px solid var(--danger); }
 .jobsheet-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--line); }
 details > summary { cursor: pointer; }
+
+/* ---- Messaging, job sheets, events (added by the messaging area) ---- */
+.jobsheet-day { margin-bottom: 20px; break-inside: avoid-page; }
+.jobsheet-day h2 { margin: 12px 0 6px; }
+.jobsheet-note { white-space: pre-line; background: var(--warn-soft); border-radius: 6px; padding: 8px 10px; margin: 6px 0; }
+table.jobsheet td { font-size: 14px; }
+table.jobsheet .jobsheet-paid { min-width: 80px; border-left: 1px solid var(--line); }
+.jobsheet-total { margin-top: 8px; }
+.merge-tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.message-meta { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; margin: 0 0 12px; }
+.message-meta dt { color: var(--muted); font-size: 13px; }
+.message-meta dd { margin: 0; }
+.message-body { white-space: pre-wrap; font: inherit; background: var(--bg); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; margin: 8px 0; }
+.draft-preview { display: block; color: var(--ink); font-size: 15px; margin: 0; }
+@media print {
+  .jobsheet-day { page-break-inside: avoid; }
+  .jobsheet-day h2 a { color: var(--ink); }
+  table.jobsheet th, table.jobsheet td { padding: 4px 6px; font-size: 12px; }
+  table.jobsheet .jobsheet-paid { min-width: 90px; }
+  .jobsheet-note { background: none; border: 1px solid #999; }
+  .table-wrap { overflow: visible; border: none; }
+}
+/* ---- end messaging area ---- */
