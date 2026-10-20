@@ -11,7 +11,14 @@ export async function loginAction(_: FormState, form: FormData): Promise<FormSta
   if (!user) return { error: "Email or password is incorrect" };
   const s = await createSession(user.id);
   await setSessionCookie(s.token, s.expiresAt);
-  redirect("/planner");
+  redirect(safeNext(form.get("next")) ?? "/planner");
+}
+
+/** Only same-site relative paths, so the login page cannot be used as an open redirect. */
+function safeNext(v: FormDataEntryValue | null): string | null {
+  const s = typeof v === "string" ? v.trim() : "";
+  if (!s.startsWith("/") || s.startsWith("//") || s.includes("\\") || /[\u0000-\u001f]/.test(s)) return null;
+  return s;
 }
 
 export async function signupAction(_: FormState, form: FormData): Promise<FormState> {

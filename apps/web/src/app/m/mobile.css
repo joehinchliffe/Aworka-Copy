@@ -1,0 +1,134 @@
+/* Mobile app (/m). Builds on the colour tokens in globals.css; every class is m- prefixed. */
+.m-app {
+  --tap: 48px;
+  min-height: 100dvh; display: flex; flex-direction: column; background: var(--bg);
+  font-size: 16px; -webkit-tap-highlight-color: transparent;
+  padding-bottom: calc(64px + env(safe-area-inset-bottom));
+}
+.m-app h1 { font-size: 20px; margin: 4px 0 10px; }
+.m-app h2 { font-size: 17px; margin: 0 0 8px; }
+.m-app .small { font-size: 13px; }
+
+.m-top {
+  position: sticky; top: 0; z-index: 5; display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: calc(8px + env(safe-area-inset-top)) 12px 8px; background: var(--brand); color: var(--brand-ink);
+}
+.m-brand { font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.m-sync-pill {
+  min-height: 36px; padding: 0 12px; border-radius: 18px; border: 1px solid rgb(255 255 255 / 45%);
+  background: rgb(255 255 255 / 12%); color: inherit; font: inherit; font-size: 14px; white-space: nowrap;
+}
+.m-sync-pill.off { background: var(--warn-soft); color: var(--warn); border-color: var(--warn-soft); }
+
+.m-main { padding: 12px; width: 100%; max-width: 640px; margin: 0 auto; }
+.m-banner { padding-bottom: 0; }
+.m-empty { color: var(--muted); text-align: center; padding: 24px 8px; }
+.m-muted { color: var(--muted); }
+.m-owed { color: var(--danger); }
+.m-credit { color: var(--ok); }
+.m-error { color: var(--danger); }
+.m-center { text-align: center; }
+.m-note { background: var(--warn-soft); border-radius: var(--radius); padding: 8px 10px; }
+.m-spread { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.m-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 6px 0; }
+.m-row select { flex: 1; }
+
+.m-card { background: var(--panel); border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+.m-login { border-color: var(--brand); }
+.m-login p { margin: 6px 0 12px; }
+
+.m-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: var(--tap); min-width: var(--tap);
+  padding: 0 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--panel); color: var(--ink);
+  font: inherit; font-weight: 600; text-decoration: none; cursor: pointer;
+}
+.m-btn:disabled { opacity: .45; }
+.m-btn.m-primary { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+.m-btn.m-danger { background: var(--danger); border-color: var(--danger); color: #fff; }
+.m-btn.m-ghost { border-color: transparent; background: transparent; color: var(--brand); min-height: 40px; }
+.m-btn.m-small { min-height: 40px; padding: 0 12px; font-size: 14px; font-weight: 500; }
+.m-btn.m-wide { width: 100%; margin-top: 12px; }
+a.m-btn:hover { text-decoration: none; }
+
+.m-daybar { display: grid; grid-template-columns: var(--tap) 1fr var(--tap); align-items: center; gap: 8px; }
+.m-daybar h1 { text-align: center; margin: 0; }
+.m-daybar h1 small { display: block; font-size: 13px; font-weight: 400; color: var(--muted); }
+.m-chips { display: flex; gap: 6px; overflow-x: auto; padding: 10px 0 6px; scrollbar-width: none; }
+.m-chips button {
+  flex: 0 0 auto; min-height: 40px; padding: 0 14px; border-radius: 20px; border: 1px solid var(--line);
+  background: var(--panel); color: var(--ink); font: inherit; font-size: 14px;
+}
+.m-chips button.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+.m-summary { display: flex; gap: 14px; flex-wrap: wrap; color: var(--muted); font-size: 14px; margin: 4px 0 10px; }
+.m-summary b { color: var(--ink); }
+
+.m-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.m-job {
+  width: 100%; min-height: 64px; display: flex; justify-content: space-between; align-items: center; gap: 10px; text-align: left;
+  padding: 10px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font: inherit; cursor: pointer;
+}
+.m-job:active { background: var(--brand-soft); }
+.m-job-main { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.m-job-main > * { overflow: hidden; text-overflow: ellipsis; }
+.m-job-side { display: flex; flex-direction: column; align-items: flex-end; gap: 4px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.m-pick input { width: 24px; height: 24px; flex: 0 0 auto; accent-color: var(--brand); }
+.m-pick.late { border-left: 4px solid var(--danger); }
+.m-pick.early { border-left: 4px solid #2e90fa; }
+.m-pick.est { border-left: 4px solid var(--warn); }
+
+.m-chip { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 12px; font-weight: 600; background: var(--line); color: var(--ink); }
+.m-chip.s-to_do { background: var(--info-soft); color: #1849a9; }
+.m-chip.s-done, .m-chip.s-paid { background: var(--ok-soft); color: var(--ok); }
+.m-chip.s-not_done { background: var(--danger-soft); color: var(--danger); }
+.m-chip.s-estimate { background: var(--warn-soft); color: var(--warn); }
+
+.m-seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; margin: 10px 0; }
+.m-seg button {
+  min-height: var(--tap); border-radius: 10px; border: 1px solid var(--line); background: var(--panel);
+  font: inherit; font-weight: 600; color: var(--ink);
+}
+.m-seg button.on { background: var(--brand); border-color: var(--brand); color: var(--brand-ink); }
+
+.m-app label { display: block; font-size: 14px; color: var(--muted); margin: 10px 0 4px; }
+.m-app input:not([type=checkbox]), .m-app select, .m-app textarea {
+  width: 100%; min-height: var(--tap); padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line);
+  background: #fff; color: var(--ink); font: inherit; font-size: 16px;
+}
+.m-app textarea { min-height: 64px; }
+.m-app label.m-check { display: flex; align-items: center; gap: 10px; color: var(--ink); font-size: 15px; min-height: var(--tap); margin: 4px 0; }
+.m-check input { width: 22px; height: 22px; accent-color: var(--brand); }
+.m-move { border-top: 1px solid var(--line); margin-top: 16px; padding-top: 4px; }
+
+.m-sheet-wrap { position: fixed; inset: 0; z-index: 20; background: rgb(16 24 40 / 45%); display: flex; align-items: flex-end; justify-content: center; }
+.m-sheet {
+  width: 100%; max-width: 640px; max-height: 92dvh; overflow-y: auto; background: var(--panel);
+  border-radius: 16px 16px 0 0; padding: 12px 16px calc(20px + env(safe-area-inset-bottom));
+}
+.m-sheet-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; position: sticky; top: -12px; background: var(--panel); padding-top: 4px; }
+.m-sheet-head h2 { margin: 0; }
+.m-sheet p { margin: 6px 0; }
+
+.m-sticky { position: sticky; bottom: calc(64px + env(safe-area-inset-bottom)); padding: 8px 0; background: linear-gradient(transparent, var(--bg) 30%); }
+
+.m-tabs {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+  background: var(--panel); border-top: 1px solid var(--line); padding-bottom: env(safe-area-inset-bottom);
+}
+.m-tabs button {
+  min-height: 60px; border: 0; background: none; font: inherit; font-size: 14px; color: var(--muted); position: relative;
+}
+.m-tabs button.on { color: var(--brand); font-weight: 700; box-shadow: inset 0 3px var(--brand); }
+.m-count { display: inline-block; margin-left: 4px; min-width: 20px; padding: 0 6px; border-radius: 10px; background: var(--warn); color: #fff; font-size: 12px; }
+
+.m-toast:empty { display: none; }
+.m-toast {
+  position: fixed; left: 12px; right: 12px; bottom: calc(72px + env(safe-area-inset-bottom)); z-index: 30; margin: 0 auto; max-width: 480px;
+  background: var(--ink); color: #fff; padding: 12px 14px; border-radius: 10px; text-align: center;
+}
+
+.m-dl { display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; margin: 0 0 8px; }
+.m-dl dt { color: var(--muted); }
+.m-dl dd { margin: 0; text-align: right; font-weight: 600; }
+.m-plain { margin: 0; padding-left: 18px; }
+.m-plain li { margin: 4px 0; }
+.m-form label:first-child { margin-top: 0; }
