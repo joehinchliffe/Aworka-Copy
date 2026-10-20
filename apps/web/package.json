@@ -17,6 +17,7 @@
     "@node-rs/argon2": "2.0.2",
     "@rounds/domain": "workspace:*",
     "drizzle-orm": "0.44.5",
+    "idb": "8.0.3",
     "leaflet": "1.9.4",
     "next": "15.5.4",
     "nodemailer": "6.10.1",
