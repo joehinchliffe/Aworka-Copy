@@ -2,6 +2,7 @@ import { db, schema } from "@/db";
 import { autoMarkStaleJobs } from "./planning";
 import { runNightlyInvoicing } from "./invoicing";
 import { geocodePending } from "./geocoding";
+import { syncQuickBooks } from "./quickbooks";
 
 export type NightlyStep = (accountId: string, today: string) => Promise<unknown>;
 
@@ -10,6 +11,7 @@ export const nightlySteps: Record<string, NightlyStep> = {
   autoMarkStaleJobs,
   runNightlyInvoicing,
   geocodePending: (accountId) => geocodePending(accountId),
+  syncQuickBooks: (accountId) => syncQuickBooks(accountId),
 };
 
 export async function runNightly(today: string) {
