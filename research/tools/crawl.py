@@ -23,6 +23,8 @@ BASE = os.environ.get("AWORKA_BASE", "https://aworka.app")
 OUT = sys.argv[1] if len(sys.argv) > 1 else "research/aworka"
 MAX_PAGES = int(os.environ.get("AWORKA_MAX_PAGES", "600"))
 DELAY = float(os.environ.get("AWORKA_DELAY", "0.4"))
+# Optional comma-separated extra start paths (read-only index pages the UI does not link to).
+SEEDS = [s.strip() for s in os.environ.get("AWORKA_SEEDS", "").split(",") if s.strip()]
 
 EMAIL = os.environ.get("AWORKA_EMAIL")
 PASSWORD = os.environ.get("AWORKA_PASSWORD")
@@ -36,7 +38,24 @@ DENY = re.compile(
     r"connect|disconnect|authori[sz]e|oauth|backup|export|import|sync|generate|submit|bulk|"
     r"resend|duplicate|copy|convert|move|shift|optimi[sz]e|auto_book|run|new_mobile|mobile|"
     r"download|upload|clear|refresh|toggle|alias|hmrc|gocardless|paypal|quickbooks|"
-    r"password|unsubscribe|questions)(/|$|\?|\.)", re.I)
+    r"password|unsubscribe|questions|"
+    # state-changing endpoints found in the app JavaScript (never linked with data-method)
+    r"banked|all_banked|deliver|do_after|reset_due_dates|move_work_down|plan_next_dates|nudge|new_nudge|"
+    r"geocode|what3words|reorder|fill|test|regenerate_secret|mark_jobs|multiple_statements)(/|$|\?|\.)", re.I)
+
+# The account email is rendered into settings/user pages; never let credentials reach disk.
+def redact(text):
+    from urllib.parse import quote
+    for secret, token in ((EMAIL, "[AWORKA_EMAIL]"), (PASSWORD, "[AWORKA_PASSWORD]")):
+        if not secret: continue
+        for form in (secret, quote(secret, safe=""), quote(secret, safe="@"), secret.replace("@", "%40")):
+            text = text.replace(form, token)
+    # Third-party keys the pages embed (Mapbox access token on the planner, Google Maps key in script URLs).
+    text = re.sub(r"\b(?:sk|pk)\.[A-Za-z0-9._-]{40,}", "[MAPBOX_TOKEN]", text)
+    text = re.sub(r"\bAIza[0-9A-Za-z_-]{35}\b", "[GOOGLE_API_KEY]", text)
+    # The settings page embeds the API client id and (hidden) client secret in spans.
+    text = re.sub(r'(id=["\']api_client_(?:id|secret)_value["\'][^>]*>)\s*[^<]*', r"\1[redacted]", text)
+    return text
 
 S = requests.Session()
 S.headers["User-Agent"] = "Mozilla/5.0 (research crawler; GET-only)"
@@ -91,7 +110,7 @@ def main():
     os.makedirs(f"{OUT}/assets", exist_ok=True)
     start = login()
     origin = urlparse(BASE).netloc
-    seen, queue, pages, assets = set(), deque([start, f"{BASE}/"]), [], set()
+    seen, queue, pages, assets = set(), deque([start, f"{BASE}/"] + [urljoin(BASE, s) for s in SEEDS]), [], set()
     while queue and len(pages) < MAX_PAGES:
         url, _ = urldefrag(queue.popleft())
         if url in seen: continue
@@ -110,10 +129,11 @@ def main():
         rec = {"url": url, "final_url": r.url, "status": r.status_code, "content_type": ctype}
         if "text/html" not in ctype:
             pages.append(rec); continue
-        soup = BeautifulSoup(r.text, "html.parser")
+        html = redact(r.text)
+        soup = BeautifulSoup(html, "html.parser")
         slug = slugify(r.url)
         with open(f"{OUT}/html/{slug}.html", "w", encoding="utf-8") as fh:
-            fh.write(r.text)
+            fh.write(html)
         rec.update({
             "file": f"html/{slug}.html",
             "title": (soup.title.get_text(strip=True) if soup.title else None),
@@ -131,6 +151,18 @@ def main():
             rec["links"].append({"text": a.get_text(" ", strip=True)[:80], "href": full})
             if urlparse(full).netloc == origin and full not in seen:
                 queue.append(full)
+        # Popup forms ("New Expense", "Configure", ...) open with a GET to the element's data-href.
+        for el in soup.find_all(attrs={"data-href": True}):
+            full, _ = urldefrag(urljoin(r.url, el["data-href"]))
+            rec["links"].append({"text": (el.get_text(" ", strip=True) or el.get("value") or "")[:80], "href": full, "popup": True})
+            if urlparse(full).netloc == origin and full not in seen:
+                queue.append(full)
+        help_btn = soup.find("a", attrs={"data-controller": True, "data-action": True})
+        if help_btn:
+            rec["controller_action"] = f'{help_btn["data-controller"]}#{help_btn["data-action"]}'
+            help_url = f'{BASE}/help/{help_btn["data-controller"]}/{help_btn["data-action"]}'
+            if help_url not in seen:
+                queue.append(help_url)
         for tag, attr in (("link", "href"), ("script", "src")):
             for el in soup.find_all(tag, **{attr: True}):
                 u = urljoin(r.url, el[attr])
