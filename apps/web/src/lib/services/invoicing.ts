@@ -5,6 +5,7 @@ import { db, schema } from "@/db";
 import type { InvoiceLine } from "@/db/schema";
 import { logActivity } from "./ledger";
 import { queueMessage } from "./messaging";
+import { onInvoiceCreated } from "./gocardless";
 
 function lineFor(job: typeof schema.jobs.$inferSelect, description: string): InvoiceLine {
   const vatable = job.vatStatus === "inc_vat" || job.vatStatus === "ex_vat";
@@ -31,6 +32,12 @@ export function dueDate(issuedOn: IsoDate, type: string | null | undefined, days
 
 /** Invoice all done, uninvoiced jobs for a customer (or the given jobs). Returns null if nothing to invoice. */
 export async function createInvoice(accountId: string, customerId: string, today: IsoDate, opts: { jobIds?: string[]; userId?: string | null } = {}) {
+  const invoice = await createInvoiceTx(accountId, customerId, today, opts);
+  if (invoice) await onInvoiceCreated(accountId, invoice.id); // Direct Debit auto-collection
+  return invoice;
+}
+
+async function createInvoiceTx(accountId: string, customerId: string, today: IsoDate, opts: { jobIds?: string[]; userId?: string | null }) {
   return db.transaction(async (tx) => {
     const account = await tx.query.accounts.findFirst({ where: eq(schema.accounts.id, accountId) });
     const customer = await tx.query.customers.findFirst({ where: and(eq(schema.customers.id, customerId), eq(schema.customers.accountId, accountId)) });
