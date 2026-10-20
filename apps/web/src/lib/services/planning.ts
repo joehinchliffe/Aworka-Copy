@@ -1,5 +1,6 @@
 import { and, asc, between, eq, gte, inArray, lt, sql } from "drizzle-orm";
 import {
+  haversine, optimiseRoute, type Point,
   addDays, lateness, nextDueDate, projectOccurrences, splitTip, type IsoDate, type Recurrence,
 } from "@rounds/domain";
 import { db, schema } from "@/db";
@@ -285,4 +286,34 @@ export async function autoMarkStaleJobs(accountId: string, today: IsoDate) {
     await completeJob(accountId, j.userId, j.id, { status: policy === "mark_done_overnight" ? "done" : "not_done" }, today);
   }
   return stale.length;
+}
+
+/**
+ * Reorder a day's jobs to minimise driving. Jobs without coordinates keep their
+ * relative order at the end. Start/finish at home or at the job furthest from home.
+ */
+export async function optimiseDay(accountId: string, date: IsoDate, opts: { start?: "home" | "furthest"; finish?: "home" | "furthest" | "anywhere" } = {}) {
+  const account = await db.query.accounts.findFirst({ where: eq(schema.accounts.id, accountId) });
+  const rows = await db
+    .select({ job: schema.jobs, lat: sql<number | null>`coalesce(jc.lat, cc.lat)`, lng: sql<number | null>`coalesce(jc.lng, cc.lng)` })
+    .from(schema.jobs)
+    .innerJoin(schema.jobSpecs, eq(schema.jobSpecs.id, schema.jobs.jobSpecId))
+    .innerJoin(schema.customers, eq(schema.customers.id, schema.jobSpecs.customerId))
+    .leftJoin(sql`contacts jc`, sql`jc.id = ${schema.jobSpecs.jobContactId}`)
+    .leftJoin(sql`contacts cc`, sql`cc.id = ${schema.customers.contactId}`)
+    .where(and(eq(schema.jobs.accountId, accountId), eq(schema.jobs.date, date)))
+    .orderBy(asc(schema.jobs.dayOrder), asc(schema.jobSpecs.roundIndex));
+  const located = rows.filter((r) => r.lat != null && r.lng != null);
+  const unlocated = rows.filter((r) => r.lat == null || r.lng == null);
+  const pts: Point[] = located.map((r) => ({ lat: r.lat!, lng: r.lng! }));
+  const home: Point | undefined = account?.settings.homeLat != null && account.settings.homeLng != null ? { lat: account.settings.homeLat, lng: account.settings.homeLng } : undefined;
+  const furthest = home && pts.length ? pts.reduce((a, b) => (haversine(home, b) > haversine(home, a) ? b : a)) : undefined;
+  const startMode = opts.start ?? account?.settings.routeStart ?? "home";
+  const finishMode = opts.finish ?? account?.settings.routeFinish ?? "home";
+  const start = startMode === "furthest" ? furthest : home;
+  const end = finishMode === "anywhere" ? undefined : finishMode === "furthest" ? furthest : home;
+  const order = optimiseRoute(pts, start, end);
+  const ids = [...order.map((i) => located[i]!.job.id), ...unlocated.map((r) => r.job.id)];
+  await reorderDay(accountId, ids);
+  return { ordered: located.length, unlocated: unlocated.length };
 }

@@ -6,7 +6,7 @@ import { requireUser } from "@/lib/session";
 import { accountFor } from "@/lib/lookups";
 import { money, PAY_METHODS } from "@/lib/format";
 import { formatDate, formatDay, todayIso } from "@/lib/time";
-import { addJobsAction, completeJobAction, nudgeAction, removeJobAction } from "../../actions";
+import { addJobsAction, completeJobAction, nudgeAction, optimiseDayAction, removeJobAction } from "../../actions";
 
 const STATUS_BADGE: Record<string, string> = { to_do: "info", done: "ok", not_done: "danger", skipped: "", estimate: "warn" };
 
@@ -42,6 +42,14 @@ export default async function DayPage({ params, searchParams }: { params: Promis
         <section className="panel">
           <h2>Jobs for the day</h2>
           {jobs.length === 0 && <p className="muted">No jobs planned. Add due jobs from the list.</p>}
+          {jobs.length > 1 && (
+            <form action={optimiseDayAction.bind(null, date)} className="row no-print small" style={{ marginBottom: 8 }}>
+              <span>Route:</span>
+              <select name="start" defaultValue={account?.settings.routeStart ?? "home"} style={{ width: 150 }}><option value="home">Start from home</option><option value="furthest">Start furthest away</option></select>
+              <select name="finish" defaultValue={account?.settings.routeFinish ?? "home"} style={{ width: 150 }}><option value="home">Finish at home</option><option value="furthest">Finish furthest away</option><option value="anywhere">Finish anywhere</option></select>
+              <button className="btn small">Optimise order</button>
+            </form>
+          )}
           {jobs.map((j) => (
             <div key={j.id} className="jobsheet-row">
               <div>

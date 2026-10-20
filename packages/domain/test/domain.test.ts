@@ -126,3 +126,21 @@ describe("permissions", () => {
     expect(can(RolePresets.owner, "edit_settings")).toBe(true);
   });
 });
+
+import { haversine, optimiseRoute, routeLength } from "../src";
+describe("route optimisation", () => {
+  it("measures distance", () => {
+    expect(Math.round(haversine({ lat: 53.8, lng: -1.55 }, { lat: 53.8, lng: -1.5 }) / 100)).toBe(33); // ~3.3 km
+  });
+  it("orders points along a line and beats the input order", () => {
+    const pts = [0.04, 0.01, 0.03, 0.0, 0.02].map((d) => ({ lat: 53.8, lng: -1.5 + d }));
+    const home = { lat: 53.8, lng: -1.51 };
+    const order = optimiseRoute(pts, home, home);
+    expect(order.map((i) => pts[i]!.lng)).toEqual([-1.5, -1.49, -1.48, -1.47, -1.46].map((x) => expect.closeTo(x, 6)));
+    expect(routeLength(order.map((i) => pts[i]!), home, home)).toBeLessThan(routeLength(pts, home, home));
+  });
+  it("handles open routes and trivial inputs", () => {
+    expect(optimiseRoute([])).toEqual([]);
+    expect(optimiseRoute([{ lat: 1, lng: 1 }])).toEqual([0]);
+  });
+});

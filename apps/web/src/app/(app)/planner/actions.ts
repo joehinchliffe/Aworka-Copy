@@ -3,7 +3,7 @@ import { revalidatePath } from "next/cache";
 import { requireUser } from "@/lib/session";
 import { todayIso } from "@/lib/time";
 import { accountFor } from "@/lib/lookups";
-import { addJobToDay, completeJob, moveJob, nudgeToDate, removeJob, reorderDay, type CompleteJobInput } from "@/lib/services/planning";
+import { addJobToDay, completeJob, moveJob, nudgeToDate, optimiseDay, removeJob, reorderDay, type CompleteJobInput } from "@/lib/services/planning";
 
 export async function addJobsAction(date: string, f: FormData) {
   const user = await requireUser("add_jobs");
@@ -61,5 +61,14 @@ export async function completeJobAction(jobId: string, f: FormData) {
     planNext: f.get("planNext") === "no" ? { mode: "no" } : f.get("planNext") === "on_date" ? { mode: "on_date", date: String(f.get("planNextDate")) } : { mode: "auto" },
   };
   await completeJob(user.accountId, user.id, jobId, input, todayIso());
+  revalidatePath("/planner", "layout");
+}
+
+export async function optimiseDayAction(date: string, f: FormData) {
+  const user = await requireUser("move_jobs");
+  await optimiseDay(user.accountId, date, {
+    start: (f.get("start") as "home" | "furthest") ?? undefined,
+    finish: (f.get("finish") as "home" | "furthest" | "anywhere") ?? undefined,
+  });
   revalidatePath("/planner", "layout");
 }

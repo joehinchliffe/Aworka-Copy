@@ -51,6 +51,11 @@ export interface AccountSettings {
   website?: string;
   address?: string;
   phone?: string;
+  /** Where the working day starts and ends, for route optimisation. */
+  homeLat?: number;
+  homeLng?: number;
+  routeStart?: "home" | "furthest";
+  routeFinish?: "home" | "furthest" | "anywhere";
 }
 
 export const roles = pgTable("roles", {

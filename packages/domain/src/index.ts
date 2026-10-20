@@ -6,3 +6,4 @@ export * from "./recurrence";
 export * from "./balance";
 export * from "./priceRevision";
 export * from "./permissions";
+export * from "./route";
